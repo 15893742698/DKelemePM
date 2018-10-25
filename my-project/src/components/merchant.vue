@@ -3,7 +3,7 @@
   <div class="box">
         <img src="./img/search.png" alt="">
         <span>中原区</span>
-        <router-link to="/0">登录|注册</router-link>
+        <router-link to="/unlogin">登录|注册</router-link>
     </div>
   <Shops></Shops>
 <!-- ssssssssssssssssssssssss下部分sssssssssssssssssssssssss -->

@@ -1,8 +1,6 @@
 <template>
     <div class="hello">
-          <router-link to="./prev">
-          <img src="../../imgs/后退.png" alt="">
-          </router-link>
+          <img src="../../imgs/后退.png" alt="" @click="returnup()">
           <p>{{$store.state.titlename}}</p>
     </div>
 </template>
@@ -12,6 +10,11 @@
         data(){
           return {
             
+          }
+        },
+        methods:{
+          returnup(){
+            this.$router.go(-1)
           }
         }
     }
