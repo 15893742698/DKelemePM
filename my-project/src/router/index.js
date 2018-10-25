@@ -6,10 +6,10 @@ import Yue from '@/components/yue'
 import Count from '@/components/jifen'
 import Youhui from '@/components/youhui'
 import Login from '@/components/login'
-import HelloWorld from '@/components/HelloWorld'
-import Merchant from '../components/merchant'
-import Classify from '../components/classify'
-import Shopq from '@/components/shopq'
+import HelloWorld from '../HelloWorld'
+import Merchant from '../merchant'
+import Classify from '../classify'
+import Shopq from '../shopq'
 Vue.use(Router)
 
 export default new Router({
