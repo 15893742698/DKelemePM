@@ -24,6 +24,11 @@ export default new Router({
       component:Unlogin
     },{
       path:'/home',
+      name:"home",
+      component:Home
+    },{
+      path:'/prev',
+      name:"home",
       component:Home
     },{
       path:'/yue',
