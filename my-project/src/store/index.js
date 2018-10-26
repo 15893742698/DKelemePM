@@ -24,7 +24,8 @@ const state = {
     },
     srcmsg:[]
     ,
-    headsrc:""
+    headsrc:"",
+    bianjiadd:true
 }
 const store = new Vuex.Store({
     state,

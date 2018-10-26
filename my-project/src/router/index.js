@@ -12,6 +12,8 @@ import Classify from '../components/classify'
 import Shopq from '@/components/shopq'
 // import Cut from "../components/cut"
 import Cut from '../components/cut'
+import Resetname from '../components/resetname'
+import Resetadd from '../components/resetadd'
 Vue.use(Router)
 
 export default new Router({
@@ -20,46 +22,52 @@ export default new Router({
     //  path: '/',
     //   component: Home
     // },
-      {
-      path:'/unlogin',
-      component:Unlogin
-    },{
-      path:'/home',
-      name:"home",
-      component:Home
-    },{
-      path:'/prev',
-      name:"home",
-      component:Home
-    },{
-      path:'/yue',
-      component:Yue
-    },{
-      path:'/count',
-      component:Count
-    },{
-      path:'/discount',
-      component:Youhui
-    },{
-      path:'/login',
-      component:Login
+    {
+      path: '/unlogin',
+      component: Unlogin
+    }, {
+      path: '/home',
+      name: "home",
+      component: Home
+    }, {
+      path: '/prev',
+      name: "home",
+      component: Home
+    }, {
+      path: '/yue',
+      component: Yue
+    }, {
+      path: '/count',
+      component: Count
+    }, {
+      path: '/discount',
+      component: Youhui
+    }, {
+      path: '/login',
+      component: Login
     },
     {
       path: '/',
       name: 'HelloWorld',
       component: Merchant
-     },
-     {
-       path: '/classify',
-       component: Classify
-     },
-     {
-       path: '/shopq',
-       component: Shopq
-     },{
-       path:"/aaaa",
-       component:Cut
-     }
+    },
+    {
+      path: '/classify',
+      component: Classify
+    },
+    {
+      path: '/shopq',
+      component: Shopq
+    }, {
+      path: "/aaaa",
+      component: Cut
+    }, {
+      path: '/resetusername',
+      component: Resetname
+    }, {
+      path: "/resetadd",
+      component: Resetadd
+    }
 
   ]
 })

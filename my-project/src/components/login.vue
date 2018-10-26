@@ -10,6 +10,7 @@
                     <img src="../imgs/前进.png" alt="" class="qianjin">
                 </div>
             </div>
+           <router-link to="/resetusername">
             <div class="xiaomsgdiv" id="usernamediv">
                 <p class="zuobian">用户名</p>
                 <div>
@@ -17,12 +18,15 @@
                     <img src="../imgs/前进.png" alt="" class="qianjin">
                 </div>
             </div>
-            <div class="xiaomsgdiv" id="adddiv">
+           </router-link>
+           <router-link to="/resetadd">
+                 <div class="xiaomsgdiv" id="adddiv">
                 <p class="zuobian">收货地址</p>
                 <div>
                     <img src="../imgs/前进.png" alt="" class="qianjin">
                 </div>
             </div>
+           </router-link>
             <p class="xinxip">
                 <span>账号绑定</span>
             </p>
@@ -38,13 +42,15 @@
             <p class="xinxip">
                 <span>安全设置</span>
             </p>
-            <div class="xiaomsgdiv">
+            <router-link to="/resetpassword">
+                <div class="xiaomsgdiv">
                 <p class="zuobian">登录密码</p>
                 <div>
                     <p>修改</p>
                     <img src="../imgs/前进.png" alt="" class="qianjin">
                 </div>
             </div>
+            </router-link>
         </div>
         <div class="tuichudiv">
             <button>退出登录</button>
