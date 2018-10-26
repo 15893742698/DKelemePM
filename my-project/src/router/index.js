@@ -10,6 +10,8 @@ import HelloWorld from '@/components/HelloWorld'
 import Merchant from '../components/merchant'
 import Classify from '../components/classify'
 import Shopq from '@/components/shopq'
+import Resetname from '../components/resetname'
+import Resetadd from '../components/resetadd'
 Vue.use(Router)
 
 export default new Router({
@@ -55,6 +57,12 @@ export default new Router({
      {
        path: '/shopq',
        component: Shopq
+     },{
+       path:'/resetusername',
+       component:Resetname
+     },{
+       path:"/resetadd",
+       component:Resetadd
      }
 
   ]

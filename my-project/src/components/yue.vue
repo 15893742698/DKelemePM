@@ -1,6 +1,6 @@
 <template>
     <div class="yue">
-        <Headd :titlename="name"></Headd>
+        <Headd></Headd>
         <Sanjianke :dangqian="dangqian" :explain="explain" :srcc="srcc" :lujing="lujing" :shuzi="shuzi" :danwei="danwei" :tijiao="tijiao" :mingxi="mingxi" :nothing="nothing" :todo="todo"></Sanjianke>
     </div>
 </template>
@@ -30,7 +30,7 @@ export default {
     Sanjianke
   },
   created() {
-      this.name= "我的余额"
+      this.$store.commit("changetn","我的余额")
       this.dangqian= "当前余额"
       this.explain= "余额说明"
       this.srcc= "../../imgs/问号.png"

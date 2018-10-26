@@ -21,7 +21,8 @@ const state = {
     },
     login:{
         login:"/login"
-    }
+    },
+    bianjiadd:true
 }
 const store = new Vuex.Store({
     state,
