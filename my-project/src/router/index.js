@@ -10,15 +10,16 @@ import HelloWorld from '@/components/HelloWorld'
 import Merchant from '../components/merchant'
 import Classify from '../components/classify'
 import Shopq from '@/components/shopq'
+// import Cut from "../components/cut"
+import Cut from '../components/cut'
 Vue.use(Router)
 
 export default new Router({
   routes: [
     // {
-    //   path: '/',
-    //   name: 'home',
+    //  path: '/',
     //   component: Home
-    // },{
+    // },
       {
       path:'/unlogin',
       component:Unlogin
@@ -55,6 +56,9 @@ export default new Router({
      {
        path: '/shopq',
        component: Shopq
+     },{
+       path:"/aaaa",
+       component:Cut
      }
 
   ]

@@ -12,6 +12,7 @@
       <Meum></Meum>
       <Ccontent></Ccontent>
       <Bot></Bot>
+      <Cut></Cut>
   </div>
 </template>
 <script>
@@ -19,6 +20,7 @@ import Login from './element/login'
 import Meum from './element/meum'
 import Ccontent from './element/ccontent'
 import Bot from './element/bot'
+import Cut from './cut'
 export default {
   name: "",
   data() {
@@ -31,7 +33,8 @@ export default {
     Login,
     Meum,
     Ccontent,
-    Bot
+    Bot,
+    Cut
   },
   created() {
     if(!this.$store.state.denglu){

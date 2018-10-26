@@ -21,7 +21,10 @@ const state = {
     },
     login:{
         login:"/login"
-    }
+    },
+    srcmsg:[]
+    ,
+    headsrc:""
 }
 const store = new Vuex.Store({
     state,
@@ -33,6 +36,9 @@ const store = new Vuex.Store({
             // console.log("woshizhu")
             state.denglu=value;
             // console.log(state.denglu)
+        },
+        changesrc(){
+            
         }
     }
 })

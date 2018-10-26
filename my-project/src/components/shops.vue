@@ -172,12 +172,12 @@ export default {
     swiper() {
       return this.$refs.mySwiper.swiper;
     }
-  },
-  mounted() {
-    //可以使用swiper这个对象去使用swiper官网中的那些方法
-    console.log("this is current swiper instance object", this.swiper);
-    // this.swiper.slideTo(0, 0, false);
   }
+  // mounted() {
+  //   //可以使用swiper这个对象去使用swiper官网中的那些方法
+  //   //console.log("this is current swiper instance object", this.swiper);
+  //   // this.swiper.slideTo(0, 0, false);
+  // }
 };
 </script>
 <style scoped>

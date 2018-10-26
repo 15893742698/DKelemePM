@@ -1,10 +1,11 @@
 <template>
   <div class="hello">
-    
+   
   </div>
 </template>
 
 <script>
+// import Cut from "../components/cut"
 export default {
   name: 'HelloWorld',
   data () {
