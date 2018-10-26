@@ -3,7 +3,7 @@
   <div class="box">
         <img src="./img/search.png" alt="">
         <span>中原区</span>
-        <router-link to="/unlogin">登录|注册</router-link>
+        <router-link to="/unlogin" >登录|注册</router-link>
     </div>
   <Shops></Shops>
 <!-- ssssssssssssssssssssssss下部分sssssssssssssssssssssssss -->
@@ -13,19 +13,25 @@
         <span>附近商家</span>
     </div>
     <ul class="content_ul">
-        <router-link tag="li" :key="index" v-for="(k,index) in datas" to="/shopq">
+        <router-link tag="li" :key="index" v-for="(k,index) in datas" :to="{name:'shopq',params:{id:k.id}}">
         <div><img class="img2" :src="'https://elm.cangdu.org/img/'+k.image_path" alt=""></div>
         <div class="content_div">
             <p><span id="sp1">品牌</span><span id="sp2">{{k.name}}</span><span id="sp3">保准票</span></p>
-            <p><span><el-rate
+            <div id="nmd">
+             <div> 
+               <span><el-rate
   v-model="k.rating"
   disabled
   show-score
   text-color="#ff9900"
   score-template="{value}"
   class="el-rate">
-</el-rate></span><span id="sp4">月售106单</span><span id="sp5" v-if="k.delivery_mode">
-    {{k.delivery_mode.text}}</span><span id="sp6">准时达</span></p>
+</el-rate></span><span id="sp4">月售106单</span></div>
+<div>
+  <span id="sp5" v-if="k.delivery_mode">
+    {{k.delivery_mode.text}}</span><span id="sp6">准时达</span>
+      </div>
+    </div><br>
             <p><span class="sp7">￥{{k.float_minimum_order_amount}}起送/</span><span class="sp7">{{k.piecewise_agent_fee.tips}}</span><span class="sp7">{{k.distance}}/{{k.order_lead_time}}</span></p>
         </div>
         <hr>
@@ -37,7 +43,7 @@
 </template>
 <script>
 import Shops from "./shops.vue";
-import Cut from "./cut"
+import Cut from "./cut";
 // ----------------------------------------------------------
 // import img01 from "./img/search.png";
 export default {
@@ -91,9 +97,11 @@ img {
   color: black;
 }
 
-.box span {
+.box > span {
   font-size: 0.2rem;
   color: white;
+  text-align: center;
+  padding-left: 1.5rem;
 }
 a {
   color: white;
@@ -121,7 +129,7 @@ a {
   /* border: 1px solid yellow; */
 }
 .img2 {
-  width: 75px;
+  width: 0.75rem;
 }
 .content_ul li > div:nth-child(2) {
   width: 80%;
@@ -162,8 +170,14 @@ a {
   font-size: 0.1rem;
   background: rgb(38, 117, 190);
   color: white;
-  margin: 0 10px;
-  margin-right: 0.2rem;
+  margin: 0 0.05rem;
+  /* margin-right: 0.2rem; */
+  /* padding-left: 0.1rem; */
+}
+#nmd{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 .content_div #sp6 {
   font-size: 0.1rem;
@@ -192,8 +206,8 @@ a {
 } */
 </style>
 <style>
-.el-rate__item{
-  width:0.094rem;
+.el-rate__item {
+  width: 0.094rem;
 }
 .el-rate__icon {
   font-size: 10px;

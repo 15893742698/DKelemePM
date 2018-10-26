@@ -56,7 +56,8 @@ export default new Router({
       component: Classify
     },
     {
-      path: '/shopq',
+      path: '/shopq/:id?',
+      name:'shopq',
       component: Shopq
     }, {
       path: "/aaaa",
