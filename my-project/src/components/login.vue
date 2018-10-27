@@ -68,6 +68,7 @@
     </div>
 </template>
 <script>
+import { Loading } from "element-ui";
 import Headd from "../components/element/head";
 export default {
   name: "login",
@@ -79,16 +80,20 @@ export default {
       name: "账户信息",
       srcc: "",
       username: "",
-      chuxianma: false
+      chuxianma: false,
+      loading: true
     };
   },
   created() {
     this.$store.commit("changetn", "账户信息");
+    let loadingInstance1 = Loading.service({ fullscreen: true });
     this.srcc =
       "https://elm.cangdu.org/img/" + this.$store.state.usermsg.avatar;
     this.username = this.$store.state.usermsg.username;
     // console.log(this.$store.state.defaultmsg.srcc)
     // this.srcc=this.$store.state.defaultmsg.srcc
+    loadingInstance1.close();
+    this.loading = false;
   },
   methods: {
     tuichubtn() {
@@ -96,10 +101,10 @@ export default {
     },
     wait() {
       this.chuxianma = false;
-      this.$router.push({name:"login"})
+      this.$router.push({ name: "login" });
     },
     henxin() {
-      this.chuxianma=false;
+      this.chuxianma = false;
       let url = "https://elm.cangdu.org/v2/signout";
       this.$http({
         method: "get",
@@ -107,6 +112,8 @@ export default {
         withCredentials: true
       }).then(data => {
         // console.log("退出");
+        loadingInstance1.close();
+        this.loading = false;
         var adaddmsgg = { name: "" };
         this.$store.commit("changetn", "");
         this.$store.commit("denglu", "");

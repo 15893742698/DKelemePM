@@ -11,21 +11,30 @@
     </div>
 </template>
 <script>
+import { Loading } from "element-ui";
 import Headd from "../components/element/head";
 export default {
   name: "unloginyouhuiyemian",
+  data() {
+    return {
+      loading: true
+    };
+  },
   components: {
     Headd
   },
   created() {
     this.$store.commit("changetn", "我的优惠");
+    let loadingInstance1 = Loading.service({ fullscreen: true });
+    loadingInstance1.close();
+    this.loading = false;
   },
   methods: {
     godenglu() {
       this.$router.push({ name: "unlogin" });
     },
     returnuup() {
-      this.$router.push({name:"home"});
+      this.$router.push({ name: "home" });
     }
   }
 };
@@ -52,14 +61,14 @@ export default {
   line-height: 50px;
   padding: 2%;
 }
-.hello{
+.hello {
   width: 95%;
-  background-color: #436EEE;
+  background-color: #436eee;
   height: 50px;
-  border-bottom: 1px solid #436EEE;
+  border-bottom: 1px solid #436eee;
   line-height: 50px;
   text-align: center;
-  padding-left: 5%; 
+  padding-left: 5%;
   overflow: hidden;
 }
 .hello img {
@@ -69,14 +78,14 @@ export default {
   margin-top: 1%;
   /* border: 1px solid red; */
 }
-.hello p{
+.hello p {
   font-size: 0.2rem;
   color: white;
   font-weight: bold;
   margin-right: 15%;
 }
-.hello>a{
-  color:black;
+.hello > a {
+  color: black;
 }
 </style>
 

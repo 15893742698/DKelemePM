@@ -15,17 +15,22 @@
     </div>
 </template>
 <script>
+import { Loading } from "element-ui";
 import Headd from "../components/element/head";
 export default {
   name: "searchadd",
   data() {
     return {
       detailsearchadd: "",
-      adddata: []
+      adddata: [],
+      loading: true
     };
   },
   created() {
     this.$store.commit("changetn", "搜索地址");
+    let loadingInstance1 = Loading.service({ fullscreen: true });
+    loadingInstance1.close();
+    this.loading = false;
   },
   components: {
     Headd
@@ -33,20 +38,29 @@ export default {
   methods: {
     search() {
       // console.log(this.detailsearchadd);
-      let url ="https://elm.cangdu.org/v1/pois?city_id="+this.$store.state.cityid+"&keyword="+this.detailsearchadd+"&type=search";
+      this.loading = true;
+      let loadingInstance1 = Loading.service({ fullscreen: true });
+      let url =
+        "https://elm.cangdu.org/v1/pois?city_id=" +
+        this.$store.state.cityid +
+        "&keyword=" +
+        this.detailsearchadd +
+        "&type=search";
       this.$http({
         method: "get",
         url: url,
         withCredentials: true
       }).then(res => {
-          // console.log(res)
+        loadingInstance1.close();
+        this.loading = false;
+        // console.log(res)
         this.adddata = res.data;
         // console.log(this.adddata);
       });
     },
     getaddmsg(item) {
-      console.log(item);
-      this.$store.commit("changeaddmsg",item)
+      // console.log(item);
+      this.$store.commit("changeaddmsg", item);
       this.$store.commit("changeadd", this.detailsearchadd);
       this.detailsearchadd = item.name;
       this.$router.push({ name: "detailadadd" });
@@ -101,7 +115,7 @@ export default {
   font-size: 0.16rem;
   padding: 2%;
 }
-.changde{
-    line-height: 20px;
+.changde {
+  line-height: 20px;
 }
 </style>

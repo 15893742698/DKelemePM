@@ -28,26 +28,54 @@
                 </div>
                 <p>{{item.description_map.validity_delta}}</p>
             </li>
+            <li class="guoqihongbao" v-if="guoqihongbao"><p>过期红包</p></li>
+             <li class="hbli" v-for="(item) in datas2" :key="item.sn" v-if="guoqihongbao">
+                <div class="hblileft">
+                    <p>¥</p>
+                    <span>{{item.amount}}</span>
+                    <p>.0</p>
+                    <p class="manjian">{{item.description_map.sum_condition}}</p>
+                </div>
+                <div class="hblicon">
+                    <p class="hblibig">{{item.name}}</p>
+                    <p>{{item.description_map.validity_periods}}</p>
+                    <p>{{item.description_map.phone}}</p>
+                </div>
+                <p>{{item.description_map.validity_delta}}</p>
+            </li>
             <li class="hbtips">
                 <p>限品类:快餐便当、特色菜系、小吃夜宵、甜品饮品、</p>
                 <p>异国料理</p>
             </li>
         </ul>
         <p>查看历史红包<span>></span></p>
+        <div id="hbcaozuo">
+          <router-link to="/duihuanhongbao" class="duihuanhb">
+              <button>兑换红包</button>
+          </router-link>
+         <router-link to="/tuijianhb" class="tuijianhb">
+             <button>推荐有奖</button>
+         </router-link>
+        </div>
     </div>    
 </template>
 <script>
+import { Loading } from "element-ui";
 export default {
   name: "hongbao",
   data() {
     return {
-      datas: []
+      datas: [],
+      datas2: [],
+      guoqihongbao: Boolean,
+      loading: true
     };
   },
   created() {
     if (!this.$store.state.denglu) {
-      this.$router.push({name:"unloginyouhuiyemian"})
+      this.$router.push({ name: "unloginyouhuiyemian" });
     } else {
+      let loadingInstance1 = Loading.service({ fullscreen: true });
       let url =
         "https://elm.cangdu.org/promotion/v2/users/" +
         this.$store.state.usermsg.user_id +
@@ -57,8 +85,25 @@ export default {
         url: url,
         withCredentials: true
       }).then(res => {
-        console.log(res);
+        loadingInstance1.close();
+        this.loading = false;
+        // console.log(res);
         this.datas = res.data;
+      });
+      let url1 =
+        "https://elm.cangdu.org/promotion/v2/users/" +
+        this.$store.state.usermsg.user_id +
+        "/expired_hongbaos?limit=3&offset=3";
+      this.$http({
+        methods: "get",
+        url: url1,
+        withCredentials: true
+      }).then(res => {
+        if (res.data.length == 0) {
+          this.guoqihongbao = false;
+        } else {
+          this.datas2 = res.data;
+        }
       });
     }
   }
@@ -96,6 +141,10 @@ export default {
 }
 .hongbaoul {
   width: 100%;
+}
+.guoqihongbao > p {
+  font-size: 0.2rem;
+  padding-bottom: 3%;
 }
 .hbli {
   width: 94%;
@@ -166,6 +215,21 @@ export default {
 }
 .hongbaoul + p > span {
   margin: 1%;
+}
+#hbcaozuo {
+  width: 100%;
+  background-color: rgb(223, 221, 126);
+}
+.duihuanhb > button,
+.tuijianhb > button {
+  width: 49%;
+  text-align: center;
+  height: 50px;
+  line-height: 50px;
+  font-size: 0.16rem;
+  background-color: rgb(223, 221, 126);
+  border: none;
+  border-radius: 10px;
 }
 </style>
 

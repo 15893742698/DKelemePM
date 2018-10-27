@@ -11,62 +11,65 @@
     </div>
 </template>
 <script>
-import Headd from '../components/element/head'
-import Hongbao from '../components/content/hongbao'
-import Daijinquan from '../components/content/daijinquan'
+import { Loading } from "element-ui";
+import Headd from "../components/element/head";
+import Hongbao from "../components/content/hongbao";
+import Daijinquan from "../components/content/daijinquan";
 export default {
-    name:'youhui',
-    data(){
-        return {
-            istrue:true
-        }
+  name: "youhui",
+  data() {
+    return {
+      istrue: true,
+      loading: true
+    };
+  },
+  methods: {
+    firstp() {
+      this.istrue = true;
+      document.getElementById("firstp").className = "red";
+      document.getElementById("secondp").className = "";
+      this.$store.commit("explaindetail", 2);
     },
-    methods:{
-        firstp(){
-            this.istrue=true;
-            document.getElementById("firstp").className="red"
-            document.getElementById("secondp").className=""
-            this.$store.commit("explaindetail",2)
-        },
-        secondp(){
-            this.istrue=false;
-            document.getElementById("firstp").className=""
-            document.getElementById("secondp").className="red"
-            this.$store.commit("explaindetail",3)
-        }
-    },
-    components:{
-        Headd,
-        Hongbao,
-        Daijinquan
-    },
-    created() {
-    this.$store.commit("changetn","我的优惠");
-    if(this.istrue==true){
-        this.$store.commit("explaindetail",2)
-        
-    }else{
-        this.$store.commit("explaindetail",3)
+    secondp() {
+      this.istrue = false;
+      document.getElementById("firstp").className = "";
+      document.getElementById("secondp").className = "red";
+      this.$store.commit("explaindetail", 3);
     }
+  },
+  components: {
+    Headd,
+    Hongbao,
+    Daijinquan
+  },
+  created() {
+    this.$store.commit("changetn", "我的优惠");
+    let loadingInstance1 = Loading.service({ fullscreen: true });
+    if (this.istrue == true) {
+      this.$store.commit("explaindetail", 2);
+    } else {
+      this.$store.commit("explaindetail", 3);
+    }
+    loadingInstance1.close();
+    this.loading = false;
   }
-}    
+};
 </script>
 <style>
-.hbhuodjq{
-    width: 96%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    font-size: 0.16rem;
-    margin: 2%;
+.hbhuodjq {
+  width: 96%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 0.16rem;
+  margin: 2%;
 }
-.hbhuodjq>p{
-    
-    padding-top: 3%;
-    padding-bottom: 3%;
+.hbhuodjq > p {
+  padding-top: 3%;
+  padding-bottom: 3%;
 }
-.red{
-    border-bottom: 2px solid blue;
+.red {
+  border-bottom: 2px solid blue;
 }
 </style>
 
