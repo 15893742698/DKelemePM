@@ -41,6 +41,7 @@
     </div>
 </template>
 <script>
+import { Loading } from 'element-ui';
 import Shops from "./shops.vue"
 // ----------------------------------------------------------
 // import img01 from "./img/search.png";
@@ -53,6 +54,7 @@ export default {
     datas: null
   }),
   created() {
+    let loadingInstance1 = Loading.service({ fullscreen: true });
     let api =
       "https://elm.cangdu.org/shopping/restaurants?latitude=31.22967&longitude=121.4762";
     this.$http.get(api).then(response => {
@@ -60,7 +62,8 @@ export default {
       this.datas = response.data.map(dengke => {
         // console.log(dengke);
         return dengke;
-      });
+        });
+        loadingInstance1.close();    
     });
   }
 };
