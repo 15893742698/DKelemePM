@@ -26,11 +26,13 @@ export default {
             this.istrue=true;
             document.getElementById("firstp").className="red"
             document.getElementById("secondp").className=""
+            this.$store.commit("explaindetail",2)
         },
         secondp(){
             this.istrue=false;
             document.getElementById("firstp").className=""
             document.getElementById("secondp").className="red"
+            this.$store.commit("explaindetail",3)
         }
     },
     components:{
@@ -39,7 +41,7 @@ export default {
         Daijinquan
     },
     created() {
-    this.$store.commit("changetn","我的优惠")
+    this.$store.commit("changetn","我的优惠");
   }
 }    
 </script>

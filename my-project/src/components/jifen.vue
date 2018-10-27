@@ -1,7 +1,7 @@
 <template>
     <div class="jifen">
         <Headd></Headd>
-        <Sanjianke :dangqian="dangqian" :explain="explain" :srcc="srcc" :lujing="lujing" :shuzi="shuzi" :danwei="danwei" :tijiao="tijiao" :mingxi="mingxi" :nothing="nothing" :todo="todo" :bc="bc"></Sanjianke>
+        <Sanjianke :dangqian="dangqian" :explain="explain" :srcc="srcc" :shuzi="shuzi" :danwei="danwei" :tijiao="tijiao" :mingxi="mingxi" :nothing="nothing" :todo="todo" :bc="bc"></Sanjianke>
     </div>    
 </template>
 <script>
@@ -14,7 +14,6 @@ import Sanjianke from "../components/content/jifen";
             dangqian: "当前积分",
             explain: "积分说明",
             srcc: "../imgs/问号.png",
-            lujing: '/jifendatail',
             shuzi: 0,
             danwei: "分",
             tijiao: "积分兑换商品",
@@ -32,7 +31,6 @@ import Sanjianke from "../components/content/jifen";
             this.dangqian= "当前积分"
             this.explain= "积分说明"
             this.srcc= "../imgs/问号.png"
-            this.lujing= '/jifendatail'
             this.shuzi= 0.00
             this.danwei= "分"
             this.tijiao= "积分兑换商品"
@@ -41,6 +39,7 @@ import Sanjianke from "../components/content/jifen";
             this.todo= "快去下单赚取大量积分吧"
             this.bc="orangered",
             this.$store.commit("changetn","我的积分")
+            this.$store.commit("explaindetail",4)
         },
     }
 </script>

@@ -68,6 +68,7 @@ export default {
     }
   },
   created(){
+    this.youdizhi=false;
     this.$store.commit("changetn","编辑地址")
     let url = "https://elm.cangdu.org/v1/users/"+this.$store.state.usermsg.user_id+"/addresses";
         this.$http({
@@ -113,6 +114,9 @@ export default {
   border-top: 1px solid gray;
   background-color: #eaeaea;
   font-size: 0.16rem;
+}
+.alladda{
+  background-color: palegreen;
 }
 .xinzengdizhi .alladda{
   padding: 4% 3% 4% 3%;

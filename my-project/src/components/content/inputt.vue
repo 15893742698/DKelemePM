@@ -43,8 +43,9 @@ export default {
       username: "",
       password: "",
       yanzhengma: "",
-      mm: "密码错误",
-      srcc: ""
+      failmsg: "",
+      srcc: "",
+      offset:100,
     };
   },
   components: {
@@ -101,12 +102,12 @@ export default {
         }
       }).then(res => {
         if (res.data.message) {
-          this.$store.state.falsemsg = res.data.message;
+          this.failmsg = res.data.message;
         } else {
           this.$store.state.usermsg = res.data;
           // console.log(res);
           this.$store.commit("denglu", true);
-          this.$router.push({name:"home"})
+          this.$router.push({ name: "home" });
         }
       });
     }
@@ -186,6 +187,11 @@ input {
 }
 .tankuang {
   border: 3px solid black;
+}
+.tankuangclass {
+  position: fixed;
+  top: 25%;
+  left: 0;
 }
 </style>
 

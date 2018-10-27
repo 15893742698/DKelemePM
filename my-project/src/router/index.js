@@ -14,6 +14,9 @@ import Shopq from '@/components/shopq'
 import Cut from '../components/cut'
 import Resetname from '../components/resetname'
 import Resetadd from '../components/resetadd'
+import Detailadadd from '../components/detailadadd'
+import Searchadd from '../components/searchadd'
+import Resetpassword from '../components/resetpassword'
 Vue.use(Router)
 
 export default new Router({
@@ -44,6 +47,7 @@ export default new Router({
       component: Youhui
     }, {
       path: '/login',
+      name:"login",
       component: Login
     },
     {
@@ -66,8 +70,18 @@ export default new Router({
       component: Resetname
     }, {
       path: "/resetadd",
+      name:"resetadd",
       component: Resetadd
+    },{
+      path:'/detailadadd',
+      name:"detailadadd",
+      component:Detailadadd
+    },{
+      path:'/searchadd',
+      component:Searchadd
+    },{
+      path:"/resetpassword",
+      component:Resetpassword
     }
-
   ]
 })

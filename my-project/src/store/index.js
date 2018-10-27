@@ -15,7 +15,6 @@ const state = {
     },
     usermsg:{},
     denglu:false,
-    falsemsg:"",
     unlogin:{
         login:"/unlogin"
     },
@@ -25,7 +24,16 @@ const state = {
     srcmsg:[]
     ,
     headsrc:"",
-    bianjiadd:true
+    bianjiadd:true,
+    cityid:1,
+    adaddmsgg:{
+        name:""
+    },
+    adobjname:"",
+    adobjphone:"",
+    adobjtelphone:"",
+    detailadd:"",
+    detailexplain:Number
 }
 const store = new Vuex.Store({
     state,
@@ -38,8 +46,27 @@ const store = new Vuex.Store({
             state.denglu=value;
             // console.log(state.denglu)
         },
-        changesrc(){
-            
+        changeadd(state,value){
+            state.detailadd = value;
+        },
+        changeaddmsg(state,value){
+            // console.log(value)
+            state.adaddmsgg = value;
+        },
+        changeaddname(state,value){
+            state.adobjname = value;
+        },
+        changeaddphone(state,value){
+            state.adobjphone = value;
+        },
+        changeaddtlphone(state,value){
+            state.adobjtelphone = value;
+        },
+        changedetailadd(state,value){
+            state.adddetail = value;
+        },
+        explaindetail(state,value){
+            state.detailexplain = value;
         }
     }
 })
