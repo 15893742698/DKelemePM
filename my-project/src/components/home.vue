@@ -1,9 +1,7 @@
 <template>
   <div class="home">
         <div class="hello">
-          <router-link to="./prev">
-          <img src="../imgs/后退.png" alt="">
-          </router-link>
+          <img src="../imgs/后退.png" alt="" @click="returnuup">
           <p>我的</p>
         </div>
       <router-link :to="this.router">
@@ -39,6 +37,11 @@ export default {
       this.router = this.$store.state.unlogin.login
     }else{
       this.router = this.$store.state.login.login
+    }
+  },
+  methods:{
+    returnuup(){
+      this.$router.go(-1)
     }
   }
 };

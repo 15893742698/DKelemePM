@@ -17,6 +17,8 @@ import Resetadd from '../components/resetadd'
 import Detailadadd from '../components/detailadadd'
 import Searchadd from '../components/searchadd'
 import Resetpassword from '../components/resetpassword'
+import Explaindetail from '../components/explaindetail'
+import Unloginyouhuiyemian from '../components/unloginyouhuiyemian'
 Vue.use(Router)
 
 export default new Router({
@@ -27,6 +29,7 @@ export default new Router({
     // },
     {
       path: '/unlogin',
+      name:"unlogin",
       component: Unlogin
     },  {
       path: '/yue',
@@ -88,6 +91,14 @@ export default new Router({
     },{
       path:"/resetpassword",
       component:Resetpassword
+    },{
+      path:"/detailexplain",
+      name:"detailexplain",
+      component:Explaindetail
+    },{
+      path:"/unloginyouhuiyemian",
+      name:"unloginyouhuiyemian",
+      component:Unloginyouhuiyemian
     }
   ]
 })

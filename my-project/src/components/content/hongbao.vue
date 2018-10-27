@@ -3,9 +3,9 @@
     <div class="hongbaomax">
         <!-- 说明div -->
         <div class="explaindiv">
-            <span>有</span><span class="hongbaoshu">3</span><span>个红包即将到期</span>
+            <span>有</span><span class="hongbaoshu">{{this.$store.state.usermsg.balance}}</span><span>个红包即将到期</span>
                 <div>
-                    <router-link to="/detail">
+                    <router-link to="/detailexplain">
                         <img src="../../imgs/问号.png" alt="">
                         <span>红包说明</span>
                     </router-link>
@@ -14,47 +14,19 @@
         <!-- 三个框框 -->
         <ul class="hongbaoul">
             <!-- 第一个框框 -->
-            <li class="hbli">
+            <li class="hbli" v-for="(item, index) in datas" :key="index">
                 <div class="hblileft">
                     <p>¥</p>
-                    <span>1</span>
+                    <span>{{item.amount}}</span>
                     <p>.0</p>
-                    <p class="manjian">满20元可用</p>
+                    <p class="manjian">{{item.description_map.sum_condition}}</p>
                 </div>
                 <div class="hblicon">
-                    <p class="hblibig">分享红包</p>
-                    <p>2017-5-23到期</p>
-                    <p>限收货手机号为15893742698</p>
+                    <p class="hblibig">{{item.name}}</p>
+                    <p>{{item.description_map.validity_periods}}</p>
+                    <p>{{item.description_map.phone}}</p>
                 </div>
-                <p>剩三日</p>
-            </li>
-             <li class="hbli">
-                <div class="hblileft">
-                    <p>¥</p>
-                    <span>2</span>
-                    <p>.0</p>
-                    <p class="manjian">满30元可用</p>
-                </div>
-                <div class="hblicon">
-                    <p class="hblibig">分享红包</p>
-                    <p>2017-5-23到期</p>
-                    <p>限收货手机号为15893742698</p>
-                </div>
-                <p>剩三日</p>
-            </li>
-             <li class="hbli">
-                <div class="hblileft">
-                    <p>¥</p>
-                    <span>4</span>
-                    <p>.5</p>
-                    <p class="manjian">满40元可用</p>
-                </div>
-                <div class="hblicon">
-                    <p class="hblibig">分享红包</p>
-                    <p>2017-5-23到期</p>
-                    <p>限收货手机号为15893742698</p>
-                </div>
-                <p>剩三日</p>
+                <p>{{item.description_map.validity_delta}}</p>
             </li>
             <li class="hbtips">
                 <p>限品类:快餐便当、特色菜系、小吃夜宵、甜品饮品、</p>
@@ -65,112 +37,135 @@
     </div>    
 </template>
 <script>
-    export default{
-        name:'hongbao'
+export default {
+  name: "hongbao",
+  data() {
+    return {
+      datas: []
+    };
+  },
+  created() {
+    if (!this.$store.state.denglu) {
+      this.$router.push({name:"unloginyouhuiyemian"})
+    } else {
+      let url =
+        "https://elm.cangdu.org/promotion/v2/users/" +
+        this.$store.state.usermsg.user_id +
+        "/hongbaos?limit=20&offset=0";
+      this.$http({
+        methods: "get",
+        url: url,
+        withCredentials: true
+      }).then(res => {
+        console.log(res);
+        this.datas = res.data;
+      });
     }
+  }
+};
 </script>
 <style scoped>
-.hongbaomax{
-    width: 96%;
-    /* border: 1px solid red; */
-    padding:2%;
-    background-color: #eaeaea;
-    /* background-color: gray; */
+.hongbaomax {
+  width: 96%;
+  /* border: 1px solid red; */
+  padding: 2%;
+  background-color: #eaeaea;
+  /* background-color: gray; */
 }
-.explaindiv{
-    width: 94%;
-    margin: 3%;
-    font-size: 0.16rem;
+.explaindiv {
+  width: 94%;
+  margin: 3%;
+  font-size: 0.16rem;
 }
-.explaindiv>div{
-    float: right;
-    width: 50%;
-    /* border: 1px solid black; */
-    text-align: end;
-    margin-right: 6%;
+.explaindiv > div {
+  float: right;
+  width: 50%;
+  /* border: 1px solid black; */
+  text-align: end;
+  margin-right: 6%;
 }
-.explaindiv>div>a{
-    color:blue;
+.explaindiv > div > a {
+  color: blue;
 }
-.hongbaoshu{
-    color:red;
+.hongbaoshu {
+  color: red;
 }
-.explaindiv img{
-width: 10%;
-vertical-align: top;
+.explaindiv img {
+  width: 10%;
+  vertical-align: top;
 }
-.hongbaoul{
-    width: 100%;
+.hongbaoul {
+  width: 100%;
 }
-.hbli{
-    width:94%;
-    padding: 1%;
-    border-top: 5px dashed orangered; 
-    display: flex;
-    justify-content: space-around;
-    background-color: #fff;
-    border-radius: 10px;
-    padding-top: 3%;
-    padding-bottom: 3%;
-    margin-bottom: 3%;
+.hbli {
+  width: 94%;
+  padding: 3%;
+  border-top: 5px dashed orangered;
+  display: flex;
+  justify-content: space-around;
+  background-color: #fff;
+  border-radius: 10px;
+  padding-top: 3%;
+  padding-bottom: 3%;
+  margin-bottom: 3%;
 }
-.hblileft{
-    width: 30%;
-    font-size: 0.16rem; 
-    color: red;
-    border-right: 1px dashed gray;
-    margin-top: 3%;
-    margin-bottom: 3%;
+.hblileft {
+  width: 30%;
+  font-size: 0.16rem;
+  color: red;
+  border-right: 1px dashed gray;
+  margin-top: 3%;
+  margin-bottom: 3%;
 }
-.hblileft>p{
-    display: inline-block;
+.hblileft > p {
+  display: inline-block;
 }
-.hblileft>span{
-    font-size: 0.3rem;
+.hblileft > span {
+  font-size: 0.3rem;
 }
-.manjian{
-    margin-top: 1%;
-    width: 100%;
-    color:gray;
-    font-size: 0.15;
+.manjian {
+  margin-top: 1%;
+  width: 100%;
+  color: gray;
+  font-size: 0.15;
 }
-.hblicon{
-    width:50%;
-    margin-top: 3%;
-    margin-bottom: 3%;
+.hblicon {
+  width: 50%;
+  margin-top: 3%;
+  margin-bottom: 3%;
 }
-.hblicon>p{
-    font-size: 0.06rem;
-    margin-top: 1%;
+.hblicon > p {
+  font-size: 0.06rem;
+  margin-top: 1%;
 }
-.hblicon>.hblibig{
-    font-size: 0.12rem;
+.hblicon > .hblibig {
+  font-size: 0.12rem;
 }
-.hblicon+p{
-    font-size: 0.12rem;
-    margin-top: 3%;
-    color:red;
+.hblicon + p {
+  font-size: 0.12rem;
+  margin-top: 3%;
+  color: red;
 }
-.hbtips{
-    width: 85%;
-    margin-left: 3%;
-    font-size: 0.08rem;
-    border: 1px solid gray;
-    border-radius: 10px;
-    margin-top: 2%;
-    padding: 2%;
+.hbtips {
+  width: 85%;
+  margin-left: 3%;
+  font-size: 0.08rem;
+  border: 1px solid gray;
+  border-radius: 10px;
+  margin-top: 2%;
+  padding: 2%;
 }
-.hbtips>p{
-    margin-top: 1%;
+.hbtips > p {
+  margin-top: 1%;
 }
-.hongbaoul+p{
-    width: 80%;
-    margin: 10%;
-    text-align: center;
-    font-size: 0.1rem;
+.hongbaoul + p {
+  width: 80%;
+  margin: 10%;
+  text-align: center;
+  font-size: 0.1rem;
 }
-.hongbaoul+p>span{
-    margin: 1%;
+.hongbaoul + p > span {
+  margin: 1%;
 }
 </style>
 

@@ -2,7 +2,7 @@
 <!-- 最大的div-->
     <div class="djqmax">
         <div class="djqluyou">
-            <router-link to="/detail">
+            <router-link to="/detailexplain">
             <img src="../../imgs/问号.png" alt="">
             <p>商家代金券说明</p>
             </router-link>
@@ -63,11 +63,14 @@
     background-color: green;
     margin: 3%;
     padding: 3%;
-    border-radius: 5px;
+    border-radius: 10px;
     margin-bottom: 5%;
+     height: 50px;
+     line-height: 50px;
+     text-align: center;
 }
 .dweleme>div>a{
-    font-size: 0.1rem;
+    font-size: 0.16rem;
     color:white;
 }
 </style>

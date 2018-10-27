@@ -28,10 +28,14 @@ import Sanjianke from "../components/content/jifen";
             Sanjianke
         },
         created() {
+            if(!this.$store.state.denglu){
+                this.shuzi=0.00
+            }else{
+                this.shuzi=this.$store.state.usermsg.point
+            }
             this.dangqian= "当前积分"
             this.explain= "积分说明"
             this.srcc= "../imgs/问号.png"
-            this.shuzi= 0.00
             this.danwei= "分"
             this.tijiao= "积分兑换商品"
             this.mingxi= "最近30天积分记录"
