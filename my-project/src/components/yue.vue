@@ -15,7 +15,7 @@ export default {
       dangqian: "",
       explain: "",
       srcc: "",
-      shuzi: 0.00,
+      shuzi: "",
       danwei: "",
       tijiao: "",
       mingxi: "",
@@ -29,11 +29,15 @@ export default {
     Sanjianke
   },
   created() {
+    if(!this.$store.state.denglu){
+      this.shuzi=0.00
+    }else{
+      this.shuzi= this.$store.state.usermsg.balance
+    }
       this.$store.commit("changetn","我的余额")
       this.dangqian= "当前余额"
       this.explain= "余额说明"
       this.srcc= "../../imgs/问号.png"
-      this.shuzi= 0.00
       this.danwei= "元"
       this.tijiao= "提现"
       this.mingxi= "交易明细"

@@ -42,6 +42,12 @@ export default {
     },
     created() {
     this.$store.commit("changetn","我的优惠");
+    if(this.istrue==true){
+        this.$store.commit("explaindetail",2)
+        
+    }else{
+        this.$store.commit("explaindetail",3)
+    }
   }
 }    
 </script>

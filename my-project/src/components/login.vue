@@ -106,7 +106,7 @@ export default {
         url: url,
         withCredentials: true
       }).then(data => {
-        console.log("退出");
+        // console.log("退出");
         var adaddmsgg = { name: "" };
         this.$store.commit("changetn", "");
         this.$store.commit("denglu", "");

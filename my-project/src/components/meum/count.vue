@@ -1,13 +1,25 @@
 <template>
     <div class="count">
-            <span id="count">0</span>
-            <span>元</span>
+            <span id="count">{{count}}</span>
+            <span>分</span>
             <p>我的积分</p>
     </div>
 </template>
 <script>
 export default {
-  name: "count"
+  name: "count",
+  data(){
+      return {
+          count:""
+      }
+  },
+  created(){
+      if(!this.$store.state.denglu){
+          this.count = 0
+      }else{
+          this.count = this.$store.state.usermsg.point
+      }
+  }
 };
 </script>
 <style>
