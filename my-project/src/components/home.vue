@@ -14,20 +14,22 @@
   </div>
 </template>
 <script>
-import Login from './element/login'
-import Meum from './element/meum'
-import Ccontent from './element/ccontent'
-import Bot from './element/bot'
-import Cut from './cut'
+import { Loading } from "element-ui";
+import Login from "./element/login";
+import Meum from "./element/meum";
+import Ccontent from "./element/ccontent";
+import Bot from "./element/bot";
+import Cut from "./cut";
 export default {
   name: "",
   data() {
     return {
-      name:"我的",
-      router:""
+      name: "我的",
+      router: "",
+      loading: true
     };
   },
-  components:{
+  components: {
     Login,
     Meum,
     Ccontent,
@@ -35,34 +37,37 @@ export default {
     Cut
   },
   created() {
-    if(!this.$store.state.denglu){
-      this.router = this.$store.state.unlogin.login
-    }else{
-      this.router = this.$store.state.login.login
+    let loadingInstance1 = Loading.service({ fullscreen: true });
+    if (!this.$store.state.denglu) {
+      this.router = this.$store.state.unlogin.login;
+    } else {
+      this.router = this.$store.state.login.login;
     }
+    loadingInstance1.close();
+    this.loading = false;
   },
-  methods:{
-    returnuup(){
-      this.$router.go(-1)
+  methods: {
+    returnuup() {
+      this.$router.go(-1);
     }
   }
 };
 </script>
 <style>
-.hello{
+.hello {
   width: 95%;
 }
-.home>a{
+.home > a {
   width: 95%;
 }
-.hello{
+.hello {
   width: 95%;
-  background-color: #436EEE;
+  background-color: #436eee;
   height: 50px;
-  border-bottom: 1px solid #436EEE;
+  border-bottom: 1px solid #436eee;
   line-height: 50px;
   text-align: center;
-  padding-left: 5%; 
+  padding-left: 5%;
   overflow: hidden;
 }
 .hello img {
@@ -72,13 +77,13 @@ export default {
   margin-top: 1%;
   /* border: 1px solid red; */
 }
-.hello p{
+.hello p {
   font-size: 0.2rem;
   color: white;
   font-weight: bold;
   margin-right: 15%;
 }
-.hello>a{
-  color:black;
+.hello > a {
+  color: black;
 }
 </style>

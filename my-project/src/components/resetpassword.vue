@@ -22,6 +22,7 @@
     </div>    
 </template>
 <script>
+import { Loading } from "element-ui";
 import Headd from "../components/element/head";
 export default {
   name: "resetpassword",
@@ -36,12 +37,14 @@ export default {
       newpassword: "",
       querennewpw: "",
       newyanzhengma: "",
-      tanchuang:""
+      tanchuang: "",
+      loading: true
     };
   },
   created() {
     this.$store.commit("changetn", "重置密码");
     let url = "https://elm.cangdu.org/v1/captchas";
+    let loadingInstance1 = Loading.service({ fullscreen: true });
     this.$http({
       method: "post",
       url: url,
@@ -51,11 +54,15 @@ export default {
       // 默认false
     }).then(data => {
       console.log(data);
+      loadingInstance1.close();
+      this.loading = false;
       this.srcc = data.data.code;
     });
   },
   methods: {
     changecodee() {
+      this.loading = true;
+      let loadingInstance1 = Loading.service({ fullscreen: true });
       this.$store.commit("changetn", "重置密码");
       let url = "https://elm.cangdu.org/v1/captchas";
       this.$http({
@@ -66,11 +73,15 @@ export default {
         withCredentials: true
         // 默认false
       }).then(data => {
+        loadingInstance1.close();
+        this.loading = false;
         this.srcc = data.data.code;
       });
     },
     chongzhimima() {
+      this.loading = true;
       let url = "https://elm.cangdu.org/v2/changepassword";
+      let loadingInstance1 = Loading.service({ fullscreen: true });
       this.$http({
         method: "post",
         url: url,
@@ -83,11 +94,13 @@ export default {
           captcha_code: this.newyanzhengma
         }
       }).then(data => {
-        if(data.data.success){
-            this.tankuang="密码修改成功"
-        }else if(this.oldpassword!=this.newpassword){
-            this.tankuang="两次密码输入不一致"
-        }else(data.data.message)
+        loadingInstance1.close();
+        this.loading = false;
+        if (data.data.success) {
+          this.tankuang = "密码修改成功";
+        } else if (this.oldpassword != this.newpassword) {
+          this.tankuang = "两次密码输入不一致";
+        } else data.data.message;
       });
     }
   }

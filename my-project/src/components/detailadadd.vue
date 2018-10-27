@@ -32,6 +32,7 @@
     </div>    
 </template>
 <script>
+import { Loading } from "element-ui";
 import Headd from "../components/element/head";
 export default {
   name: "detailadadd",
@@ -48,15 +49,19 @@ export default {
       schoolvalue: "",
       detailschoolvalue: "",
       phonenumvalue: "",
+      loading: true
     };
   },
   created() {
+    this.$store.commit("changetn", "新增地址");
+    let loadingInstance1 = Loading.service({ fullscreen: true });
     this.detailschoolvalue = this.$store.state.adaddmsgg.address;
     this.namevalue = this.$store.state.adobjname;
     this.phonenumvalue = this.$store.state.adobjphone;
     this.telephone = this.$store.state.adobjtelphone;
-    this.$store.commit("changetn", "新增地址");
     this.schoolvalue = this.$store.state.name;
+    loadingInstance1.close();
+    this.loading = false;
   },
   components: {
     Headd
@@ -120,8 +125,9 @@ export default {
         this.detailschool == false &&
         this.phonenum1 == false
       ) {
-        console.log("添加啦");
+        // console.log("添加啦");
         this.ress = false;
+        let loadingInstance1 = Loading.service({ fullscreen: true });
         let url =
           "https://elm.cangdu.org/v1/users/" +
           this.$store.state.usermsg.user_id +
@@ -143,7 +149,9 @@ export default {
             tag_type: 3
           }
         }).then(res => {
-          this.$router.push({name:"resetadd"})
+          loadingInstance1.close();
+          this.loading = false;
+          this.$router.push({ name: "resetadd" });
         });
       }
     }
