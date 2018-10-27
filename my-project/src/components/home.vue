@@ -12,7 +12,6 @@
       <Meum></Meum>
       <Ccontent></Ccontent>
       <Bot></Bot>
-      <Cut></Cut>
   </div>
 </template>
 <script>
@@ -33,8 +32,7 @@ export default {
     Login,
     Meum,
     Ccontent,
-    Bot,
-    Cut
+    Bot
   },
   created() {
     if(!this.$store.state.denglu){

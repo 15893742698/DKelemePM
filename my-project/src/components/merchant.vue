@@ -38,18 +38,15 @@
       
     </router-link>
     </ul>
-    <Cut></Cut>
     </div>
 </template>
 <script>
-import Shops from "./shops.vue";
-import Cut from "./cut";
+import Shops from "./shops.vue"
 // ----------------------------------------------------------
 // import img01 from "./img/search.png";
 export default {
   components: {
-    Shops,
-    Cut
+    Shops
   },
   name: "heads",
   data: () => ({

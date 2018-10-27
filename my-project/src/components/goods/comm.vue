@@ -14,7 +14,8 @@
           <!-- 右边头部 -->
            <section class="head" v-for="(value,index) in data" :key="index">
              <div class="head_top" :id="'Top'+value.id">
-               <strong class="head_strong">{{value.name}}</strong>
+                 <!-- 热销榜 -->
+               <span class="head_spans">{{value.name}}</span>
                <span class="head_span">{{value.description}}</span>
              </div>
            <!-- 右边店铺详情 -->
@@ -23,9 +24,12 @@
                    <img :src="'//elm.cangdu.org/img/'+stores.image_path" alt="">
                  </div>
                  <div class="stop_right">
-                     <h4>{{stores.name}}</h4>
+                     <div><span class="p1">{{stores.name}}</span>
+                        <span class="cons-sp">招牌</span>
+                     </div>
                      <p>{{stores.description}}</p>
                      <strong>{{stores.tips}}</strong>
+                     <p class="cons-sp1">是的分身乏术放上的</p>
                  </div> 
               </section>                 
             </section>
@@ -111,9 +115,9 @@ color:#333;
   line-height: .3rem;
   padding-left: .2rem;
 }
-.head_strong {
+.head_spans {
   color: #666;
-  font-size: .3rem;
+  font-size: .2rem;
 }
 .head_span {
   color: #999;
@@ -136,12 +140,43 @@ color:#333;
   margin-top: .1rem;
 }
 .stop_right {
-  float: left;
+  /* float: left; */
   /* margin-top: 1rem; */
+  overflow: hidden;
   font-size: 0.05rem;
 }
-.stop_right p {
-  padding: .05rem 0;
+.stop_right p:first-child {
+  /* padding: .05rem 0; */
+  width: .1rem;
   color: #999;
 }
+.stop_right p:nth-child(2){
+    /* color: red; */
+    font-size: .15rem;
+    margin: .1rem 0;
+}
+.stop_right p:nth-child(3){
+    font-size: .15rem;
+}
+.p1{
+    /* color: red; */
+    /* border: 1px solid red; */
+    font-size: .2rem;
+}
+/* .stop_right div span{
+    /* display: flex; */
+    /* justify-content: space-evenly; }*/
+    .cons-sp{
+        float: right;
+        color: red;
+        border: 1px solid red;
+        border-radius: .2rem;
+    }
+    .cons-sp1{
+        color: orangered;
+        border: 1px solid orangered;
+        border-radius: .2rem;
+        width: 60%;
+        text-align: center;
+    }
 </style>

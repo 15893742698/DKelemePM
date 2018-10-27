@@ -25,15 +25,7 @@ export default new Router({
     {
       path: '/unlogin',
       component: Unlogin
-    }, {
-      path: '/home',
-      name: "home",
-      component: Home
-    }, {
-      path: '/prev',
-      name: "home",
-      component: Home
-    }, {
+    },  {
       path: '/yue',
       component: Yue
     }, {
@@ -46,11 +38,7 @@ export default new Router({
       path: '/login',
       component: Login
     },
-    {
-      path: '/',
-      name: 'HelloWorld',
-      component: Merchant
-    },
+   
     {
       path: '/classify',
       component: Classify
@@ -61,8 +49,25 @@ export default new Router({
       component: Shopq
     }, {
       path: "/aaaa",
-      component: Cut
-    }, {
+      component: Cut,
+      children:[
+       {
+          path: '/home',
+          name: "home",
+          component: Home
+        }, {
+          path: '/prev',
+          name: "home",
+          component: Home
+        }
+      ]
+    }, 
+    {
+      path: '/',
+      name: 'HelloWorld',
+      component: Merchant
+    },
+    {
       path: '/resetusername',
       component: Resetname
     }, {
