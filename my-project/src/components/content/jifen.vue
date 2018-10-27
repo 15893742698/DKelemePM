@@ -10,7 +10,7 @@
                     <span>{{dangqian}}</span>
                     <div>
                     <!-- 白框顶部右边 -->
-                        <router-link :to="lujing">
+                        <router-link to="/detailexplain">
                             <img :src="srcc" alt="">
                             <span>{{explain}}</span>
                         </router-link>

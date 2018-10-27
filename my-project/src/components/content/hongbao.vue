@@ -5,7 +5,7 @@
         <div class="explaindiv">
             <span>有</span><span class="hongbaoshu">3</span><span>个红包即将到期</span>
                 <div>
-                    <router-link to="/hbexplain">
+                    <router-link to="/detail">
                         <img src="../../imgs/问号.png" alt="">
                         <span>红包说明</span>
                     </router-link>

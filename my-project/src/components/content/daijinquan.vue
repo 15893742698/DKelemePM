@@ -2,7 +2,7 @@
 <!-- 最大的div-->
     <div class="djqmax">
         <div class="djqluyou">
-            <router-link to="/djqexplain">
+            <router-link to="/detail">
             <img src="../../imgs/问号.png" alt="">
             <p>商家代金券说明</p>
             </router-link>
