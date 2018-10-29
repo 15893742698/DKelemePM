@@ -3,7 +3,9 @@
     <div class="hongbaomax">
         <!-- 说明div -->
         <div class="explaindiv">
-            <span>有</span><span class="hongbaoshu">{{this.$store.state.usermsg.balance}}</span><span>个红包即将到期</span>
+            <span>有</span>
+            <span class="hongbaoshu">{{this.$store.state.usermsg.gift_amount}}</span>
+            <span>个红包即将到期</span>
                 <div>
                     <router-link to="/detailexplain">
                         <img src="../../imgs/问号.png" alt="">

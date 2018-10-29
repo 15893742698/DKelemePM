@@ -184,14 +184,14 @@ export default {
   border: 1px solid red;
 }
 .expq {
-  font-size: 0.16rem;
+  font-size: 0.18rem;
   line-height: 30px;
   padding: 2%;
 }
 .expa {
-  font-size: 0.12rem;
+  font-size: 0.14rem;
   padding: 2%;
-  line-height: 25px;
+  line-height: 30px;
 }
 </style>
 
