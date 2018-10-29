@@ -30,9 +30,16 @@
                      <p>{{stores.description}}</p>
                      <strong>{{stores.tips}}</strong>
                      <p class="cons-sp1">是的分身乏术放上的</p>
+                     <p><span class="cons-sp2">{{'￥'+stores.specfoods[0].price}}</span>&nbsp;&nbsp;起<span class="cons-sp3" ><img @click="a" src="../img/加号.png" alt=""></span></p>
                  </div> 
               </section>                 
             </section>
+            <div class="under">
+              <div><img src="../img/购物车-白色.png" alt=""></div>
+                  <p>￥0.00</p>
+                  <span>配送费￥0</span>
+                  <span>去结算</span>
+            </div>
           </div>
        </div>
     </div>  
@@ -48,6 +55,7 @@ export default{
       datas:[]
     };
   },
+  
   created() {
     var _this=this;
     // 接口16
@@ -60,6 +68,9 @@ export default{
   methods: {
     menu(id) {
       this.facevalue = id
+    },
+    a(){
+      console.log("点击了");
     }
   }
 };
@@ -147,12 +158,12 @@ color:#333;
 }
 .stop_right p:first-child {
   /* padding: .05rem 0; */
-  width: .1rem;
+  width: .01rem;
   color: #999;
 }
 .stop_right p:nth-child(2){
     /* color: red; */
-    font-size: .15rem;
+    /* font-size: .15rem; */
     margin: .1rem 0;
 }
 .stop_right p:nth-child(3){
@@ -161,7 +172,7 @@ color:#333;
 .p1{
     /* color: red; */
     /* border: 1px solid red; */
-    font-size: .2rem;
+    font-size: .15rem;
 }
 /* .stop_right div span{
     /* display: flex; */
@@ -178,5 +189,63 @@ color:#333;
         border-radius: .2rem;
         width: 60%;
         text-align: center;
+    }
+    .cons-sp2{
+        color: orangered;
+        font-size: .15rem;
+    }
+    .cons-sp3>img{
+        width: .25rem;
+        height: .25rem;
+        float: right;
+    }
+    .under{
+      width: 100%;
+      height: .5rem;
+      background: black;
+      position: fixed;
+      top: 6.2rem;
+      left: .01rem;
+    }
+    .under>div{
+      width: .5rem;
+      height: .5rem;
+      background: black;
+      border-radius: 50%;
+      position: fixed;
+      top: 6rem;
+      left: .15rem;
+    }
+    .under>div img{
+      position: fixed;
+      width: .35rem;
+      height: .35rem;
+      top: 6.1rem;
+      left: .2rem;
+    }
+    .under span{
+      color: white;
+    }
+    .under p:nth-child(2){
+      color: white;
+      width: 70%;
+      font-size: .2rem;
+      margin-left: .7rem;
+    }
+    .under span:nth-child(3){
+      /* color: red; */
+      margin-left: .7rem;
+      margin-top: .01rem;
+    }
+    .under span:nth-child(4){
+      width: 30%;
+      height: .5rem;
+      font-size: .17rem;
+      text-align: center;
+      line-height: .5rem;
+      position: fixed;
+      top: 6.2rem;;
+      right: 0;
+      background: rgb(0, 170, 17);
     }
 </style>

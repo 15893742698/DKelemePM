@@ -73,6 +73,7 @@ export default {
 </script>
 <style scoped="scoped">
 /*-----------------------------------------*/
+
 .box {
   background: rgb(49, 144, 232);
   position: fixed;

@@ -1,9 +1,12 @@
 <template>
     <div>
         <div class="con-imgs">
+            
                 <img :src="'https://elm.cangdu.org/img/'+data.image_path">
             </div>
         <div class="conter">
+            <span class="left-sp"> &lt; </span>
+            <span class="right-sp"> &gt; </span>
             <img :src="'https://elm.cangdu.org/img/'+data.image_path" alt="">
             
             <div class="box">
@@ -59,6 +62,21 @@ export default {
     /* background-color: rgb(248,248, 249); */
     /* background-color: red; */
 /* } */
+.left-sp{
+  color: white;
+  font-size: .35rem;
+  position: absolute;
+  left: 0;
+  top: -.1rem;
+  z-index: 1;
+}
+.right-sp{
+    color: white;
+  font-size: .35rem;
+  position: absolute;
+  right: 0;
+  top: .1rem;
+}
 .conter {
     /* width: 1rem; */
     height: 1rem;
