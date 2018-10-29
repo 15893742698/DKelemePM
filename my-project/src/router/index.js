@@ -35,7 +35,6 @@ export default new Router({
       path: '/unlogin',
       name:"unlogin",
       component: Unlogin
-    },  {
     }, {
       //主界面  我的
       path: '/home',
@@ -82,21 +81,23 @@ export default new Router({
       children:[
        {
           path: '/home',
-          name: "home",
+          // name: "home",
           component: Home
         }, {
           path: '/prev',
-          name: "home",
+          // name: "home",
           component: Home
         }
       ]
     }, 
+    // {
+    //   path: '/',
+    //   name: 'HelloWorld',
+    //   component: Merchant
+    // },
+    //?????????下面之前没写 path  我加了个空
     {
-      path: '/',
-      name: 'HelloWorld',
-      component: Merchant
-    },
-    {
+      path:"/",
       component: Cut
     }, {
       //修改用户名界面
