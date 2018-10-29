@@ -42,6 +42,7 @@
     </div>
 </template>
 <script>
+import { Loading } from 'element-ui';
 import Shops from "./shops.vue";
 import Cut from "./cut";
 // ----------------------------------------------------------
@@ -56,6 +57,7 @@ export default {
     datas: null
   }),
   created() {
+    let loadingInstance1 = Loading.service({ fullscreen: true });
     let api =
       "https://elm.cangdu.org/shopping/restaurants?latitude=31.22967&longitude=121.4762";
     this.$http.get(api).then(response => {
@@ -63,7 +65,8 @@ export default {
       this.datas = response.data.map(dengke => {
         // console.log(dengke);
         return dengke;
-      });
+        });
+        loadingInstance1.close();    
     });
   }
 };
@@ -89,6 +92,7 @@ export default {
   /* background: red; */
   font-size: 0.2rem;
   width: 100%;
+  padding-bottom: 5%;
   /* margin-top: 50px; */
 }
 .box1 span,
@@ -113,7 +117,9 @@ a {
   height: 0.2rem;
 }
 /* 11111 */
-
+/* .content_ul{
+  padding-left: 3%;
+} */
 .content_ul li {
   height: 1.2rem;
   /* border: 1px solid red; */
@@ -130,12 +136,13 @@ a {
 }
 .img2 {
   width: 0.75rem;
+ padding-top: 10%;
 }
 .content_ul li > div:nth-child(2) {
-  width: 80%;
+  width: 75%;
   height: 1rem;
   /* border: 1px solid yellow; */
-  margin-left: 10px 0;
+  margin-left: .1rem;
 }
 .content_div p {
   height: 0.2rem;
@@ -154,7 +161,9 @@ a {
 }
 .content_div #sp1 {
   background: yellow;
-  font-size: 0.1rem;
+  font-size: 0.16rem;
+  margin-top: 1%;
+  /* margin-left: 3%; */
   /* line-height: .2rem; */
 }
 .content_div #sp2 {
@@ -186,6 +195,7 @@ a {
 }
 .content_div .sp7 {
   font-size: 0.1rem;
+  /* margin-left: 3%; */
 }
 .box > img {
   width: 0.3rem;
@@ -208,6 +218,7 @@ a {
 <style>
 .el-rate__item {
   width: 0.094rem;
+  
 }
 .el-rate__icon {
   font-size: 10px;

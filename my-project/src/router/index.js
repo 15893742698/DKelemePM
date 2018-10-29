@@ -68,6 +68,7 @@ export default new Router({
       name:"login",
       component: Login
     },
+   
     {
       //进入网站的主界面
       path: '/',
@@ -84,6 +85,23 @@ export default new Router({
       component: Shopq
     }, {
       path: "/aaaa",
+      component: Cut,
+      children:[
+       {
+          path: '/prev',
+          name: "home1",
+          component: Home
+        }
+      ]
+    }, 
+    // {
+    //   path: '/',
+    //   name: 'HelloWorld',
+    //   component: Merchant
+    // },
+    //?????????下面之前没写 path  我加了个空
+    {
+      path:"/",
       component: Cut
     }, {
       //修改用户名界面
