@@ -1,65 +1,41 @@
 <template>
-    <div class="weidengludivmax">
+    <div class="dwmaxdiv">
         <div class="hello">
           <img src="../imgs/后退.png" alt="" @click="returnuup">
           <p>{{$store.state.titlename}}</p>
         </div>
-        <div class="pingguodiv">
-            <img src="../imgs/西瓜.png" alt="">
-            <p @click="godenglu">请登录</p>
+        <div class="qiezidiv">
+            <img src="../imgs/饿了么.png" alt="">
+            <p>下载饿了么APP</p>
+            <button>下载</button>
         </div>
     </div>
 </template>
 <script>
 import { Loading } from "element-ui";
-import Headd from "../components/element/head";
 export default {
-  name: "unloginyouhuiyemian",
+  name: "dweleme",
   data() {
     return {
       loading: true
     };
   },
-  components: {
-    Headd
-  },
   created() {
-    // this.$store.commit("changetn", "我的优惠");
+    this.$store.commit("changetn", "下载");
     let loadingInstance1 = Loading.service({ fullscreen: true });
     loadingInstance1.close();
     this.loading = false;
   },
   methods: {
-    godenglu() {
-      this.$router.push({ name: "unlogin" });
-    },
     returnuup() {
-      this.$router.push({ name: "home1" });
+      this.$router.go(-1);
     }
   }
 };
 </script>
-<style>
-.weidengludivmax {
+<style scoped>
+.dwmaxdiv {
   width: 100%;
-}
-.pingguodiv {
-  width: 50%;
-  padding: 25%;
-  /* border: 1px solid black; */
-  text-align: center;
-}
-.pingguodiv > img {
-  width: 80%;
-}
-.pingguodiv > p {
-  font-size: 0.2rem;
-  height: 50px;
-  background-color: rgb(231, 96, 42);
-  color: white;
-  border-radius: 10px;
-  line-height: 50px;
-  padding: 2%;
 }
 .hello {
   width: 95%;
@@ -86,6 +62,31 @@ export default {
 }
 .hello > a {
   color: black;
+}
+.qiezidiv {
+  width: 90%;
+  padding: 5%;
+  text-align: center;
+  /* position: fixed; */
+  /* top: 25%; */
+  /* background-color: rgb(192, 251, 192); */
+}
+.qiezidiv > img {
+  width: 80%;
+}
+.qiezidiv > p {
+  font-size: 0.16rem;
+  padding: 3%;
+}
+.qiezidiv > button {
+  font-size: 0.2rem;
+  height: 50px;
+  background-color: rgba(28, 182, 8, 0.548);
+  color: white;
+  border-radius: 10px;
+  line-height: 30px;
+  padding: 2%;
+  width: 96%;
 }
 </style>
 

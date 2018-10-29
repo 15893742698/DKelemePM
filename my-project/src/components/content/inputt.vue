@@ -28,6 +28,11 @@
             </div>
         </div>
         <img :src="'https://elm.cangdu.org/img/'+srcc" alt="">
+        <div class="gantandiv" v-if="xiguagua">
+            <img src="../../imgs/感叹.png" alt="">
+            <p>{{this.failmsg}}</p>
+            <button @click="godenglu">确认</button>
+        </div>
     </div>    
 </template>
 <script>
@@ -45,7 +50,8 @@ export default {
       yanzhengma: "",
       failmsg: "",
       srcc: "",
-      offset:100,
+      offset: 100,
+      xiguagua: false
     };
   },
   components: {
@@ -102,7 +108,10 @@ export default {
         }
       }).then(res => {
         if (res.data.message) {
+          this.xiguagua = true;
           this.failmsg = res.data.message;
+          this.changevercode()
+          console.log(this.failmsg);
         } else {
           this.$store.state.usermsg = res.data;
           // console.log(res);
@@ -110,6 +119,9 @@ export default {
           this.$router.push({ name: "home" });
         }
       });
+    },
+    godenglu() {
+      this.xiguagua = false;
     }
   }
 };
@@ -117,6 +129,32 @@ export default {
 <style>
 .inputt {
   background-color: white;
+}
+.gantandiv {
+  width: 90%;
+  padding: 5%;
+  text-align: center;
+  z-index: 3;
+  position: fixed;
+  top: 25%;
+  background-color: rgb(192, 251, 192);
+}
+.gantandiv > img {
+  width: 30%;
+}
+.gantandiv > p {
+  font-size: 0.16rem;
+  padding: 3%;
+}
+.gantandiv > button {
+  font-size: 0.2rem;
+  height: 50px;
+  background-color: rgb(233, 188, 104);
+  color: white;
+  border-radius: 10px;
+  line-height: 50px;
+  padding: 2%;
+  width: 96%;
 }
 input {
   font-size: 0.16rem;

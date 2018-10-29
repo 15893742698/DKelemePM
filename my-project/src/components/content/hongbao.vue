@@ -3,7 +3,9 @@
     <div class="hongbaomax">
         <!-- 说明div -->
         <div class="explaindiv">
-            <span>有</span><span class="hongbaoshu">{{this.$store.state.usermsg.balance}}</span><span>个红包即将到期</span>
+            <span>有</span>
+            <span class="hongbaoshu">{{this.$store.state.usermsg.gift_amount}}</span>
+            <span>个红包即将到期</span>
                 <div>
                     <router-link to="/detailexplain">
                         <img src="../../imgs/问号.png" alt="">
@@ -28,27 +30,12 @@
                 </div>
                 <p>{{item.description_map.validity_delta}}</p>
             </li>
-            <li class="guoqihongbao" v-if="guoqihongbao"><p>过期红包</p></li>
-             <li class="hbli" v-for="(item) in datas2" :key="item.sn" v-if="guoqihongbao">
-                <div class="hblileft">
-                    <p>¥</p>
-                    <span>{{item.amount}}</span>
-                    <p>.0</p>
-                    <p class="manjian">{{item.description_map.sum_condition}}</p>
-                </div>
-                <div class="hblicon">
-                    <p class="hblibig">{{item.name}}</p>
-                    <p>{{item.description_map.validity_periods}}</p>
-                    <p>{{item.description_map.phone}}</p>
-                </div>
-                <p>{{item.description_map.validity_delta}}</p>
-            </li>
             <li class="hbtips">
                 <p>限品类:快餐便当、特色菜系、小吃夜宵、甜品饮品、</p>
                 <p>异国料理</p>
             </li>
         </ul>
-        <p>查看历史红包<span>></span></p>
+        <p @click="seeoldhb"><span>>查看历史红包</span></p>
         <div id="hbcaozuo">
           <router-link to="/duihuanhongbao" class="duihuanhb">
               <button>兑换红包</button>
@@ -66,7 +53,6 @@ export default {
   data() {
     return {
       datas: [],
-      datas2: [],
       guoqihongbao: Boolean,
       loading: true
     };
@@ -90,21 +76,11 @@ export default {
         // console.log(res);
         this.datas = res.data;
       });
-      let url1 =
-        "https://elm.cangdu.org/promotion/v2/users/" +
-        this.$store.state.usermsg.user_id +
-        "/expired_hongbaos?limit=3&offset=3";
-      this.$http({
-        methods: "get",
-        url: url1,
-        withCredentials: true
-      }).then(res => {
-        if (res.data.length == 0) {
-          this.guoqihongbao = false;
-        } else {
-          this.datas2 = res.data;
-        }
-      });
+    }
+  },
+  methods: {
+    seeoldhb() {
+      this.$router.push({ name: "guoqihongbao" });
     }
   }
 };

@@ -1,6 +1,9 @@
 <template>
     <div class="msgmax">
-        <Headd></Headd>
+        <div class="hello">
+          <img src="../imgs/后退.png" alt="" @click="returnuup">
+          <p>{{$store.state.titlename}}</p>
+        </div>
         <!-- xinxidiv -->
         <div class="xinxidiv">
             <div class="touxiangdiv">
@@ -30,8 +33,7 @@
             <p class="xinxip">
                 <span>账号绑定</span>
             </p>
-            <router-link to="/resetphone">
-                <div id="xiaomsgdiv">
+                <div id="xiaomsgdiv" @click="dedede">
                 <div>
                     <img src="../imgs/手机.png" alt="" class="xinxiphone">
                     <p class="zuobian">手机</p>
@@ -40,7 +42,6 @@
                     <img src="../imgs/前进.png" alt="" class="qianjin">
                 </div>
             </div>
-            </router-link>
             <p class="xinxip">
                 <span>安全设置</span>
             </p>
@@ -65,6 +66,13 @@
             <button class="henxin" @click="henxin">狠心退出</button>
           </div>
         </div>
+        <div class="juhua" v-show="juhua">
+            <img src="../imgs/感叹.png" alt="">
+            <div>
+              <span>请在手机APP中设置</span>
+            </div>
+            <p @click="godenglu">确认</p>
+        </div>
     </div>
 </template>
 <script>
@@ -81,7 +89,8 @@ export default {
       srcc: "",
       username: "",
       chuxianma: false,
-      loading: true
+      loading: true,
+      juhua:false
     };
   },
   created() {
@@ -103,7 +112,12 @@ export default {
       this.chuxianma = false;
       this.$router.push({ name: "login" });
     },
+    returnuup(){
+      this.$router.push({name:"home"})
+    },
     henxin() {
+      let loadingInstance1 = Loading.service({ fullscreen: true });
+      this.loading=true;
       this.chuxianma = false;
       let url = "https://elm.cangdu.org/v2/signout";
       this.$http({
@@ -125,6 +139,12 @@ export default {
         this.$store.commit("changedetailadd", "");
         this.$router.push({ name: "home" });
       });
+    },
+    dedede(){
+      this.juhua=true;
+    },
+    godenglu(){
+      this.juhua=false
     }
   }
 };
@@ -132,6 +152,32 @@ export default {
 <style scoped>
 .msgmax {
   width: 100%;
+}
+.hello {
+  width: 95%;
+  background-color: #436eee;
+  height: 50px;
+  border-bottom: 1px solid #436eee;
+  line-height: 50px;
+  text-align: center;
+  padding-left: 5%;
+  overflow: hidden;
+}
+.hello img {
+  float: left;
+  width: 10%;
+  vertical-align: top;
+  margin-top: 1%;
+  /* border: 1px solid red; */
+}
+.hello p {
+  font-size: 0.2rem;
+  color: white;
+  font-weight: bold;
+  margin-right: 15%;
+}
+.hello > a {
+  color: black;
 }
 .xinxidiv {
   width: 100%;
@@ -266,6 +312,36 @@ export default {
   border-radius: 10px;
   background-color: rgba(224, 77, 19, 0.938);
   height: 50px;
+}
+.juhua {
+  width: 100%;
+  position: fixed;
+  height: 200px;
+  top: 40%;
+  /* border: 1px solid black; */
+  text-align: center;
+  background-color: rgb(100, 212, 100);
+}
+.juhua > img {
+  width: 20%;
+  margin: 5%;
+}
+.juhua > p {
+  font-size: 0.2rem;
+  height: 50px;
+  background-color: rgb(231, 96, 42);
+  color: white;
+  border-radius: 10px;
+  line-height: 50px;
+  padding: 2%;
+}
+.juhua > div {
+  margin: 3%;
+}
+.juhua > div > span {
+  color: black;
+  padding-bottom: 3%;
+  font-size: 0.2rem;
 }
 </style>
 
