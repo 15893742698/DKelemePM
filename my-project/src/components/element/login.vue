@@ -27,7 +27,7 @@
                 this.username = this.$store.state.defaultmsg.username
                 this.phonenum = this.$store.state.defaultmsg.phone
                 this.srcc = this.$store.state.defaultmsg.srcc
-                console.log(this.srcc)
+                // console.log(this.srcc)
             }else{
                 this.username = this.$store.state.usermsg.username
                 this.srcc="https://elm.cangdu.org/img/"+this.$store.state.usermsg.avatar;

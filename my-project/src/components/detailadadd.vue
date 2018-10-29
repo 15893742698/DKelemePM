@@ -1,6 +1,9 @@
 <template>
     <div class="detailadddiv">
-        <Headd></Headd>
+        <div class="hello">
+          <img src="../imgs/后退.png" alt="" @click="returnuup">
+          <p>{{$store.state.titlename}}</p>
+        </div>
         <div class="xiaoaddmsg">
             <input type="text" placeholder="请填写你的姓名" v-model="namevalue" @input="namewatch" :class="{fail:names}" @blur="nameblur">
             <p v-if="names">请填写您的姓名</p>
@@ -125,7 +128,6 @@ export default {
         this.detailschool == false &&
         this.phonenum1 == false
       ) {
-        // console.log("添加啦");
         this.ress = false;
         let loadingInstance1 = Loading.service({ fullscreen: true });
         let url =
@@ -154,6 +156,12 @@ export default {
           this.$router.push({ name: "resetadd" });
         });
       }
+    },
+    returnuup(){
+      this.$router.push({name:"resetadd"})
+    },
+    godenglu(){
+      this.juhua=false;
     }
   }
 };
@@ -161,6 +169,32 @@ export default {
 <style scoped>
 .detailadddiv {
   width: 100%;
+}
+.hello {
+  width: 95%;
+  background-color: #436eee;
+  height: 50px;
+  border-bottom: 1px solid #436eee;
+  line-height: 50px;
+  text-align: center;
+  padding-left: 5%;
+  overflow: hidden;
+}
+.hello img {
+  float: left;
+  width: 10%;
+  vertical-align: top;
+  margin-top: 1%;
+  /* border: 1px solid red; */
+}
+.hello p {
+  font-size: 0.2rem;
+  color: white;
+  font-weight: bold;
+  margin-right: 15%;
+}
+.hello > a {
+  color: black;
 }
 .hello {
   border-bottom: 10px solid #eaeaea;

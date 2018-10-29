@@ -9,7 +9,7 @@
             </div>
         </div>
         </router-link>
-        <router-link to="/download">
+        <router-link to="/dweleme">
         <div class="botflyfa">
             <img src="../../imgs/饿了么.png" alt="" class="botimgs1">
             <div class="botflyaway">

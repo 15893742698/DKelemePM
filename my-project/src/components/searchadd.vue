@@ -1,6 +1,9 @@
 <template>
     <div class="searchaddmax">
-        <Headd></Headd>
+        <div class="hello">
+          <img src="../imgs/后退.png" alt="" @click="returnuup">
+          <p>{{$store.state.titlename}}</p>
+        </div>
         <div class="inputdiv">
             <input type="text" placeholder="请输入小区/写字楼/学校等" v-model="detailsearchadd">
             <button @click="search">确认</button>
@@ -12,6 +15,13 @@
                 <p class="changde">{{item.address}}</p>
             </li>
         </ul>
+        <div class="chengzi" v-show="chengzi">
+            <img src="../imgs/感叹.png" alt="">
+            <div>
+              <span>{{failmsg}}</span>
+            </div>
+            <p @click="godenglu">确认</p>
+        </div>
     </div>
 </template>
 <script>
@@ -23,7 +33,9 @@ export default {
     return {
       detailsearchadd: "",
       adddata: [],
-      loading: true
+      loading: true,
+      failmsg: "",
+      chengzi: false
     };
   },
   created() {
@@ -37,26 +49,31 @@ export default {
   },
   methods: {
     search() {
-      // console.log(this.detailsearchadd);
-      this.loading = true;
-      let loadingInstance1 = Loading.service({ fullscreen: true });
-      let url =
-        "https://elm.cangdu.org/v1/pois?city_id=" +
-        this.$store.state.cityid +
-        "&keyword=" +
-        this.detailsearchadd +
-        "&type=search";
-      this.$http({
-        method: "get",
-        url: url,
-        withCredentials: true
-      }).then(res => {
-        loadingInstance1.close();
-        this.loading = false;
-        // console.log(res)
-        this.adddata = res.data;
-        // console.log(this.adddata);
-      });
+      if (!this.detailsearchadd) {
+        this.chengzi = true;
+        this.failmsg = "地址不能为空";
+      } else {
+        this.chengzi = false;
+        this.loading = true;
+        let loadingInstance1 = Loading.service({ fullscreen: true });
+        let url =
+          "https://elm.cangdu.org/v1/pois?city_id=" +
+          this.$store.state.cityid +
+          "&keyword=" +
+          this.detailsearchadd +
+          "&type=search";
+        this.$http({
+          method: "get",
+          url: url,
+          withCredentials: true
+        }).then(res => {
+          loadingInstance1.close();
+          this.loading = false;
+          // console.log(res)
+          this.adddata = res.data;
+          // console.log(this.adddata);
+        });
+      }
     },
     getaddmsg(item) {
       // console.log(item);
@@ -64,6 +81,12 @@ export default {
       this.$store.commit("changeadd", this.detailsearchadd);
       this.detailsearchadd = item.name;
       this.$router.push({ name: "detailadadd" });
+    },
+    returnuup() {
+      this.$router.push({ name: "detailadadd" });
+    },
+    godenglu() {
+      this.chengzi = false;
     }
   }
 };
@@ -71,6 +94,32 @@ export default {
 <style>
 .searchaddmax {
   width: 100%;
+}
+.hello {
+  width: 95%;
+  background-color: #436eee;
+  height: 50px;
+  border-bottom: 1px solid #436eee;
+  line-height: 50px;
+  text-align: center;
+  padding-left: 5%;
+  overflow: hidden;
+}
+.hello img {
+  float: left;
+  width: 10%;
+  vertical-align: top;
+  margin-top: 1%;
+  /* border: 1px solid red; */
+}
+.hello p {
+  font-size: 0.2rem;
+  color: white;
+  font-weight: bold;
+  margin-right: 15%;
+}
+.hello > a {
+  color: black;
 }
 .inputdiv {
   width: 96%;
@@ -117,5 +166,31 @@ export default {
 }
 .changde {
   line-height: 20px;
+}
+.chengzi {
+  width: 50%;
+  padding: 25%;
+  /* border: 1px solid black; */
+  text-align: center;
+}
+.chengzi > img {
+  width: 80%;
+}
+.chengzi > p {
+  font-size: 0.2rem;
+  height: 50px;
+  background-color: rgb(231, 96, 42);
+  color: white;
+  border-radius: 10px;
+  line-height: 50px;
+  padding: 2%;
+}
+.chengzi > div {
+  margin: 3%;
+}
+.chengzi > div > span {
+  color: black;
+  padding-bottom: 3%;
+  font-size: 0.2rem;
 }
 </style>

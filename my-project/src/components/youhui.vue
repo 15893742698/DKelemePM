@@ -1,6 +1,9 @@
 <template>
     <div class="youhui">
-        <Headd></Headd>
+        <div class="hello">
+          <img src="../imgs/后退.png" alt="" @click="returnuup">
+          <p>{{$store.state.titlename}}</p>
+        </div>
         <!-- 两个路由 -->
         <div class="hbhuodjq">
             <p @click="firstp" id="firstp" class="red">红包</p>
@@ -35,6 +38,9 @@ export default {
       document.getElementById("firstp").className = "";
       document.getElementById("secondp").className = "red";
       this.$store.commit("explaindetail", 3);
+    },
+    returnuup(){
+      this.$router.push({name:"home"})
     }
   },
   components: {
@@ -56,6 +62,32 @@ export default {
 };
 </script>
 <style>
+.hello {
+  width: 95%;
+  background-color: #436eee;
+  height: 50px;
+  border-bottom: 1px solid #436eee;
+  line-height: 50px;
+  text-align: center;
+  padding-left: 5%;
+  overflow: hidden;
+}
+.hello img {
+  float: left;
+  width: 10%;
+  vertical-align: top;
+  margin-top: 1%;
+  /* border: 1px solid red; */
+}
+.hello p {
+  font-size: 0.2rem;
+  color: white;
+  font-weight: bold;
+  margin-right: 15%;
+}
+.hello > a {
+  color: black;
+}
 .hbhuodjq {
   width: 96%;
   display: flex;

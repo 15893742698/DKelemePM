@@ -21,6 +21,14 @@ import Explaindetail from '../components/explaindetail'
 import Unloginyouhuiyemian from '../components/unloginyouhuiyemian'
 import DuihuanHB from '../components/duihuanhongbao'
 import Tuijianhb from '../components/tuijianhb'
+import Guoqihb from '../components/guoqihb'
+import Dweleme from '../components/download'
+import Vip from '../components/vip'
+import Goumai from '../components/goumaivip'
+import Duihuanvip from '../components/duihuanvip'
+import Fapiao from '../components/kaifapiao'
+import Serve from '../components/serve'
+import Serveexplain from '../components/serveexplain'
 Vue.use(Router)
 
 export default new Router({
@@ -119,6 +127,46 @@ export default new Router({
       path:"/tuijianhb",
       name:"tuijianhb",
       component:Tuijianhb
+    },{
+      //过期红包界面
+      path:"/discount/guoqihongbao",
+      name:"guoqihongbao",
+      component:Guoqihb
+    },{
+      //下载饿了么
+      path:"/dweleme",
+      name:"dweleme",
+      component:Dweleme
+    },{
+      //会员界面
+      path:"/vip",
+      name:"vip",
+      component:Vip
+    },{
+      //购买会员界面
+      path:"/goumai",
+      name:"goumai",
+      component:Goumai
+    },{
+      //卡号卡密兑换会员界面
+      path:"/duihuanvip",
+      name:"duihuanvip",
+      component:Duihuanvip
+    },{
+      //开发票
+      path:"/kaifapiao",
+      name:"kaifapiao",
+      component:Fapiao
+    },{
+      //服务中心
+      path:"/serve",
+      name:"serve",
+      component:Serve
+    },
+    {
+      path:"serveexplain",
+      name:"serveexplain",
+      component:Serveexplain
     }
   ]
 })
