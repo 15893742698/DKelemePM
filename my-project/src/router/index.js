@@ -80,12 +80,8 @@ export default new Router({
       component: Cut,
       children:[
        {
-          path: '/home',
-          // name: "home",
-          component: Home
-        }, {
           path: '/prev',
-          // name: "home",
+          name: "home1",
           component: Home
         }
       ]

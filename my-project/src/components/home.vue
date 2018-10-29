@@ -10,6 +10,7 @@
       <Meum></Meum>
       <Ccontent></Ccontent>
       <Bot></Bot>
+      <Cut></Cut>
   </div>
 </template>
 <script>
@@ -32,7 +33,8 @@ export default {
     Login,
     Meum,
     Ccontent,
-    Bot
+    Bot,
+    Cut
   },
   created() {
     let loadingInstance1 = Loading.service({ fullscreen: true });

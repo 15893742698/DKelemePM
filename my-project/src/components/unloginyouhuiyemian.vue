@@ -34,7 +34,7 @@ export default {
       this.$router.push({ name: "unlogin" });
     },
     returnuup() {
-      this.$router.push({ name: "home" });
+      this.$router.push({ name: "home1" });
     }
   }
 };

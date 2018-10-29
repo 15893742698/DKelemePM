@@ -50,7 +50,7 @@ export default {
             return n.ifs = true  
         })
         this.img[index].ifs = false;
-        console.log(index)
+        // console.log(index)
     }
   }
 };
