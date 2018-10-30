@@ -100,7 +100,7 @@ export default {
       url: url,
       withCredentials: true
     }).then(res => {
-      console.log(res)
+      // console.log(res)
       loadingInstance1.close();
       this.loading = false;
       // console.log(res);

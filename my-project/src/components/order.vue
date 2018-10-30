@@ -4,10 +4,12 @@
           <img src="../imgs/后退.png" alt="" @click="returnuup">
           <p>{{$store.state.titlename}}</p>
         </div>
+        <Botfix></Botfix>
     </div>    
 </template>
 <script>
 import { Loading } from "element-ui";
+import Botfix from "./bot";
 export default {
   name: "order",
   data() {
@@ -17,6 +19,13 @@ export default {
   },
   created() {
     this.$store.commit("changetn", "我的订单");
+    var botchoice = {
+      waimai: false,
+      sousuo: false,
+      dingdan: true,
+      mine: false
+    };
+    this.$store.commit("changebotchoice", botchoice);
     let loadingInstance1 = Loading.service({ fullscreen: true });
     let url = "https://elm.cangdu.org/bos/orders?offset=0&limit=5";
     this.$http({
@@ -33,6 +42,9 @@ export default {
     returnuup() {
       this.$router.go(-1);
     }
+  },
+  components: {
+    Botfix
   }
 };
 </script>

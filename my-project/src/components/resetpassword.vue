@@ -53,7 +53,7 @@ export default {
       withCredentials: true
       // 默认false
     }).then(data => {
-      console.log(data);
+      // console.log(data);
       loadingInstance1.close();
       this.loading = false;
       this.srcc = data.data.code;

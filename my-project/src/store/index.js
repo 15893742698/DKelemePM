@@ -43,7 +43,13 @@ const state = {
     //判断当前的说明是余额还是红包还是积分等等
     detailexplain:Number,
     //选择城市之后的选择的具体信息
-    choicecityadd:""
+    choicecityadd:"",
+    botchoice:{
+        waimai:Boolean,
+        sousuo:Boolean,
+        dingdan:Boolean,
+        mine:Boolean
+    }
 }
 const store = new Vuex.Store({
     state,
@@ -94,6 +100,10 @@ const store = new Vuex.Store({
         //改变城市搜索地址后的具体信息
         changecityadd(state,value){
             state.choicecityadd = value
+        },
+        //改变最下方导航
+        changebotchoice(state,value){
+            state.botchoice = value;
         }
     }
 })

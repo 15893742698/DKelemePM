@@ -1,9 +1,9 @@
 <template>
 <div>
   <div class="box">
-    <img src="./img/search.png" alt="">
+    <img src="./img/search.png" alt="" @click="sousuoa">
     <span>{{this.$store.state.choicecityadd.address}}</span>
-    <router-link to="/home/unlogin" >登录|注册</router-link>
+    <router-link :to="srcc" >{{msg}}</router-link>
   </div>
   <Shops></Shops>
 <!-- ssssssssssssssssssssssss下部分sssssssssssssssssssssssss -->
@@ -38,26 +38,42 @@
       
     </router-link>
     </ul>
-    <Cut></Cut>
+    <Botfix></Botfix>
     </div>
 </template>
 <script>
 import { Loading } from "element-ui";
 import Shops from "./shops.vue";
-import Cut from "./cut";
+import Botfix from "./bot";
 // ----------------------------------------------------------
 // import img01 from "./img/search.png";
 export default {
   components: {
     Shops,
-    Cut
+    Botfix
   },
   name: "heads",
   data: () => ({
-    datas: null
+    datas: null,
+    srcc: "",
+    msg: ""
   }),
   created() {
     let loadingInstance1 = Loading.service({ fullscreen: true });
+    var botchoice = {
+      waimai: true,
+      sousuo: false,
+      dingdan: false,
+      mine: false
+    };
+    this.$store.commit("changebotchoice", botchoice);
+    if (!this.$store.state.denglu) {
+      this.srcc = "/home/unlogin";
+      this.msg = "登录|注册";
+    } else {
+      this.srcc = "/home/login";
+      this.msg = "我的";
+    }
     let api =
       "https://elm.cangdu.org/shopping/restaurants?latitude=31.22967&longitude=121.4762";
     this.$http.get(api).then(response => {
@@ -68,6 +84,11 @@ export default {
       });
       loadingInstance1.close();
     });
+  },
+  methods:{
+    sousuoa(){
+      this.$router.push({name:"searchfood"})
+    }
   }
 };
 </script>

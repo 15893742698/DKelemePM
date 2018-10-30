@@ -5,7 +5,7 @@
           <p>{{$store.state.titlename}}</p>
         </div>
         <div class="qiezidiv">
-            <img src="../imgs/饿了么.png" alt="">
+            <img src="../imgs/饿了么选中.png" alt="">
             <p>下载饿了么APP</p>
             <button>下载</button>
         </div>

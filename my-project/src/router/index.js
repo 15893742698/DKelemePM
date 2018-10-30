@@ -33,6 +33,7 @@ import Choicecity from '../components/choicecity'
 import City from '../components/city'
 import Order from '../components//order'
 import Jifenshangcheng from '../components/jifenshangcheng'
+import Searchfood from '../components/searchfood'
 Vue.use(Router)
 
 export default new Router({
@@ -214,6 +215,11 @@ export default new Router({
       path:"/jifenshangcheng",
       name:"jifenshangchen",
       component:Jifenshangcheng
+    },{
+      //搜索商铺界面
+      path:"/searchfood",
+      name:"searchfood",
+      component:Searchfood
     }
   ]
 })
