@@ -128,8 +128,10 @@ export default {
 }
 .sousuofood > input {
   width: 60%;
-  padding: 1%;
+  padding: 2%;
   font-size: 0.2rem;
+  border: 1px solid gray;
+  border-radius: 5px;
 }
 .sousuofood > button {
   width: 30%;
