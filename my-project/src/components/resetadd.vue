@@ -2,7 +2,7 @@
     <div class="resetaddmax">
         <div class="hello">
           <img src="../imgs/后退.png" alt="" @click="returnuup">
-          <p>我的</p>
+          <p>{{$store.state.titlename}}</p>
         </div>
         <p class="bianjiadd" @click="bianjiadd">{{bianji}}</p>
         <div class="xinzengdizhi">
@@ -17,7 +17,7 @@
             </li>
           </ul>
          <div class="adadddiv">
-           <router-link to="/detailadadd">
+           <router-link to="/home/login/resetadd/detailadadd">
               <div>
                  <p>新增地址</p>
                 <img src="../imgs/前进.png" alt="">
@@ -100,6 +100,7 @@ export default {
       url: url,
       withCredentials: true
     }).then(res => {
+      console.log(res)
       loadingInstance1.close();
       this.loading = false;
       // console.log(res);

@@ -1,10 +1,10 @@
 <template>
 <div>
   <div class="box">
-        <img src="./img/search.png" alt="">
-        <span>中原区</span>
-        <router-link to="/unlogin" >登录|注册</router-link>
-    </div>
+    <img src="./img/search.png" alt="">
+    <span>{{this.$store.state.choicecityadd.address}}</span>
+    <router-link to="/home/unlogin" >登录|注册</router-link>
+  </div>
   <Shops></Shops>
 <!-- ssssssssssssssssssssssss下部分sssssssssssssssssssssssss -->
     
@@ -42,7 +42,7 @@
     </div>
 </template>
 <script>
-import { Loading } from 'element-ui';
+import { Loading } from "element-ui";
 import Shops from "./shops.vue";
 import Cut from "./cut";
 // ----------------------------------------------------------
@@ -65,8 +65,8 @@ export default {
       this.datas = response.data.map(dengke => {
         // console.log(dengke);
         return dengke;
-        });
-        loadingInstance1.close();    
+      });
+      loadingInstance1.close();
     });
   }
 };
@@ -80,13 +80,21 @@ export default {
   top: 0;
   width: 100%;
   height: 50px;
-  /* display: flex;
+  display: flex;
   align-items: center;
-  justify-content: center;
-  position: relative;
-   */
+  justify-content: space-between;
   z-index: 10;
   line-height: 50px;
+}
+.box > img {
+  width: 10%;
+}
+.box > span {
+  width: 50%;
+  font-size: 0.14rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .box1 {
   overflow: hidden;
@@ -103,10 +111,10 @@ img {
 }
 
 .box > span {
-  font-size: 0.2rem;
+  font-size: 0.16rem;
   color: white;
   text-align: center;
-  padding-left: 1.5rem;
+  margin-left: 25%;
 }
 a {
   color: white;
@@ -137,13 +145,13 @@ a {
 }
 .img2 {
   width: 0.75rem;
- padding-top: 10%;
+  padding-top: 10%;
 }
 .content_ul li > div:nth-child(2) {
   width: 75%;
   height: 1rem;
   /* border: 1px solid yellow; */
-  margin-left: .1rem;
+  margin-left: 0.1rem;
 }
 .content_div p {
   height: 0.2rem;
@@ -184,7 +192,7 @@ a {
   /* margin-right: 0.2rem; */
   /* padding-left: 0.1rem; */
 }
-#nmd{
+#nmd {
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -219,7 +227,6 @@ a {
 <style>
 .el-rate__item {
   width: 0.094rem;
-  
 }
 .el-rate__icon {
   font-size: 10px;

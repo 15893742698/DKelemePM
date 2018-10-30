@@ -9,7 +9,7 @@
             </div>
         </div>
         </router-link>
-       <router-link to="/jifen">
+       <router-link to="/jifenshangcheng">
         <div  class="flyfa">
             <img src="../../imgs/积分.png" alt="" class="conimgs1">
             <div class="flyaway">

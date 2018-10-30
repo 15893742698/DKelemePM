@@ -1,32 +1,45 @@
 <template>
-    <div>
+    <div class="orderdiv">
         <div class="hello">
           <img src="../imgs/后退.png" alt="" @click="returnuup">
           <p>{{$store.state.titlename}}</p>
         </div>
-        <p>{{data}}</p>
-    </div>
+    </div>    
 </template>
 <script>
+import { Loading } from "element-ui";
 export default {
-  name: "serveexplain",
+  name: "order",
   data() {
     return {
-        data:""
+      name: "我是"
     };
   },
   created() {
-    this.$store.commit("changetn",this.$route.params.name);
-    this.data = this.$route.params.quest;
+    this.$store.commit("changetn", "我的订单");
+    let loadingInstance1 = Loading.service({ fullscreen: true });
+    let url = "https://elm.cangdu.org/bos/orders?offset=0&limit=5";
+    this.$http({
+      method: "get",
+      url: url,
+      withCredentials: true
+    }).then(res => {
+      // console.log(res);
+    });
+    loadingInstance1.close();
+    this.loading = false;
   },
   methods: {
     returnuup() {
-      this.$router.push({ name: "serve" });
+      this.$router.go(-1);
     }
   }
 };
 </script>
 <style>
+.orderdiv {
+  width: 100%;
+}
 .hello {
   width: 95%;
   background-color: #436eee;
@@ -51,13 +64,6 @@ export default {
 }
 .hello > a {
   color: black;
-}
-.hello+p{
-  width: 94%;
-  padding: 3%;
-  font-size: 0.16rem;
-  color: black;
-  line-height: 30px;
 }
 </style>
 

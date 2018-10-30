@@ -18,8 +18,8 @@
             <li class="hotq">
                 热门问题
             </li>
-            <li class="serveli" v-for="(item, index) in datas" :key="index">
-                <router-link :to="{name:'serveexplain',params:{index}}">
+            <li class="serveli" v-for="(item, index) in datas1" :key="index">
+                <router-link :to="{name:'serveexplain',params:{name:datas1[index],quest:datas3[index]}}">
                 <span>
                     {{item}}
                 </span>
@@ -35,29 +35,9 @@ export default {
   data() {
     return {
       loading: true,
-      datas: [
-        "超级会员权益说明",
-        "签到规则",
-        "用户等级说明",
-        "积分问题",
-        "教我拍大片",
-        "支付问题",
-        "其它问题",
-        "准时达问题",
-        "会员说明",
-        "会员问题",
-        "红包问题",
-        "活动细则",
-        "补签规则",
-        "优惠说明",
-        "免责声明",
-        "代金券说明",
-        "商务合作",
-        "余额问题",
-        "超赞商家",
-        "匿名购买",
-        "活动问题"
-      ]
+      datas1: [],
+      datas2: [],
+      datas3: [],
     };
   },
   created() {
@@ -69,7 +49,19 @@ export default {
       url: url,
       withCredentials: true
     }).then(res => {
-        console.log(res)
+      this.data = res.data;
+      for (const key in res.data) {
+        this.datas2.push(res.data[key]);
+      }
+      this.datas2.splice(24, 1);
+      for (const index in this.datas2) {
+        if (index % 2 == 1) {
+          console.log(index)
+          this.datas1.push(this.datas2[index]);
+        } else {
+          this.datas3.push(this.datas2[index])
+        }
+      }
       loadingInstance1.close();
       this.loading = false;
     });
@@ -146,25 +138,25 @@ export default {
   padding-top: 2%;
   padding-bottom: 2%;
 }
-.serveli{
-    width: 100%;
-    /* padding: 3%; */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.serveli {
+  width: 100%;
+  /* padding: 3%; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.serveli>a{
-    width: 94%;
-    padding: 3%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid gray;
-    color: black;
-    font-size: 0.16rem;
+.serveli > a {
+  width: 94%;
+  padding: 3%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid gray;
+  color: black;
+  font-size: 0.16rem;
 }
-.serveli>a>img{
-    width: 5%;
-    vertical-align: bottom;
+.serveli > a > img {
+  width: 5%;
+  vertical-align: bottom;
 }
 </style>
