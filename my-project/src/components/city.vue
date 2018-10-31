@@ -54,9 +54,7 @@ export default {
       this.$router.push({ name: "choicecity" });
     },
     tijiaola() {
-      console.log("aaa")
       if (!this.add) {
-        console.log("bbb")
         this.hele = true;
       } else {
         // console.log("aaa");
@@ -71,8 +69,7 @@ export default {
           url: url,
           withCredentials: true
         }).then(res => {
-            console.log(res);
-          // console.log("ccc")
+          //   console.log(res);
           this.data = res.data;
         });
       }

@@ -154,14 +154,17 @@ export default {
           loadingInstance1.close();
           this.loading = false;
           this.$router.push({ name: "resetadd" });
+          this.$store.commit("changeaddtlphone", "");
+          this.$store.commit("changeaddphone", "");
+          this.$store.commit("changeaddname", "");
         });
       }
     },
-    returnuup(){
-      this.$router.push({name:"resetadd"})
+    returnuup() {
+      this.$router.push({ name: "resetadd" });
     },
-    godenglu(){
-      this.juhua=false;
+    godenglu() {
+      this.juhua = false;
     }
   }
 };

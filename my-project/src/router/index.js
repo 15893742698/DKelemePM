@@ -116,11 +116,6 @@ export default new Router({
     //   component: Merchant
     // },
     //?????????下面之前没写 path  我加了个空
-    // {
-    //   path:"/",
-    //   name:"choicecity",
-    //   component: Choicecity
-    // }, 
       //修改用户名界面
       {
       path: '/home/login/resetusername',
