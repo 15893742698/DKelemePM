@@ -10,7 +10,7 @@
           <div class="swiperdiv">
             <li class="linkli" v-for="item in imgs1" :key="item.id">
                 <!-- 循环路由 -->
-            <router-link to="/classify">
+            <router-link :to="{name:'classify',params:{tit:item.title}}">
                 <br>
                 <div class="linkdiv">
                 <img width="40px" :src="item.src" alt="">
@@ -26,7 +26,7 @@
           <div class="swiperdiv">
             <li class="linkli" v-for="item in imgs2" :key="item.id">
                 <!-- 循环路由 -->
-            <router-link :to="item.dz">
+            <router-link :to="{name:'classify',params:{tit:item.title}}">
                 <br>
                 <div class="linkdiv">
                 
@@ -48,7 +48,7 @@
           <div class="swiperdiv">
             <li class="linkli" v-for="item in imgs3" :key="item.id">
                 <!-- 循环路由 -->
-            <router-link :to="item.dz">
+            <router-link :to="{name:'classify',params:{tit:item.title}}">
                 <br>
                 <div class="linkdiv">
                 
@@ -65,7 +65,7 @@
           <div class="swiperdiv">
             <li class="linkli" v-for="item in imgs4" :key="item.id">
                 <!-- 循环路由 -->
-            <router-link :to="item.dz">
+            <router-link :to="{name:'classify',params:{tit:item.title}}">
                 <br>
                 <div class="linkdiv">
                 

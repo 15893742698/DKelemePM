@@ -5,8 +5,8 @@
                 <img :src="'https://elm.cangdu.org/img/'+data.image_path">
             </div>
         <div class="conter">
-            <span class="left-sp"> &lt; </span>
-            <span class="right-sp"> &gt; </span>
+            <span @click="tiao" class="left-sp"> &lt; </span>
+            <router-link class="right-sp" :to="{name:'detailss',params:{data}}"> &gt; </router-link>
             <img :src="'https://elm.cangdu.org/img/'+data.image_path" alt="">
             
             <div class="box">
@@ -32,6 +32,7 @@
 <script>
 import comm from './goods/comm'
 import eva from './goods/eva'
+// import details from './details'
 export default {
     data(){
         return{
@@ -40,11 +41,15 @@ export default {
     },
   components:{
       comm,
-      eva
+      eva,
+    //   details
   },
   methods: {
       ay(n){
           this.cc = n
+      },
+      tiao(){
+          this.$router.go(-1)
       }
   },
   created(){
@@ -75,7 +80,7 @@ export default {
   font-size: .35rem;
   position: absolute;
   right: 0;
-  top: .1rem;
+  top: .3rem;
 }
 .conter {
     /* width: 1rem; */

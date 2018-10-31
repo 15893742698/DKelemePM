@@ -29,6 +29,7 @@ import Duihuanvip from '../components/duihuanvip'
 import Fapiao from '../components/kaifapiao'
 import Serve from '../components/serve'
 import Serveexplain from '../components/serveexplain'
+import Detailss from '../components/details'
 import Choicecity from '../components/choicecity'
 import City from '../components/city'
 import Order from '../components//order'
@@ -87,6 +88,7 @@ export default new Router({
     },
     {
       path: '/classify',
+      name:"classify",
       component: Classify
     },
     {
@@ -103,7 +105,11 @@ export default new Router({
           component: Home
         }
       ]
-    }, 
+    }, {
+      path: '/shopq/details',
+      name: 'detailss',
+      component: Detailss
+    },
     // {
     //   path: '/',
     //   name: 'HelloWorld',
