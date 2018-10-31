@@ -186,7 +186,7 @@ export default {
   border-bottom: 1px solid gray;
 }
 .allhotcitys {
-  width: 24.5%;
+  width: 25%;
   height: 40px;
   background-color: #fff;
   text-align: center;
@@ -195,6 +195,7 @@ export default {
   color: blue;
   border-bottom: 1px solid gray;
   border-right: 1px solid gray;
+  box-sizing: border-box;
 }
 .allcityul {
   width: 100%;
@@ -221,9 +222,9 @@ export default {
   background-color: #fff;
 }
 .xiaocityli {
-  width: 24.7%;
-  border-bottom: 1px solid gray;
+  width: 25%;
   border-right: 1px solid gray;
+  border-top: 1px solid gray;
   height: 40px;
   background-color: #fff;
   text-align: center;
@@ -235,5 +236,6 @@ export default {
   white-space: nowrap;
   display: inline-block;
   margin: 0;
+  box-sizing: border-box;
 }
 </style>
