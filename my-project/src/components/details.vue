@@ -20,7 +20,7 @@
         <div class="deta-three">
             <p class="p1">商家信息</p>
             <p class="p2">吃啥啦</p>
-            <p class="p2">地址:</p>>
+            <p class="p2">地址:</p>
             <p class="p2">营业时间</p>
             <p class="p2">营业执照 <span>&gt;</span></p>
             <p class="p2">餐饮服务许可证<span>&gt;</span></p>
@@ -75,9 +75,11 @@
 }
 .deta-two>p{
     font-size: .18rem;
+    margin: .2rem;
 }
 .deta-two>p>span{
     float: right;
+    margin-bottom: .1rem
 }
 .deta-img>div>img{
     width: .5rem;
@@ -108,6 +110,7 @@
     font-size: .15rem;
     margin-top: .08rem;
     border-bottom: 1px solid gray;
+    margin: .2rem;
 }
 .p2>span{
     font-size: .2rem;

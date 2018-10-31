@@ -30,97 +30,102 @@
 
 
 <script>
-import comm from './goods/comm'
-import eva from './goods/eva'
+import comm from "./goods/comm";
+import eva from "./goods/eva";
 // import details from './details'
 export default {
-    data(){
-        return{
-           data:[],cc:'comm'
-        }
-    },
-  components:{
-      comm,
-      eva,
+  data() {
+    return {
+      data: [],
+      cc: "comm"
+    };
+  },
+  components: {
+    comm,
+    eva
     //   details
   },
   methods: {
-      ay(n){
-          this.cc = n
-      },
-      tiao(){
-          this.$router.go(-1)
-      }
+    ay(n) {
+      this.cc = n;
+    },
+    tiao() {
+      this.$router.go(-1);
+    }
   },
-  created(){
-      var id = this.$route.params.id;
-      let api = "https://elm.cangdu.org/shopping/restaurant/"+id;
-      this.$http.get(api).then((data)=>{
-          this.data = data.data;
-          console.log(this.data);
-      });
+  created() {
+    var id = this.$route.params.id;
+    let api = "https://elm.cangdu.org/shopping/restaurant/" + id;
+    this.$http.get(api).then(data => {
+      this.data = data.data;
+      console.log(this.data);
+      console.log(
+        this.$route.params.data.latitude,
+        this.$route.params.data.longitude
+      );
+    });
   }
 };
 </script>
 <style scoped>
 /* body{ */
-    /* background-color: rgb(248,248, 249); */
-    /* background-color: red; */
+/* background-color: rgb(248,248, 249); */
+/* background-color: red; */
 /* } */
-.left-sp{
+.left-sp {
   color: white;
-  font-size: .35rem;
+  font-size: 0.35rem;
   position: absolute;
   left: 0;
-  top: -.1rem;
+  top: -0.1rem;
   z-index: 1;
 }
-.right-sp{
-    color: white;
-  font-size: .35rem;
+.right-sp {
+  color: white;
+  font-size: 0.35rem;
   position: absolute;
   right: 0;
-  top: .3rem;
+  top: 0.3rem;
 }
 .conter {
-    /* width: 1rem; */
-    height: 1rem;
+  /* width: 1rem; */
+  height: 1rem;
   border: 1px solid red;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
 }
-.con-imgs{
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: -5;
-    right: 0;
-    filter: blur(10px);
-    height:1.2rem;
-    overflow:hidden;
+.con-imgs {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -5;
+  right: 0;
+  filter: blur(10px);
+  height: 1.2rem;
+  overflow: hidden;
 }
-.con-imgs img{
-    width: 100%;
-    height: .9rem;
-    /* filter: blur(10px); */
-    /* -webkit-filter: blur(10px);
+.con-imgs img {
+  width: 100%;
+  height: 0.9rem;
+  /* filter: blur(10px); */
+  /* -webkit-filter: blur(10px);
     -moz-filter:blur(10px);
     -ms-filter: blur(10px);
     -o-filter:blur(10px); */
 }
 .conter img {
-  width: .7rem;
-  height: .7rem;
+  width: 0.7rem;
+  height: 0.7rem;
   border: 1px solid red;
 }
 .box {
   /* border: 1px solid red; */
   width: 2.8rem;
 }
-.box p:first-child{
-    font-size: .2rem;
+.box p:first-child {
+  font-size: 0.2rem;
 }
 .box p {
   font-size: 0.1rem;
@@ -128,15 +133,15 @@ export default {
   height: 0.25rem;
   line-height: 0.25rem;
 }
-.two{
-    overflow: hidden;
-    border: 1px solid red;
+.two {
+  overflow: hidden;
+  border: 1px solid red;
 }
 .comm {
   font-size: 0.2rem;
   color: black;
   float: left;
-    border: 1px solid yellow;
+  border: 1px solid yellow;
   margin-left: 0.7rem;
   margin-top: 0.2rem;
 }
@@ -144,7 +149,7 @@ export default {
   font-size: 0.2rem;
   color: black;
   float: right;
-    border: 1px solid pink;
+  border: 1px solid pink;
   margin-right: 0.7rem;
   margin-top: 0.2rem;
 }

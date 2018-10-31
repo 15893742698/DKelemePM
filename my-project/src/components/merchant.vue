@@ -13,7 +13,7 @@
         <span>附近商家</span>
     </div>
     <ul class="content_ul">
-        <router-link tag="li" :key="index" v-for="(k,index) in datas" :to="{name:'shopq',params:{id:k.id}}">
+        <router-link tag="li" :key="index" v-for="(k,index) in datas" :to="{name:'shopq',params:{id:k.id,data:k}}">
         <div><img class="img2" :src="'https://elm.cangdu.org/img/'+k.image_path" alt=""></div>
         <div class="content_div">
             <p><span id="sp1">品牌</span><span id="sp2">{{k.name}}</span><span id="sp3">保准票</span></p>
@@ -77,18 +77,17 @@ export default {
     let api =
       "https://elm.cangdu.org/shopping/restaurants?latitude=31.22967&longitude=121.4762";
     this.$http.get(api).then(response => {
-      // console.log(response);
+      console.log(response);
       this.datas = response.data.map(dengke => {
-          loadingInstance1.close();  
+        loadingInstance1.close();
         // console.log(dengke);
         return dengke;
-        });
-        
+      });
     });
   },
-  methods:{
-    sousuoa(){
-      this.$router.push({name:"searchfood"})
+  methods: {
+    sousuoa() {
+      this.$router.push({ name: "searchfood" });
     }
   }
 };

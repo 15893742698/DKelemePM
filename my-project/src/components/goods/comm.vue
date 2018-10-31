@@ -19,7 +19,7 @@
                <span class="head_span">{{value.description}}</span>
              </div>
            <!-- 右边店铺详情 -->
-            <section class="stop" v-for="(stores,key) in value.foods" :key="key">
+            <section class="stop"  v-for="(stores,key, index) in value.foods" :key="index">
                  <div class="stop_left">
                    <img :src="'//elm.cangdu.org/img/'+stores.image_path" alt="">
                  </div>
@@ -30,7 +30,7 @@
                      <p>{{stores.description}}</p>
                      <strong>{{stores.tips}}</strong>
                      <p class="cons-sp1">是的分身乏术放上的</p>
-                     <p><span class="cons-sp2">{{'￥'+stores.specfoods[0].price}}</span>&nbsp;&nbsp;起<span class="cons-sp3" ><img @click="a" src="../img/加号.png" alt=""></span></p>
+                     <p><span class="cons-sp2">{{'￥'+stores.specfoods[0].price}}</span>&nbsp;&nbsp;起<span class="cons-sp3" ><img @click="a(stores)" src="../img/加号.png" alt=""></span></p>
                  </div> 
               </section>                 
             </section>
@@ -46,61 +46,78 @@
 </template>
 
 <script>
-export default{ 
+export default {
   name: "store",
   data() {
     return {
-      data:[],
-      facevalue:'0',
-      datas:[]
+      data: [],
+      facevalue: "0",
+      datas: []
     };
   },
-  
+
   created() {
-    var _this=this;
+    var _this = this;
     // 接口16
-    let api = "https://elm.cangdu.org/shopping/v2/menu?restaurant_id="+this.$route.params.id
+    let api =
+      "https://elm.cangdu.org/shopping/v2/menu?restaurant_id=" +
+      this.$route.params.id;
     this.$http.get(api).then(res => {
-      _this.data=res.data;
+      _this.data = res.data;
+      // console.log(res.data);
       //  console.log(_this.data16)
     });
   },
   methods: {
     menu(id) {
-      this.facevalue = id
+      this.facevalue = id;
     },
-    a(){
-      console.log("点击了");
+    a(stores) {
+      console.log(stores._id);
+      if (this.$store.state.shopcar.length==0) {
+        console.log("bbb")
+      } else {
+        for (var a = 0; a < this.$store.state.shopcar.length; a++) {
+          if (stores._id == this.$store.state.shopcar[a].id) {
+            this.$store.commit("changequantity", a);
+            console.log("aaa");
+          } else {
+            var entities = {};
+            this.$store.commit("changeshopcar", stores);
+            console.log("ccc");
+          }
+        }
+      }
     }
   }
 };
 </script>
 
 <style scoped>
-a{ 
-text-decoration:none; 
-color:#333; 
-} 
+a {
+  text-decoration: none;
+  color: #333;
+}
 .store {
   background: #ededed;
 }
 .content_body {
- height:.3rem;
+  height: 0.3rem;
 }
 .content_body_left {
   background: #ededed;
-  font-size: .1rem;
+  font-size: 0.1rem;
   float: left;
   width: 25%;
   height: 5.2rem;
   overflow: scroll;
 }
-.content_body_left::-webkit-scrollbar{
+.content_body_left::-webkit-scrollbar {
   display: none;
 }
 .content_body_left li {
   text-align: center;
-  padding: .2rem 0;
+  padding: 0.2rem 0;
   color: #666;
   border-bottom: 0.5px solid #e4e4e4;
 }
@@ -114,21 +131,21 @@ color:#333;
   height: 5.2rem;
   overflow: scroll;
 }
-.content_body_right::-webkit-scrollbar{
+.content_body_right::-webkit-scrollbar {
   display: none;
 }
 .head {
   background: #ededed;
   color: #666;
 }
-.head_top{
-  height: .3rem;
-  line-height: .3rem;
-  padding-left: .2rem;
+.head_top {
+  height: 0.3rem;
+  line-height: 0.3rem;
+  padding-left: 0.2rem;
 }
 .head_spans {
   color: #666;
-  font-size: .2rem;
+  font-size: 0.2rem;
 }
 .head_span {
   color: #999;
@@ -144,11 +161,11 @@ color:#333;
   z-index: 100;
 }
 .stop_left img {
-  width: .5rem;
-  height: .5rem;
+  width: 0.5rem;
+  height: 0.5rem;
   float: left;
-  margin: .12rem;
-  margin-top: .1rem;
+  margin: 0.12rem;
+  margin-top: 0.1rem;
 }
 .stop_right {
   /* float: left; */
@@ -158,94 +175,94 @@ color:#333;
 }
 .stop_right p:first-child {
   /* padding: .05rem 0; */
-  width: .01rem;
+  width: 0.01rem;
   color: #999;
 }
-.stop_right p:nth-child(2){
-    /* color: red; */
-    /* font-size: .15rem; */
-    margin: .1rem 0;
+.stop_right p:nth-child(2) {
+  /* color: red; */
+  /* font-size: .15rem; */
+  margin: 0.1rem 0;
 }
-.stop_right p:nth-child(3){
-    font-size: .15rem;
+.stop_right p:nth-child(3) {
+  font-size: 0.15rem;
 }
-.p1{
-    /* color: red; */
-    /* border: 1px solid red; */
-    font-size: .15rem;
+.p1 {
+  /* color: red; */
+  /* border: 1px solid red; */
+  font-size: 0.15rem;
 }
 /* .stop_right div span{
     /* display: flex; */
-    /* justify-content: space-evenly; }*/
-    .cons-sp{
-        float: right;
-        color: red;
-        border: 1px solid red;
-        border-radius: .2rem;
-    }
-    .cons-sp1{
-        color: orangered;
-        border: 1px solid orangered;
-        border-radius: .2rem;
-        width: 60%;
-        text-align: center;
-    }
-    .cons-sp2{
-        color: orangered;
-        font-size: .15rem;
-    }
-    .cons-sp3>img{
-        width: .25rem;
-        height: .25rem;
-        float: right;
-    }
-    .under{
-      width: 100%;
-      height: .5rem;
-      background: black;
-      position: fixed;
-      top: 6.2rem;
-      left: .01rem;
-    }
-    .under>div{
-      width: .5rem;
-      height: .5rem;
-      background: black;
-      border-radius: 50%;
-      position: fixed;
-      top: 6rem;
-      left: .15rem;
-    }
-    .under>div img{
-      position: fixed;
-      width: .35rem;
-      height: .35rem;
-      top: 6.1rem;
-      left: .2rem;
-    }
-    .under span{
-      color: white;
-    }
-    .under p:nth-child(2){
-      color: white;
-      width: 70%;
-      font-size: .2rem;
-      margin-left: .7rem;
-    }
-    .under span:nth-child(3){
-      /* color: red; */
-      margin-left: .7rem;
-      margin-top: .01rem;
-    }
-    .under span:nth-child(4){
-      width: 30%;
-      height: .5rem;
-      font-size: .17rem;
-      text-align: center;
-      line-height: .5rem;
-      position: fixed;
-      top: 6.2rem;;
-      right: 0;
-      background: rgb(0, 170, 17);
-    }
+/* justify-content: space-evenly; }*/
+.cons-sp {
+  float: right;
+  color: red;
+  border: 1px solid red;
+  border-radius: 0.2rem;
+}
+.cons-sp1 {
+  color: orangered;
+  border: 1px solid orangered;
+  border-radius: 0.2rem;
+  width: 60%;
+  text-align: center;
+}
+.cons-sp2 {
+  color: orangered;
+  font-size: 0.15rem;
+}
+.cons-sp3 > img {
+  width: 0.25rem;
+  height: 0.25rem;
+  float: right;
+}
+.under {
+  width: 100%;
+  height: 0.5rem;
+  background: black;
+  position: fixed;
+  top: 6.2rem;
+  left: 0.01rem;
+}
+.under > div {
+  width: 0.5rem;
+  height: 0.5rem;
+  background: black;
+  border-radius: 50%;
+  position: fixed;
+  top: 6rem;
+  left: 0.15rem;
+}
+.under > div img {
+  position: fixed;
+  width: 0.35rem;
+  height: 0.35rem;
+  top: 6.1rem;
+  left: 0.2rem;
+}
+.under span {
+  color: white;
+}
+.under p:nth-child(2) {
+  color: white;
+  width: 70%;
+  font-size: 0.2rem;
+  margin-left: 0.7rem;
+}
+.under span:nth-child(3) {
+  /* color: red; */
+  margin-left: 0.7rem;
+  margin-top: 0.01rem;
+}
+.under span:nth-child(4) {
+  width: 30%;
+  height: 0.5rem;
+  font-size: 0.17rem;
+  text-align: center;
+  line-height: 0.5rem;
+  position: fixed;
+  top: 6.2rem;
+  right: 0;
+  background: rgb(0, 170, 17);
+}
 </style>
