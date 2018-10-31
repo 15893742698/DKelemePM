@@ -19,7 +19,7 @@
         <div class="hele" v-show="hele">
             <img src="../imgs/感叹.png" alt="">
             <div>
-              <span>请输入用户名</span>
+              <span>请输入搜索地址</span>
             </div>
             <p @click="godenglu">确认</p>
         </div>
@@ -42,11 +42,13 @@ export default {
     if (this.$route.params.data) {
       this.cityname = this.$route.params.data.name;
       this.$store.commit("changecityid", this.$route.params.data.id);
+      this.cityid = this.$store.state.cityid;
     } else if (this.$route.params.item) {
       this.cityname = this.$route.params.item.name;
       this.$store.commit("changecityid", this.$route.params.item.id);
-    }else{
-        this.$router.push({name:"choicecity"})
+      this.cityid = this.$store.state.cityid;
+    } else {
+      this.$router.push({ name: "choicecity" });
     }
   },
   methods: {
@@ -54,7 +56,9 @@ export default {
       this.$router.push({ name: "choicecity" });
     },
     tijiaola() {
+      // console.log("ccc");
       if (!this.add) {
+        // console.log("aaa");
         this.hele = true;
       } else {
         // console.log("aaa");
@@ -70,6 +74,7 @@ export default {
           withCredentials: true
         }).then(res => {
           //   console.log(res);
+          // console.log(res.data);
           this.data = res.data;
         });
       }
