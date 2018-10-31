@@ -10,7 +10,7 @@
             <p v-else></p>
         </div>
         <div class="xiaoaddmsg">
-            <router-link to="/searchadd">
+            <router-link to="/home/login/resetadd/detailadadd/searchadd">
                 <input type="text" placeholder="小区/写字楼/学校等" v-model="this.$store.state.adaddmsgg.name">
                 <p></p>
             </router-link>

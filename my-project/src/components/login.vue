@@ -13,7 +13,7 @@
                     <img src="../imgs/前进.png" alt="" class="qianjin">
                 </div>
             </div>
-           <router-link to="/resetusername">
+           <router-link to="/home/login/resetusername">
             <div class="xiaomsgdiv" id="usernamediv">
                 <p class="zuobian">用户名</p>
                 <div>
@@ -22,7 +22,7 @@
                 </div>
             </div>
            </router-link>
-           <router-link to="/resetadd">
+           <router-link to="/home/login/resetadd">
                  <div class="xiaomsgdiv" id="adddiv">
                 <p class="zuobian">收货地址</p>
                 <div>
@@ -45,7 +45,7 @@
             <p class="xinxip">
                 <span>安全设置</span>
             </p>
-            <router-link to="/resetpassword">
+            <router-link to="/home/login/resetpassword">
                 <div class="xiaomsgdiv">
                 <p class="zuobian">登录密码</p>
                 <div>

@@ -19,6 +19,13 @@
             </div>
         </div>
         <button class="querenxiugai" @click="chongzhimima">确认修改</button>
+        <div class="menmian" v-show="menmian">
+            <img src="../imgs/感叹.png" alt="">
+            <div>
+              <span>{{tanchuang}}</span>
+            </div>
+            <p @click="godenglu">确认</p>
+        </div>
     </div>    
 </template>
 <script>
@@ -38,7 +45,8 @@ export default {
       querennewpw: "",
       newyanzhengma: "",
       tanchuang: "",
-      loading: true
+      loading: true,
+      menmian: false
     };
   },
   created() {
@@ -53,7 +61,7 @@ export default {
       withCredentials: true
       // 默认false
     }).then(data => {
-      console.log(data);
+      // console.log(data);
       loadingInstance1.close();
       this.loading = false;
       this.srcc = data.data.code;
@@ -79,29 +87,49 @@ export default {
       });
     },
     chongzhimima() {
-      this.loading = true;
-      let url = "https://elm.cangdu.org/v2/changepassword";
-      let loadingInstance1 = Loading.service({ fullscreen: true });
-      this.$http({
-        method: "post",
-        url: url,
-        withCredentials: true,
-        data: {
-          username: this.username,
-          oldpassWord: this.oldpassword,
-          newpassword: this.newpassword,
-          confirmpassword: this.querennewpw,
-          captcha_code: this.newyanzhengma
-        }
-      }).then(data => {
-        loadingInstance1.close();
-        this.loading = false;
-        if (data.data.success) {
-          this.tankuang = "密码修改成功";
-        } else if (this.oldpassword != this.newpassword) {
-          this.tankuang = "两次密码输入不一致";
-        } else data.data.message;
-      });
+      if (!this.username) {
+        this.menmian = true;
+        this.tanchuang = "用户名不能为空";
+      } else if (!this.oldpassword) {
+        this.menmian = true;
+        this.tanchuang = "旧密码不能为空";
+      } else if (!this.newpassword) {
+        this.menmian = true;
+        this.tanchuang = "新密码不能为空";
+      } else if (!this.newyanzhengma) {
+        this.menmian = true;
+        this.tanchuang = "验证码不能为空";
+      } else {
+        this.loading = true;
+        let url = "https://elm.cangdu.org/v2/changepassword";
+        let loadingInstance1 = Loading.service({ fullscreen: true });
+        this.$http({
+          method: "post",
+          url: url,
+          withCredentials: true,
+          data: {
+            username: this.username,
+            oldpassWord: this.oldpassword,
+            newpassword: this.newpassword,
+            confirmpassword: this.querennewpw,
+            captcha_code: this.newyanzhengma
+          }
+        }).then(data => {
+          loadingInstance1.close();
+          this.loading = false;
+          if (data.data.success) {
+            this.tanchuang = "密码修改成功";
+            this.menmian = true;
+            // this.$router.push({name:"home"})
+          } else if (this.oldpassword != this.newpassword) {
+            this.menmian = true;
+            this.tanchuang = "两次密码输入不一致";
+          } else data.data.message;
+        });
+      }
+    },
+    godenglu() {
+      this.menmian = false;
     }
   }
 };
@@ -168,6 +196,35 @@ export default {
   color: white;
   background-color: rgb(8, 187, 8);
   border-radius: 10px;
+}
+.menmian {
+  width: 100%;
+  position: fixed;
+  top: 30%;
+  /* border: 1px solid black; */
+  text-align: center;
+  background-color: rgb(238, 204, 159);
+}
+.menmian > img {
+  width: 20%;
+  padding: 10%;
+}
+.menmian > p {
+  font-size: 0.2rem;
+  height: 50px;
+  background-color: rgb(231, 96, 42);
+  color: white;
+  border-radius: 10px;
+  line-height: 50px;
+  padding: 2%;
+}
+.menmian > div {
+  margin: 3%;
+}
+.menmian > div > span {
+  color: black;
+  padding-bottom: 3%;
+  font-size: 0.2rem;
 }
 </style>
 

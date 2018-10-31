@@ -30,6 +30,11 @@ import Fapiao from '../components/kaifapiao'
 import Serve from '../components/serve'
 import Serveexplain from '../components/serveexplain'
 import Detailss from '../components/details'
+import Choicecity from '../components/choicecity'
+import City from '../components/city'
+import Order from '../components//order'
+import Jifenshangcheng from '../components/jifenshangcheng'
+import Searchfood from '../components/searchfood'
 Vue.use(Router)
 
 export default new Router({
@@ -41,7 +46,7 @@ export default new Router({
     
     {
       //未登录时的界面
-      path: '/unlogin',
+      path: '/home/unlogin',
       name:"unlogin",
       component: Unlogin
     }, {
@@ -49,6 +54,11 @@ export default new Router({
       path: '/home',
       name: "home",
       component: Home
+    },{
+      //外卖界面
+      path:"/waimai",
+      name:"waimai",
+      component:Merchant
     },
     {
       //余额界面
@@ -65,7 +75,7 @@ export default new Router({
       component: Youhui
     }, {
       //登录之后的用户信息界面
-      path: '/login',
+      path: '/home/login',
       name:"login",
       component: Login
     },
@@ -73,8 +83,8 @@ export default new Router({
     {
       //进入网站的主界面
       path: '/',
-      name: 'HelloWorld',
-      component: Merchant
+      name: 'choicecity',
+      component: Choicecity
     },
     {
       path: '/classify',
@@ -108,28 +118,32 @@ export default new Router({
     //?????????下面之前没写 path  我加了个空
     {
       path:"/",
-      component: Cut
+      name:"choicecity",
+      component: Choicecity
     }, {
       //修改用户名界面
-      path: '/resetusername',
+      path: '/home/login/resetusername',
+      name:"reserusername",
       component: Resetname
     }, {
       //增加收货地址界面
-      path: "/resetadd",
+      path: "/home/login/resetadd",
       name:"resetadd",
       component: Resetadd
     },{
       //增加收货地址相信信息界面
-      path:'/detailadadd',
+      path:'/home/login/resetadd/detailadadd',
       name:"detailadadd",
       component:Detailadadd
     },{
       //搜索地址界面
-      path:'/searchadd',
+      path:'/home/login/resetadd/detailadadd/searchadd',
+      name:"search",
       component:Searchadd
     },{
       //重置密码界面
-      path:"/resetpassword",
+      path:"/home/login/resetpassword",
+      name:"resetpassword",
       component:Resetpassword
     },{
       //余额积分等积分说明
@@ -143,12 +157,12 @@ export default new Router({
       component:Unloginyouhuiyemian
     },{
       //兑换红包界面
-      path:"/duihuanhongbao",
+      path:"/discount/duihuanhongbao",
       name:"duihuanhongbao",
       component:DuihuanHB
     },{
       //推荐有奖界面
-      path:"/tuijianhb",
+      path:"/discount/tuijianhb",
       name:"tuijianhb",
       component:Tuijianhb
     },{
@@ -188,9 +202,30 @@ export default new Router({
       component:Serve
     },
     {
+      //服务中心介绍
       path:"serveexplain",
       name:"serveexplain",
       component:Serveexplain
+    },{
+      //搜索地址
+      path:"/city",
+      name:"city",
+      component:City
+    },{
+      //订单
+      path:"/order",
+      name:"order",
+      component:Order
+    },{
+      //积分商城界面
+      path:"/jifenshangcheng",
+      name:"jifenshangchen",
+      component:Jifenshangcheng
+    },{
+      //搜索商铺界面
+      path:"/searchfood",
+      name:"searchfood",
+      component:Searchfood
     }
   ]
 })

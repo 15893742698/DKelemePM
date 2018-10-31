@@ -37,10 +37,10 @@
         </ul>
         <p @click="seeoldhb"><span>>查看历史红包</span></p>
         <div id="hbcaozuo">
-          <router-link to="/duihuanhongbao" class="duihuanhb">
+          <router-link to="/discount/duihuanhongbao" class="duihuanhb">
               <button>兑换红包</button>
           </router-link>
-         <router-link to="/tuijianhb" class="tuijianhb">
+         <router-link to="/discount/tuijianhb" class="tuijianhb">
              <button>推荐有奖</button>
          </router-link>
         </div>

@@ -1,7 +1,6 @@
 <template>
 <div>
 <div class="warp">
-
     <router-link :key="index" v-for="(k,index) in img" :to="k.ad">
         <div @click="btn(index)" class='search'>
         <img v-show="k.ifs" class='img2' :src="k.im">
@@ -19,7 +18,13 @@ export default {
   data() {
     return {
       img: [
-        {na: "外卖",ad: "/",im: require("../components/img/饿了么.png"), im1: require("../components/img/饿了么1.png"),ifs: true},
+        {
+          na: "外卖",
+          ad: "/waimai",
+          im: require("../components/img/饿了么.png"),
+          im1: require("../components/img/饿了么1.png"),
+          ifs: true
+        },
         {
           na: "搜索",
           ad: "/search",
@@ -41,16 +46,16 @@ export default {
           im1: require("../components/img/我的1.png"),
           ifs: true
         }
-      ],
+      ]
     };
   },
   methods: {
     btn(index) {
-       var ss = this.img.map(function(n){
-            return n.ifs = true  
-        })
-        this.img[index].ifs = false;
-        // console.log(index)
+      var ss = this.img.map(function(n) {
+        return (n.ifs = true);
+      });
+      this.img[index].ifs = false;
+      // console.log(index)
     }
   }
 };

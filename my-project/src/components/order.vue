@@ -1,28 +1,40 @@
 <template>
-    <div class="dwmaxdiv">
+    <div class="orderdiv">
         <div class="hello">
           <img src="../imgs/后退.png" alt="" @click="returnuup">
           <p>{{$store.state.titlename}}</p>
         </div>
-        <div class="qiezidiv">
-            <img src="../imgs/饿了么选中.png" alt="">
-            <p>下载饿了么APP</p>
-            <button>下载</button>
-        </div>
-    </div>
+        <Botfix></Botfix>
+    </div>    
 </template>
 <script>
 import { Loading } from "element-ui";
+import Botfix from "./bot";
 export default {
-  name: "dweleme",
+  name: "order",
   data() {
     return {
-      loading: true
+      name: "我是"
     };
   },
   created() {
-    this.$store.commit("changetn", "下载");
+    this.$store.commit("changetn", "我的订单");
+    var botchoice = {
+      waimai: false,
+      sousuo: false,
+      dingdan: true,
+      mine: false
+    };
+    this.$store.commit("changebotchoice", botchoice);
     let loadingInstance1 = Loading.service({ fullscreen: true });
+    let url = "https://elm.cangdu.org/bos/orders?offset=0&limit=5";
+    this.$http({
+      method: "get",
+      url: url,
+      withCredentials: true
+    }).then(res => {
+      // console.log(res);
+    });
     loadingInstance1.close();
     this.loading = false;
   },
@@ -30,11 +42,14 @@ export default {
     returnuup() {
       this.$router.go(-1);
     }
+  },
+  components: {
+    Botfix
   }
 };
 </script>
-<style scoped>
-.dwmaxdiv {
+<style>
+.orderdiv {
   width: 100%;
 }
 .hello {
@@ -52,7 +67,6 @@ export default {
   width: 10%;
   vertical-align: top;
   margin-top: 1%;
-  /* border: 1px solid red; */
 }
 .hello p {
   font-size: 0.2rem;
@@ -62,31 +76,6 @@ export default {
 }
 .hello > a {
   color: black;
-}
-.qiezidiv {
-  width: 90%;
-  padding: 5%;
-  text-align: center;
-  /* position: fixed; */
-  /* top: 25%; */
-  /* background-color: rgb(192, 251, 192); */
-}
-.qiezidiv > img {
-  width: 80%;
-}
-.qiezidiv > p {
-  font-size: 0.16rem;
-  padding: 3%;
-}
-.qiezidiv > button {
-  font-size: 0.2rem;
-  height: 50px;
-  background-color: rgba(28, 182, 8, 0.548);
-  color: white;
-  border-radius: 10px;
-  line-height: 30px;
-  padding: 2%;
-  width: 96%;
 }
 </style>
 

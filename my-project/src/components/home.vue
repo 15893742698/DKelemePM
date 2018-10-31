@@ -10,7 +10,7 @@
       <Meum></Meum>
       <Ccontent></Ccontent>
       <Bot></Bot>
-      <Cut></Cut>
+      <Botfix></Botfix>
   </div>
 </template>
 <script>
@@ -19,7 +19,7 @@ import Login from "./element/login";
 import Meum from "./element/meum";
 import Ccontent from "./element/ccontent";
 import Bot from "./element/bot";
-import Cut from "./cut";
+import Botfix from "./bot";
 export default {
   name: "",
   data() {
@@ -34,10 +34,17 @@ export default {
     Meum,
     Ccontent,
     Bot,
-    Cut
+    Botfix
   },
   created() {
     let loadingInstance1 = Loading.service({ fullscreen: true });
+    var botchoice = {
+      waimai:false,
+      sousuo:false,
+      dingdan:false,
+      mine:true
+    }
+    this.$store.commit("changebotchoice",botchoice)
     if (!this.$store.state.denglu) {
       this.router = this.$store.state.unlogin.login;
     } else {

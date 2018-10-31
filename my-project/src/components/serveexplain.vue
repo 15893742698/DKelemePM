@@ -4,6 +4,7 @@
           <img src="../imgs/后退.png" alt="" @click="returnuup">
           <p>{{$store.state.titlename}}</p>
         </div>
+        <p>{{data}}</p>
     </div>
 </template>
 <script>
@@ -11,11 +12,12 @@ export default {
   name: "serveexplain",
   data() {
     return {
-        datas:[]
+        data:""
     };
   },
   created() {
-    console.log(this.$route.params.index);
+    this.$store.commit("changetn",this.$route.params.name);
+    this.data = this.$route.params.quest;
   },
   methods: {
     returnuup() {
@@ -49,6 +51,13 @@ export default {
 }
 .hello > a {
   color: black;
+}
+.hello+p{
+  width: 94%;
+  padding: 3%;
+  font-size: 0.16rem;
+  color: black;
+  line-height: 30px;
 }
 </style>
 

@@ -20,16 +20,16 @@ const state = {
     denglu:false,
     //未登录时所跳转的登录界面
     unlogin:{
-        login:"/unlogin"
+        login:"/home/unlogin"
     },
     //登录之后跳转的账户信息界面
     login:{
-        login:"/login"
+        login:"/home/login"
     },
     //判断是否编辑地址
     bianjiadd:true,
     //搜索地址的固定城市id
-    cityid:1,
+    cityid:Number,
     //储存添加地址点击搜索地址时name和手机号的数据
     adaddmsgg:{
         name:""
@@ -41,7 +41,15 @@ const state = {
     //储存添加的收货地址
     detailadd:"",
     //判断当前的说明是余额还是红包还是积分等等
-    detailexplain:Number
+    detailexplain:Number,
+    //选择城市之后的选择的具体信息
+    choicecityadd:"",
+    botchoice:{
+        waimai:Boolean,
+        sousuo:Boolean,
+        dingdan:Boolean,
+        mine:Boolean
+    }
 }
 const store = new Vuex.Store({
     state,
@@ -84,6 +92,18 @@ const store = new Vuex.Store({
         //改变说明的状态判断说明
         explaindetail(state,value){
             state.detailexplain = value;
+        },
+        //改变城市id
+        changecityid(state,value){
+            state.cityid = value;
+        },
+        //改变城市搜索地址后的具体信息
+        changecityadd(state,value){
+            state.choicecityadd = value
+        },
+        //改变最下方导航
+        changebotchoice(state,value){
+            state.botchoice = value;
         }
     }
 })
