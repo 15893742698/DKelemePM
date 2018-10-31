@@ -63,10 +63,11 @@ export default {
     this.$http.get(api).then(response => {
       // console.log(response);
       this.datas = response.data.map(dengke => {
+          loadingInstance1.close();  
         // console.log(dengke);
         return dengke;
         });
-        loadingInstance1.close();    
+        
     });
   }
 };

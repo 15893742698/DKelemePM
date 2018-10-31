@@ -2,7 +2,7 @@
     <div>
          <Tian></Tian>
          <ul class="content_ul">
-        <router-link tag="li" :key="index" v-for="(k,index) in datas" to="/1">
+        <router-link tag="li" :key="index" v-for="(k,index) in datas" to="/shopq">
     <!-- <li  :key="index" v-for="(k,index) in datas" to="/1"> -->
         <!-- <router-link to="/1"> -->
         <div><img class="img2" :src="'https://elm.cangdu.org/img/'+k.image_path" alt="">

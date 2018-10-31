@@ -29,6 +29,7 @@ import Duihuanvip from '../components/duihuanvip'
 import Fapiao from '../components/kaifapiao'
 import Serve from '../components/serve'
 import Serveexplain from '../components/serveexplain'
+import Detailss from '../components/details'
 Vue.use(Router)
 
 export default new Router({
@@ -77,6 +78,7 @@ export default new Router({
     },
     {
       path: '/classify',
+      name:"classify",
       component: Classify
     },
     {
@@ -93,7 +95,11 @@ export default new Router({
           component: Home
         }
       ]
-    }, 
+    }, {
+      path: '/shopq/details',
+      name: 'detailss',
+      component: Detailss
+    },
     // {
     //   path: '/',
     //   name: 'HelloWorld',
