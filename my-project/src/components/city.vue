@@ -42,11 +42,9 @@ export default {
     if (this.$route.params.data) {
       this.cityname = this.$route.params.data.name;
       this.$store.commit("changecityid", this.$route.params.data.id);
-      this.cityid = +this.$route.params.data.id;
     } else if (this.$route.params.item) {
       this.cityname = this.$route.params.item.name;
       this.$store.commit("changecityid", this.$route.params.item.id);
-      this.cityid = +this.$route.params.item.id;
     }else{
         this.$router.push({name:"choicecity"})
     }
