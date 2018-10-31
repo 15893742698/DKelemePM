@@ -68,8 +68,8 @@ export default {
     Botfix
   },
   created() {
-    let loadingInstance1 = Loading.service({ fullscreen: true });
     this.$store.commit("changetn", "搜索");
+    let loadingInstance1 = Loading.service({ fullscreen: true });
     var botchoice = {
       waimai: false,
       sousuo: true,
@@ -77,7 +77,6 @@ export default {
       mine: false
     };
     this.$store.commit("changebotchoice", botchoice);
-
     loadingInstance1.close();
     this.loading = false;
   }

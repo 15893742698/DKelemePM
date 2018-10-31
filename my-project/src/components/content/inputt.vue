@@ -24,7 +24,7 @@
             </div>
             <button class="btndenglu" @click="login()">登录</button>
             <div id="resetpassword">
-                <router-link to="/resetpassword">重置密码?</router-link>
+                <router-link to="/home/login/resetpassword">重置密码?</router-link>
             </div>
         </div>
         <img :src="'https://elm.cangdu.org/img/'+srcc" alt="">

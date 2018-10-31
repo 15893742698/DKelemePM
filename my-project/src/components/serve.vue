@@ -56,7 +56,7 @@ export default {
       this.datas2.splice(24, 1);
       for (const index in this.datas2) {
         if (index % 2 == 1) {
-          console.log(index)
+          // console.log(index)
           this.datas1.push(this.datas2[index]);
         } else {
           this.datas3.push(this.datas2[index])
