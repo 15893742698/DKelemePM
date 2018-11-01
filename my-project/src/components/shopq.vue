@@ -55,6 +55,7 @@ export default {
   },
   created() {
     var id = this.$route.params.id;
+    // console.log(id)
     let api = "https://elm.cangdu.org/shopping/restaurant/" + id;
     this.$http.get(api).then(data => {
       this.data = data.data;

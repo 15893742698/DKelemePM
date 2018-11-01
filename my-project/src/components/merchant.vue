@@ -89,8 +89,8 @@ export default {
     sousuoa() {
       this.$router.push({ name: "searchfood" });
     },
-    huiquba(){
-      this.$router.push({name:"choicecity"})
+    huiquba() {
+      this.$router.push({ name: "choicecity" });
     }
   }
 };
