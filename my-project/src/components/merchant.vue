@@ -26,7 +26,7 @@
   text-color="#ff9900"
   score-template="{value}"
   class="el-rate">
-</el-rate></span><span id="sp4">月售106单</span></div>
+</el-rate></span><span id="sp4">月售{{k.recent_order_num}}单</span></div>
 <div>
   <span id="sp5" v-if="k.delivery_mode">
     {{k.delivery_mode.text}}</span><span id="sp6">准时达</span>
@@ -77,7 +77,7 @@ export default {
     let api =
       "https://elm.cangdu.org/shopping/restaurants?latitude=31.22967&longitude=121.4762";
     this.$http.get(api).then(response => {
-      console.log(response);
+      // console.log(response);
       this.datas = response.data.map(dengke => {
         loadingInstance1.close();
         // console.log(dengke);

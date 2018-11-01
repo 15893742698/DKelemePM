@@ -19,7 +19,7 @@
                <span class="head_span">{{value.description}}</span>
              </div>
            <!-- 右边店铺详情 -->
-            <section class="stop"  v-for="(stores,key, index) in value.foods" :key="index">
+            <section class="stop"  v-for="(stores, index) in value.foods" :key="index">
                  <div class="stop_left">
                    <img :src="'//elm.cangdu.org/img/'+stores.image_path" alt="">
                  </div>
@@ -30,7 +30,7 @@
                      <p>{{stores.description}}</p>
                      <strong>{{stores.tips}}</strong>
                      <p class="cons-sp1">是的分身乏术放上的</p>
-                     <p><span class="cons-sp2">{{'￥'+stores.specfoods[0].price}}</span>&nbsp;&nbsp;起<span class="cons-sp3" ><img @click="a(stores)" src="../img/加号.png" alt=""></span></p>
+                     <p><span class="cons-sp2">{{'￥'+stores.specfoods[0].price}}</span>&nbsp;&nbsp;起<span class="cons-sp3" ><img @click="a(value.foods,index)" src="../img/加号.png" alt=""></span></p>
                  </div> 
               </section>                 
             </section>
@@ -52,7 +52,8 @@ export default {
     return {
       data: [],
       facevalue: "0",
-      datas: []
+      datas: [],
+      bb:0
     };
   },
 
@@ -64,30 +65,44 @@ export default {
       this.$route.params.id;
     this.$http.get(api).then(res => {
       _this.data = res.data;
-      // console.log(res.data);
+      console.log(res.data);
       //  console.log(_this.data16)
     });
+    
   },
   methods: {
     menu(id) {
       this.facevalue = id;
     },
-    a(stores) {
-      console.log(stores._id);
-      if (this.$store.state.shopcar.length==0) {
-        console.log("bbb")
-      } else {
-        for (var a = 0; a < this.$store.state.shopcar.length; a++) {
-          if (stores._id == this.$store.state.shopcar[a].id) {
-            this.$store.commit("changequantity", a);
-            console.log("aaa");
-          } else {
-            var entities = {};
-            this.$store.commit("changeshopcar", stores);
-            console.log("ccc");
-          }
-        }
-      }
+    a(stores,index) {
+     var cc = this.$store.state.detailadd;
+      console.log(cc)
+      console.log(stores[index]);
+      var aa = stores[index];      
+      
+    //加入购物车
+
+    // let api1 = "https://elm.cangdu.org/v1/carts/checkout"
+    // this.$http({
+    //   method:"post",
+    //   url:api1,
+    //      restaurant_id: aa.restaurant_id,
+    //   // geohash:,
+    //   entities:[{
+    //     attrs:[],
+    //     extra:{},
+    //     id:aa.specfoods[0].food_id,//食品ID
+    //     name:aa.name,//食品名称
+    //     packing_fee:0,//打包费
+    //     price:aa.specfoods[0].price,//价格
+    //     quantity:bb++,//数量
+    //     sku_id:aa.specfoods[0].sku_id,//规格id
+    //     specs:aa.specfoods[1].specs[0].value,//规格
+    //     stock:aa.specfoods[0].stock,//存量
+    //   }]
+    // }).then((res)=>{
+    //   console.log(res);
+    // })
     }
   }
 };

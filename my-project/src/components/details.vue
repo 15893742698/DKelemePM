@@ -9,7 +9,7 @@
             </div>
         </div>
         <div class="deta-two">
-            <p>食品监督安全公示 <span>企业认证详情 &gt;</span></p>
+            <router-link tag="p" :to="{name:'prise',params:{}}">食品监督安全公示 <span>企业认证详情 &gt;</span></router-link>
             <div class="deta-img">
             <div><img src="../imgs/S81031-10592976.png" alt=""></div>
             <div class="deta-p"><p>监督检查结果: <span>良好</span></p>

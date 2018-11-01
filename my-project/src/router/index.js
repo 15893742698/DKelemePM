@@ -35,6 +35,7 @@ import City from '../components/city'
 import Order from '../components//order'
 import Jifenshangcheng from '../components/jifenshangcheng'
 import Searchfood from '../components/searchfood'
+import Prise from '../components/prise'
 Vue.use(Router)
 
 export default new Router({
@@ -109,6 +110,10 @@ export default new Router({
       path: '/shopq/details',
       name: 'detailss',
       component: Detailss
+    },{
+      path:'/details/prise',
+      name:'prise',
+      component:Prise
     },
     // {
     //   path: '/',
