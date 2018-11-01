@@ -31,95 +31,115 @@
                      <strong>{{stores.tips}}</strong>
                      <p class="cons-sp1">是的分身乏术放上的</p>
                      <p><span class="cons-sp2">{{'￥'+stores.specfoods[0].price}}</span>&nbsp;&nbsp;起<span class="cons-sp3" >
-                       <img @click="a(value.foods,index)" src="../img/加号.png" alt="">
-                       <span class="comm-sp">0</span>
-                       <img class="comm-imgs" @clack="b(qq)" src="../img/减.png" alt="">
-                       </span></p>
+                        <img @click="a(stores.specfoods[0])" src="../img/加号.png" alt="">
+                        <span class="comm-sp">{{stores.specfoods[0].count}}</span>
+                       <img v-if="stores.specfoods[0].count != 0"  @click="b(stores.specfoods[0])" class="comm-imgs" src="../img/减.png" alt="">
+                       </span>
+                       </p>
                  </div> 
               </section>                 
             </section>
-            <div @click="dian(shows=false)" class="under">
-              <div><img src="../img/购物车-白色.png" alt=""></div>
-                  <p class="comm-p1">￥0.00</p>
-                  <span class="comm-sp2">配送费￥0</span>
-                  <router-link class="comm-sp3" tag="span" to="/orderform">去结算</router-link>
-                  
+            <div @click="dian()" class="under">
+              <div>
+                <img src="../img/购物车-白色.png" alt="">
+                <p>{{zonggeshu}}</p>
+              </div>
+                  <p class="comm-p1">￥{{num}}</p>
+                  <span class="comm-sp2">配送费￥{{peisongfei}}</span>
+                  <router-link class="comm-sp3" tag="span" to="/indent" @click="jiezhang">去结算</router-link>
             </div>
-            <div class="comm-data" v-show="shows">123</div>
+            <div class="comm-data" v-show="shows">
+              <div class="gouwucheche" >
+                <p>购物车</p>
+                <div class="clearfood" @click="clearfood">
+                  <img src="../../imgs/垃圾桶.png" alt="">
+                  <span>清空</span>
+                </div>
+              </div>
+              <ul class="carul">
+                <li v-for="(item, index) in shoping" :key="index" class="carli">
+                  <p>{{item.name}}</p>
+                  <p>Y{{item.price}}</p>
+                  <div class="jiajian">
+                    <img src="../../imgs/减.png" alt="" @click="b(item)">
+                    <span>{{item.count}}</span>
+                    <img src="../../imgs/加.png" alt="" @click="a(item)">
+                  </div>
+                </li>
+              </ul>
+            </div>
           </div>
        </div>
     </div>  
 </template>
 
 <script>
+import Vue from "vue";
 export default {
   name: "store",
   data() {
     return {
-      data: [],
       facevalue: "0",
       datas: [],
-      bb:0,
-      shows:false
+      bb: 0,
+      shows: false,
+      jianma: false
     };
   },
 
   created() {
-    var _this = this;
     // 接口16
     let api =
       "https://elm.cangdu.org/shopping/v2/menu?restaurant_id=" +
       this.$route.params.id;
     this.$http.get(api).then(res => {
-      _this.data = res.data;
-      console.log(res.data);
-      //  console.log(_this.data16)
+      for (let i = 0; i < res.data.length; i++) {
+        for (let ii = 0; ii < res.data[i].foods.length; ii++) {
+          Vue.set(res.data[i].foods[ii].specfoods[0], "count", 0);
+        }
+      }
+      this.$store.commit("changeallshuju", res.data);
     });
     
+  },
+  computed: {
+    data() {
+      return this.$store.state.allshuju;
+    },
+    num() {
+      return this.$store.state.num;
+    },
+    zonggeshu() {
+      return this.$store.state.zonggeshu;
+    },
+    shoping() {
+      return this.$store.state.shoping;
+    },
+    peisongfei(){
+      return this.$store.state.peisongfei
+    }
   },
   methods: {
     menu(id) {
       this.facevalue = id;
     },
-    a(stores,index) {
-     var cc = this.$store.state.detailadd;
-      console.log(cc)
-      console.log(stores[index]);
-      var aa = stores[index];      
-      
-    //加入购物车
-
-    // let api1 = "https://elm.cangdu.org/v1/carts/checkout"
-    // this.$http({
-    //   method:"post",
-    //   url:api1,
-    //      restaurant_id: aa.restaurant_id,
-    //   // geohash:,
-    //   entities:[{
-    //     attrs:[],
-    //     extra:{},
-    //     id:aa.specfoods[0].food_id,//食品ID
-    //     name:aa.name,//食品名称
-    //     packing_fee:0,//打包费
-    //     price:aa.specfoods[0].price,//价格
-    //     quantity:bb++,//数量
-    //     sku_id:aa.specfoods[0].sku_id,//规格id
-    //     specs:aa.specfoods[1].specs[0].value,//规格
-    //     stock:aa.specfoods[0].stock,//存量
-    //   }]
-    // }).then((res)=>{
-    //   console.log(res);
-    // })
+    dian() {
+      this.shows = !this.shows;
+      this.datas = this.$store.state.shopcar;
     },
-    b(qq){
-      console.log('减少了');
+    a(a) {
+      this.$store.commit("a", a);
     },
-    dian(shows){
-       if(this.shows==false){
-          this.shows = true; 
-       }else{
-          this.shows = flase;
-       }
+    b(b) {
+      this.$store.commit("b", b);
+    },
+    clearfood() {
+      this.$store.commit("shopingclear");
+      this.shows = false;
+      this.peisong = 0;
+    },
+    jiezhang(){
+      this.$router.push({name:"orderfrom"})
     }
   }
 };
@@ -232,11 +252,11 @@ a {
   border: 1px solid red;
   border-radius: 0.2rem;
 }
-.comm-sp{
-  font-size: .15rem;
+.comm-sp {
+  font-size: 0.15rem;
   float: right;
-  bottom: .1rem;
-  right: .2rem;
+  bottom: 0.1rem;
+  right: 0.2rem;
 }
 .cons-sp1 {
   color: orangered;
@@ -293,7 +313,7 @@ a {
   margin-left: 0.7rem;
   margin-top: 0.01rem;
 }
-.under>.comm-sp3 {
+.under > .comm-sp3 {
   width: 30%;
   height: 0.5rem;
   font-size: 0.17rem;
@@ -304,20 +324,65 @@ a {
   right: 0;
   background: rgb(0, 170, 17);
 }
-.comm-imgs{
-  width: .27rem;
-  height: .27rem;
+.comm-imgs {
+  width: 0.27rem;
   float: right;
-  margin-right: .1rem;
+  top: -3%;
 }
-.comm-data{
+.comm-data {
   width: 100%;
-  height: 1rem;
-  background: pink;
+  background: rgb(192, 240, 192);
   position: fixed;
-  top: 5.2rem;
+  bottom: 6%;
   left: 0.01rem;
   z-index: 5;
-  /* display: none; */
+}
+.under > div > p {
+  color: orangered;
+  font-size: 0.16rem;
+  font-weight: bold;
+  position: absolute;
+  right: 40%;
+  top: 0;
+}
+.gouwucheche {
+  width: 94%;
+  padding: 3%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.16rem;
+}
+.clearfood {
+  width: 40%;
+  text-align: end;
+}
+.clearfood > img {
+  width: 20%;
+}
+.carul {
+  width: 100%;
+  padding-bottom: 5%;
+}
+.carli {
+  width: 94%;
+  padding: 3%;
+  font-size: 0.16rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.jiajian {
+  width: 20%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.jiajian > span {
+  margin-top: 4%;
+}
+.jiajian > img {
+  width: 40%;
+  vertical-align: top;
 }
 </style>

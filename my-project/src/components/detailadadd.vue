@@ -57,6 +57,7 @@ export default {
   },
   created() {
     this.$store.commit("changetn", "新增地址");
+    this.$store.commit("tianjiadizhi",false)
     let loadingInstance1 = Loading.service({ fullscreen: true });
     this.detailschoolvalue = this.$store.state.adaddmsgg.address;
     this.namevalue = this.$store.state.adobjname;
@@ -161,7 +162,11 @@ export default {
       }
     },
     returnuup() {
-      this.$router.push({ name: "resetadd" });
+      if(this.$store.state.tianjiadizhi==false){
+        this.$router.push({ name: "resetadd" });
+      }else{
+        this.$router.push({name:"orderfrom"});
+      }
     },
     godenglu() {
       this.juhua = false;
