@@ -1,9 +1,9 @@
 <template>
 <div>
     <div class="top">
-      <router-link to="/">
-      <img src="../imgs/会员俱乐部.png" alt="">
-      </router-link>
+      <div @click="tiao">
+      <img src="../imgs/后退.png" alt="">
+      </div>
       <span>{{ytitle}}</span>
       </div>
     <div class="box">
@@ -138,6 +138,9 @@ export default {
       this.show2 = false;
       this.show3 = !this.show3;
     },
+    tiao() {
+      this.$router.go(-1);
+    }
     // 修改地方
     // updaMsg(el) {
     //   this.cont = el;

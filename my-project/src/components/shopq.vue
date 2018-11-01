@@ -10,11 +10,11 @@
             <img :src="'https://elm.cangdu.org/img/'+data.image_path" alt="">
             
             <div class="box">
-                <p>效果展示</p>
+                <p>{{data.name}}</p>
                 <p>商家起送/
                 分钟送达/
-                配送费5元</p>
-                <p>公告:欢迎光临;用餐高峰期提前下单,谢谢</p>
+                <!-- {{data.piecewise_agent_fee.tips}}--></p> 
+                <p>公告:{{data.promotion_info}}</p>
             </div>
         </div>
         <div class="two">   
@@ -58,11 +58,11 @@ export default {
     let api = "https://elm.cangdu.org/shopping/restaurant/" + id;
     this.$http.get(api).then(data => {
       this.data = data.data;
-      console.log(this.data);
-      console.log(
-        this.$route.params.data.latitude,
-        this.$route.params.data.longitude
-      );
+      // console.log(this.data);
+      // console.log(
+      //   this.$route.params.data.latitude,
+      //   this.$route.params.data.longitude
+      // );
     });
   }
 };
@@ -90,7 +90,7 @@ export default {
 .conter {
   /* width: 1rem; */
   height: 1rem;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -118,7 +118,7 @@ export default {
 .conter img {
   width: 0.7rem;
   height: 0.7rem;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 .box {
   /* border: 1px solid red; */
@@ -135,13 +135,14 @@ export default {
 }
 .two {
   overflow: hidden;
-  border: 1px solid red;
+  border-top: 2px solid white;
+  z-index: 20;
 }
 .comm {
   font-size: 0.2rem;
   color: black;
   float: left;
-  border: 1px solid yellow;
+  /* border: 1px solid yellow; */
   margin-left: 0.7rem;
   margin-top: 0.2rem;
 }
@@ -149,7 +150,7 @@ export default {
   font-size: 0.2rem;
   color: black;
   float: right;
-  border: 1px solid pink;
+  /* border: 1px solid pink; */
   margin-right: 0.7rem;
   margin-top: 0.2rem;
 }
