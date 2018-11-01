@@ -77,7 +77,7 @@ export default {
     let api =
       "https://elm.cangdu.org/shopping/restaurants?latitude=31.22967&longitude=121.4762";
     this.$http.get(api).then(response => {
-      console.log(response);
+      // console.log(response);
       this.datas = response.data.map(dengke => {
         loadingInstance1.close();
         // console.log(dengke);
