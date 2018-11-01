@@ -50,6 +50,8 @@ const state = {
         dingdan: Boolean,
         mine: Boolean
     },
+    shopcar: [],
+    sousuojilu:[]
 }
 const store = new Vuex.Store({
     state,
@@ -104,6 +106,10 @@ const store = new Vuex.Store({
         //改变最下方导航
         changebotchoice(state, value) {
             state.botchoice = value;
+        },
+        //更改搜索记录
+        changesousuojilu(state,value){
+            state.sousuojilu.push(value)
         }
     }
 })

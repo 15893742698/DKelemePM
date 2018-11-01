@@ -2,7 +2,7 @@
 <div>
   <div class="box">
     <img src="./img/search.png" alt="" @click="sousuoa">
-    <span>{{this.$store.state.choicecityadd.address}}</span>
+    <span @click="huiquba">{{this.$store.state.choicecityadd.address}}</span>
     <router-link :to="srcc" >{{msg}}</router-link>
   </div>
   <Shops></Shops>
@@ -88,6 +88,9 @@ export default {
   methods: {
     sousuoa() {
       this.$router.push({ name: "searchfood" });
+    },
+    huiquba(){
+      this.$router.push({name:"choicecity"})
     }
   }
 };
