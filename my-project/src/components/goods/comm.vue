@@ -31,21 +31,43 @@
                      <strong>{{stores.tips}}</strong>
                      <p class="cons-sp1">是的分身乏术放上的</p>
                      <p><span class="cons-sp2">{{'￥'+stores.specfoods[0].price}}</span>&nbsp;&nbsp;起<span class="cons-sp3" >
-                       <img @click="a(value.foods,index)" src="../img/加号.png" alt="">
-                       <span class="comm-sp">0</span>
-                       <img class="comm-imgs" @clack="b(qq)" src="../img/减.png" alt="">
-                       </span></p>
+                        <img @click="a(value.foods,index)" src="../img/加号.png" alt="">
+                        <span class="comm-sp">0</span>
+                       <img  @click="bbb(value.foods,index)" class="comm-imgs" src="../img/减.png" v-show="jianma" alt="">
+                       </span>
+                       </p>
                  </div> 
               </section>                 
             </section>
             <div @click="dian()" class="under">
-              <div><img src="../img/购物车-白色.png" alt=""></div>
-                  <p class="comm-p1">￥0.00</p>
-                  <span class="comm-sp2">配送费￥0</span>
+              <div>
+                <img src="../img/购物车-白色.png" alt="">
+                <p>{{number}}</p>
+              </div>
+                  <p class="comm-p1">￥{{allmoney}}</p>
+                  <span class="comm-sp2">配送费￥{{peisong}}</span>
                   <router-link class="comm-sp3" tag="span" to="/indent">去结算</router-link>
-                  
             </div>
-            <div class="comm-data" v-show="shows">123</div>
+            <div class="comm-data" v-show="shows">
+              <div class="gouwucheche" >
+                <p>购物车</p>
+                <div class="clearfood" @click="clearfood">
+                  <img src="../../imgs/垃圾桶.png" alt="">
+                  <span>清空</span>
+                </div>
+              </div>
+              <ul class="carul">
+                <li v-for="(item, index) in datas" :key="index" class="carli">
+                  <p>{{item.name}}</p>
+                  <p>Y{{item.price}}</p>
+                  <div class="jiajian">
+                    <img src="../../imgs/减.png" alt="" @click="cc(item,index)">
+                    <span>{{item.quantity}}</span>
+                    <img src="../../imgs/加.png" alt="" @click="aa(item,index)">
+                  </div>
+                </li>
+              </ul>
+            </div>
           </div>
        </div>
     </div>  
@@ -59,16 +81,45 @@ export default {
       data: [],
       facevalue: "0",
       datas: [],
-<<<<<<< HEAD
-      bb:0,
-      shows:false
-=======
-      bb: 0
->>>>>>> 67f0233a6763805ccb7b231186102efbaf95ba73
+      bb: 0,
+      shows: false,
+      number: 0,
+      allmoney: 0.0,
+      peisong: 0,
+      datas: [],
+      jianma: false,
+      shuliang: []
     };
   },
 
   created() {
+    var num = 0;
+    var peisong = 0;
+    var allmoney = 0;
+    for (var c = 0; c < this.$store.state.shopcar.length; c++) {
+      this.shuliang.push(this.$store.state.shopcar[c].quantity);
+    }
+    if (this.$store.state.shopcar.length == 0) {
+      this.peisong = 0;
+      this.allmoney = 0;
+      this.number = 0;
+    } else {
+      for (var a = 0; a < this.$store.state.shopcar.length; a++) {
+        num += this.$store.state.shopcar[a].quantity;
+        allmoney +=
+          this.$store.state.shopcar[a].price *
+          this.$store.state.shopcar[a].quantity;
+      }
+      var max = 0;
+      for (var j = 0; j < this.$store.state.shopcar.length; j++) {
+        if (max < this.$store.state.shopcar[a].packing_fee) {
+          max = this.$store.state.shopcar[a].packing_fee;
+        }
+      }
+      this.number = num;
+      this.allmoney = allmoney;
+      this.peisong = max;
+    }
     var _this = this;
     // 接口16
     let api =
@@ -85,10 +136,17 @@ export default {
       this.facevalue = id;
     },
     a(stores, index) {
+      this.jianma = true;
       //食品的信息
       var aa = stores[index];
       // console.log(aa);
       // console.log(this.$store.state.shopcar);
+      this.number += 1;
+      this.allmoney += +aa.specfoods[0].price;
+      if (this.peisong < aa.specfoods[0].packing_fee) {
+        this.peisong = aa.specfoods[0].packing_fee;
+      }
+      // console.log(this.number, this.peisong, this.allmoney);
       if (this.$store.state.shopcar.length == 0) {
         this.$store.commit("changeshopcar", {
           attrs: aa.attrs,
@@ -106,40 +164,6 @@ export default {
         for (var a = 0; a < this.$store.state.shopcar.length; a++) {
           if (aa.name == this.$store.state.shopcar[a].name) {
             this.$store.commit("changeshuliang", a);
-
-<<<<<<< HEAD
-    // let api1 = "https://elm.cangdu.org/v1/carts/checkout"
-    // this.$http({
-    //   method:"post",
-    //   url:api1,
-    //      restaurant_id: aa.restaurant_id,
-    //   // geohash:,
-    //   entities:[{
-    //     attrs:[],
-    //     extra:{},
-    //     id:aa.specfoods[0].food_id,//食品ID
-    //     name:aa.name,//食品名称
-    //     packing_fee:0,//打包费
-    //     price:aa.specfoods[0].price,//价格
-    //     quantity:bb++,//数量
-    //     sku_id:aa.specfoods[0].sku_id,//规格id
-    //     specs:aa.specfoods[1].specs[0].value,//规格
-    //     stock:aa.specfoods[0].stock,//存量
-    //   }]
-    // }).then((res)=>{
-    //   console.log(res);
-    // })
-    },
-    b(qq){
-      console.log('减少了');
-    },
-    dian(){
-       if(this.shows==false){
-          this.shows = true; 
-       }else{
-          this.shows = false;
-       }
-=======
             return;
           }
         }
@@ -156,42 +180,83 @@ export default {
           stock: aa.specfoods[0].stock //存量
         });
       }
-      console.log(this.$store.state.shopcar);
-      console.log(this.$route.params.id);
       //餐馆经纬度,餐馆id
       // console.log(
       //   this.$route.params.data.latitude,
       //   this.$route.params.data.longitude,
-
       // );
-
-      //判断
-      //加入购物车
-
-      // let api1 = "https://elm.cangdu.org/v1/carts/checkout";
-      // this.$http({
-      //   method: "post",
-      //   url: api1,
-      //   restaurant_id: aa.restaurant_id,
-      //   // geohash:,
-      //   entities: [
-      //     {
-      //       attrs: [],
-      //       extra: {},
-      //       id: aa.specfoods[0].food_id, //食品ID
-      //       name: aa.name, //食品名称
-      //       packing_fee: 0, //打包费
-      //       price: aa.specfoods[0].price, //价格
-      //       quantity: bb++, //数量
-      //       sku_id: aa.specfoods[0].sku_id, //规格id
-      //       specs: aa.specfoods[1].specs[0].value, //规格
-      //       stock: aa.specfoods[0].stock //存量
-      //     }
-      //   ]
-      // }).then(res => {
-      //   console.log(res);
-      // });
->>>>>>> 67f0233a6763805ccb7b231186102efbaf95ba73
+    },
+    dian() {
+      this.shows = !this.shows;
+      this.datas = this.$store.state.shopcar;
+    },
+    clearfood() {
+      this.$store.commit("clearshopcar", []);
+      this.$router.push({ name: "shopq" });
+    },
+    bbb(stores, index) {
+      // console.log(stores[index]);
+      var aa = stores[index];
+      // console.log(aa);
+      // console.log(this.$store.state.shopcar);
+      this.number -= 1;
+      this.allmoney -= aa.specfoods[0].price;
+      for (var a = 0; a < this.$store.state.shopcar.length; a++) {
+        if (aa.name == this.$store.state.shopcar[a].name) {
+          if (this.$store.state.shopcar[a].quantity == 1) {
+            this.$store.commit("shanchushopcar", a);
+            this.peisong = 0;
+            this.jianma = false;
+          } else {
+            this.$store.commit("jianshuliang", a);
+          }
+          return;
+        }
+      }
+      var perisong = 0;
+      for (var j = 0; j < this.$store.state.shopcar.length; j++) {
+        if (this.$store.state.shopcar[j] > peisong) {
+          peisong = this.$store.state.shopcar[j];
+        }
+      }
+      this.peisong = peisong;
+      this.data = this.$store.state.shopcar;
+    },
+    aa(sss, aaa) {
+      var aa = sss;
+      // console.log(aa);
+      // console.log(this.$store.state.shopcar);
+      this.number += 1;
+      this.allmoney += +aa.price;
+      for (var a = 0; a < this.$store.state.shopcar.length; a++) {
+        if (aa.name == this.$store.state.shopcar[a].name) {
+          this.$store.commit("changeshuliang", a);
+          return;
+        }
+      }
+    },
+    cc(store, item) {
+      var aa = store;
+      // console.log(store);
+      this.number -= 1;
+      this.allmoney -= aa.price;
+      for (var a = 0; a < this.$store.state.shopcar.length; a++) {
+        if (aa.name == this.$store.state.shopcar[a].name) {
+          if (this.$store.state.shopcar[a].quantity == 1) {
+            this.$store.commit("shanchushopcar", a);
+            this.peisong = 0;
+          } else {
+            this.$store.commit("jianshuliang", a);
+          }
+          return;
+        }
+        for (var j = 0; j < this.$store.state.shopcar.length; j++) {
+          if (this.$store.state.shopcar[j] > peisong) {
+            peisong = this.$store.state.shopcar[j];
+          }
+        }
+        this.peisong = peisong;
+      }
     }
   }
 };
@@ -304,11 +369,11 @@ a {
   border: 1px solid red;
   border-radius: 0.2rem;
 }
-.comm-sp{
-  font-size: .15rem;
+.comm-sp {
+  font-size: 0.15rem;
   float: right;
-  bottom: .1rem;
-  right: .2rem;
+  bottom: 0.1rem;
+  right: 0.2rem;
 }
 .cons-sp1 {
   color: orangered;
@@ -365,7 +430,7 @@ a {
   margin-left: 0.7rem;
   margin-top: 0.01rem;
 }
-.under>.comm-sp3 {
+.under > .comm-sp3 {
   width: 30%;
   height: 0.5rem;
   font-size: 0.17rem;
@@ -376,20 +441,65 @@ a {
   right: 0;
   background: rgb(0, 170, 17);
 }
-.comm-imgs{
-  width: .27rem;
-  height: .27rem;
+.comm-imgs {
+  width: 0.27rem;
   float: right;
-  margin-right: .1rem;
+  top: -3%;
 }
-.comm-data{
+.comm-data {
   width: 100%;
-  height: 1rem;
-  background: pink;
+  background: rgb(192, 240, 192);
   position: fixed;
-  top: 5.2rem;
+  bottom: 6%;
   left: 0.01rem;
   z-index: 5;
-  /* display: none; */
+}
+.under > div > p {
+  color: orangered;
+  font-size: 0.16rem;
+  font-weight: bold;
+  position: absolute;
+  right: 40%;
+  top: 0;
+}
+.gouwucheche {
+  width: 94%;
+  padding: 3%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.16rem;
+}
+.clearfood {
+  width: 40%;
+  text-align: end;
+}
+.clearfood > img {
+  width: 20%;
+}
+.carul {
+  width: 100%;
+  padding-bottom: 5%;
+}
+.carli {
+  width: 94%;
+  padding: 3%;
+  font-size: 0.16rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.jiajian {
+  width: 20%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.jiajian > span {
+  margin-top: 4%;
+}
+.jiajian > img {
+  width: 40%;
+  vertical-align: top;
 }
 </style>

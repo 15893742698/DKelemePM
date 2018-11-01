@@ -118,6 +118,18 @@ const store = new Vuex.Store({
     //更改产品的数量
     changeshuliang(state, value) {
       state.shopcar[value].quantity += 1;
+    },
+    //删除购物车数据
+    clearshopcar(state, value) {
+      state.shopcar = value;
+    },
+    //减数量
+    jianshuliang(state, value) {
+      state.shopcar[value].quantity -= 1;
+    },
+    //删除食品数据
+    shanchushopcar(state,value){
+        state.shopcar.splice(value,1)
     }
   }
 })
