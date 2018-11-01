@@ -51,7 +51,7 @@ const state = {
         mine: Boolean
     },
     shopcar: [],
-    sousuojilu:[]
+    sousuojilu:[],
 }
 const store = new Vuex.Store({
     state,
@@ -110,6 +110,10 @@ const store = new Vuex.Store({
         //更改搜索记录
         changesousuojilu(state,value){
             state.sousuojilu.push(value)
+        },
+        //更改购物车数据
+        changeshopcar(state,value){
+            state.shopcar.push(value)
         }
     }
 })

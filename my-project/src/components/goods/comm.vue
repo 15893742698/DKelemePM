@@ -53,7 +53,7 @@ export default {
       data: [],
       facevalue: "0",
       datas: [],
-      bb:0
+      bb: 0
     };
   },
 
@@ -68,41 +68,64 @@ export default {
       console.log(res.data);
       //  console.log(_this.data16)
     });
-    
   },
   methods: {
     menu(id) {
       this.facevalue = id;
     },
-    a(stores,index) {
-     var cc = this.$store.state.detailadd;
-      console.log(cc)
-      console.log(stores[index]);
-      var aa = stores[index];      
-      
-    //加入购物车
+    a(stores, index) {
+      //食品的信息
+      var aa = stores[index];
+      console.log(aa);
 
-    // let api1 = "https://elm.cangdu.org/v1/carts/checkout"
-    // this.$http({
-    //   method:"post",
-    //   url:api1,
-    //      restaurant_id: aa.restaurant_id,
-    //   // geohash:,
-    //   entities:[{
-    //     attrs:[],
-    //     extra:{},
-    //     id:aa.specfoods[0].food_id,//食品ID
-    //     name:aa.name,//食品名称
-    //     packing_fee:0,//打包费
-    //     price:aa.specfoods[0].price,//价格
-    //     quantity:bb++,//数量
-    //     sku_id:aa.specfoods[0].sku_id,//规格id
-    //     specs:aa.specfoods[1].specs[0].value,//规格
-    //     stock:aa.specfoods[0].stock,//存量
-    //   }]
-    // }).then((res)=>{
-    //   console.log(res);
-    // })
+      if (!this.$store.state.shopcar) {
+        this.$store.commit("changeshopcar", {
+          attrs: aa.attrs,
+          extra: {},
+          id: aa.specfoods[index].food_id, //食品ID
+          name: aa.name, //食品名称
+          packing_fee: aa.specfoods[index].packing_fee, //打包费
+          price: aa.specfoods[index].price, //价格
+          quantity: 0, //数量
+          sku_id: aa.specfoods[index].sku_id, //规格id
+          specs: aa.specfoods[index].specs[0].value, //规格
+          stock: aa.specfoods[index].stock //存量
+        });
+        console.log(this.$store.state.shopcar);
+      }
+      //餐馆经纬度,餐馆id
+      // console.log(
+      //   this.$route.params.data.latitude,
+      //   this.$route.params.data.longitude,
+      //   this.$route.params.data.id
+      // );
+
+      //判断
+      //加入购物车
+
+      let api1 = "https://elm.cangdu.org/v1/carts/checkout";
+      this.$http({
+        method: "post",
+        url: api1,
+        restaurant_id: aa.restaurant_id,
+        // geohash:,
+        entities: [
+          {
+            attrs: [],
+            extra: {},
+            id: aa.specfoods[0].food_id, //食品ID
+            name: aa.name, //食品名称
+            packing_fee: 0, //打包费
+            price: aa.specfoods[0].price, //价格
+            quantity: bb++, //数量
+            sku_id: aa.specfoods[0].sku_id, //规格id
+            specs: aa.specfoods[1].specs[0].value, //规格
+            stock: aa.specfoods[0].stock //存量
+          }
+        ]
+      }).then(res => {
+        console.log(res);
+      });
     }
   }
 };
