@@ -1,6 +1,6 @@
 <template>
     <div>
-         <Tian></Tian>
+         <Tian :cont = "search"></Tian>
          <ul class="content_ul">
         <router-link tag="li" :key="index" v-for="(k,index) in datas" to="/shopq">
     <!-- <li  :key="index" v-for="(k,index) in datas" to="/1"> -->
@@ -35,6 +35,8 @@ import Tian from "../components/tian"
         data: () => ({
     datas: null
   }),
+  //添加的地方
+  // props:["cli"],
   components:{
     Tian
   },
@@ -48,11 +50,21 @@ import Tian from "../components/tian"
         return dengke;
       });
     });
+  },
+  methods:{
+    search(index){
+        console.log(index);
+        var url = "https://elm.cangdu.org/shopping/restaurants?latitude=31.22967&longitude=121.4762&order_by="+index;
+        this.$http.get(url).then((res)=>{
+         this.datas = res.data;
+         console.log(this.datas);
+        })
+    }
   }
     };
 </script>
 
-<style scoped>
+<style scoped = "scoped">
 
 .content_ul li {
   height: 1.2rem;

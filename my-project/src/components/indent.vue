@@ -43,6 +43,5 @@
     height: .7rem;
 }
 .in-two-1>p:first-child{
-    float:left;
-    }
+    float:left;}
 </style>

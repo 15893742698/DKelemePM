@@ -46,7 +46,7 @@
     <!-- 下部排序详情 -->
     <div v-if="show2" class="xulie" >
        <ol >
-      <li v-for="(k1,index1) in imgs1" :key="index1">
+      <li v-for="(k1,index1) in imgs1" :key="index1" @click="jiahao(k1.id)">
         <img :src="k1.src" alt="">
        {{k1.title}}
       </li>
@@ -75,6 +75,7 @@
 </template>
 <script>
 // import Zujian from "../zujian";
+
 import { Loading } from "element-ui";
 import img01 from "./img/1.png";
 import img02 from "./img/2.png";
@@ -86,14 +87,14 @@ export default {
   name: "tian",
   data: () => ({
     // 修改地方
-    cont: "",
+    
     imgs1: [
-      { title: "智能排序", src: img01, id: 1 },
-      { title: "距离最近", src: img02, id: 2 },
-      { title: "销量最高", src: img03, id: 3 },
-      { title: "起送价最低", src: img04, id: 4 },
-      { title: "配送速度最快", src: img05, id: 5 },
-      { title: "评分最高", src: img06, id: 6 }
+      { title: "智能排序", src: img01, id: 4 },
+      { title: "距离最近", src: img02, id: 5 },
+      { title: "销量最高", src: img03, id: 6 },
+      { title: "起送价最低", src: img04, id: 1 },
+      { title: "配送速度最快", src: img05, id: 2 },
+      { title: "评分最高", src: img06, id: 3 }
     ],
     show: false,
     show2: false,
@@ -106,6 +107,9 @@ export default {
     name1: [],
     name2: []
   }),
+  //修改
+  props:['cont'],
+
   components: {
     // Zujian
   },
@@ -140,6 +144,10 @@ export default {
     },
     tiao() {
       this.$router.go(-1);
+    },
+    jiahao(index1){
+      this.cont(index1);
+      // console.log(this.cont);
     }
     // 修改地方
     // updaMsg(el) {
