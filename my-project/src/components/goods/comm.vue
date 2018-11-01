@@ -46,7 +46,7 @@
               </div>
                   <p class="comm-p1">￥{{num}}</p>
                   <span class="comm-sp2">配送费￥{{peisongfei}}</span>
-                  <router-link class="comm-sp3" tag="span" to="/indent" @click="jiezhang">去结算</router-link>
+                  <span class="comm-sp3" @click="jiezhang">去结算</span>
             </div>
             <div class="comm-data" v-show="shows">
               <div class="gouwucheche" >
