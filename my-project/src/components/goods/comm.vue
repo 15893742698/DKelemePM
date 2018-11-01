@@ -139,7 +139,7 @@ export default {
       this.peisong = 0;
     },
     jiezhang(){
-      this.$router.push({name:"orderfrom"})
+      this.$router.push({name:"orderform"})
     }
   }
 };
