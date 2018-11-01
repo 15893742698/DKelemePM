@@ -200,4 +200,7 @@ export default {
   color: gray;
   /* width: 50%; */
 }
+.linkli{
+  width: 0.56rem;
+}
 </style>

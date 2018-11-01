@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="details"><span> &lt; </span>商家详情</div>
+        <div @click="tiao" class="details"><span> &lt; </span>商家详情</div>
         <div class="deta-one">
             <p class="p">活动与属性</p>
             <div class="aa">
@@ -33,6 +33,11 @@
         name:'detailss',
         created(){
             console.log(this.$route.params.data);
+        },
+        methods:{
+            tiao() {
+      this.$router.go(-1);
+    }
         }
     }
 </script>

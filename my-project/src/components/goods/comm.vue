@@ -30,16 +30,22 @@
                      <p>{{stores.description}}</p>
                      <strong>{{stores.tips}}</strong>
                      <p class="cons-sp1">是的分身乏术放上的</p>
-                     <p><span class="cons-sp2">{{'￥'+stores.specfoods[0].price}}</span>&nbsp;&nbsp;起<span class="cons-sp3" ><img @click="a(value.foods,index)" src="../img/加号.png" alt=""></span></p>
+                     <p><span class="cons-sp2">{{'￥'+stores.specfoods[0].price}}</span>&nbsp;&nbsp;起<span class="cons-sp3" >
+                       <img @click="a(value.foods,index)" src="../img/加号.png" alt="">
+                       <span class="comm-sp">0</span>
+                       <img class="comm-imgs" @clack="b(qq)" src="../img/减.png" alt="">
+                       </span></p>
                  </div> 
               </section>                 
             </section>
-            <div class="under">
+            <div @click="dian()" class="under">
               <div><img src="../img/购物车-白色.png" alt=""></div>
-                  <p>￥0.00</p>
-                  <span>配送费￥0</span>
-                  <span>去结算</span>
+                  <p class="comm-p1">￥0.00</p>
+                  <span class="comm-sp2">配送费￥0</span>
+                  <router-link class="comm-sp3" tag="span" to="/indent">去结算</router-link>
+                  
             </div>
+            <div class="comm-data" v-show="shows">123</div>
           </div>
        </div>
     </div>  
@@ -53,7 +59,8 @@ export default {
       data: [],
       facevalue: "0",
       datas: [],
-      bb:0
+      bb:0,
+      shows:false
     };
   },
 
@@ -103,6 +110,16 @@ export default {
     // }).then((res)=>{
     //   console.log(res);
     // })
+    },
+    b(qq){
+      console.log('减少了');
+    },
+    dian(){
+       if(this.shows==false){
+          this.shows = true; 
+       }else{
+          this.shows = false;
+       }
     }
   }
 };
@@ -215,6 +232,12 @@ a {
   border: 1px solid red;
   border-radius: 0.2rem;
 }
+.comm-sp{
+  font-size: .15rem;
+  float: right;
+  bottom: .1rem;
+  right: .2rem;
+}
 .cons-sp1 {
   color: orangered;
   border: 1px solid orangered;
@@ -226,9 +249,9 @@ a {
   color: orangered;
   font-size: 0.15rem;
 }
-.cons-sp3 > img {
-  width: 0.25rem;
-  height: 0.25rem;
+.cons-sp3 > img:first-child {
+  width: 0.22rem;
+  height: 0.22rem;
   float: right;
 }
 .under {
@@ -238,6 +261,7 @@ a {
   position: fixed;
   top: 6.2rem;
   left: 0.01rem;
+  z-index: 10;
 }
 .under > div {
   width: 0.5rem;
@@ -258,18 +282,18 @@ a {
 .under span {
   color: white;
 }
-.under p:nth-child(2) {
+.under .comm-p1 {
   color: white;
   width: 70%;
   font-size: 0.2rem;
   margin-left: 0.7rem;
 }
-.under span:nth-child(3) {
+.under .comm-sp2 {
   /* color: red; */
   margin-left: 0.7rem;
   margin-top: 0.01rem;
 }
-.under span:nth-child(4) {
+.under>.comm-sp3 {
   width: 30%;
   height: 0.5rem;
   font-size: 0.17rem;
@@ -279,5 +303,21 @@ a {
   top: 6.2rem;
   right: 0;
   background: rgb(0, 170, 17);
+}
+.comm-imgs{
+  width: .27rem;
+  height: .27rem;
+  float: right;
+  margin-right: .1rem;
+}
+.comm-data{
+  width: 100%;
+  height: 1rem;
+  background: pink;
+  position: fixed;
+  top: 5.2rem;
+  left: 0.01rem;
+  z-index: 5;
+  /* display: none; */
 }
 </style>

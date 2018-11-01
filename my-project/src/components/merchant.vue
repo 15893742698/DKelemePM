@@ -155,8 +155,10 @@ a {
 } */
 .content_ul li {
   height: 1.2rem;
+  color: black;
   /* border: 1px solid red; */
   overflow: hidden;
+  font-weight: bold;
 }
 .content_ul li div {
   /* border: 1px solid palegreen; */
@@ -194,13 +196,13 @@ a {
 }
 .content_div #sp1 {
   background: yellow;
-  font-size: 0.16rem;
+  font-size: 0.12rem;
   margin-top: 1%;
   /* margin-left: 3%; */
   /* line-height: .2rem; */
 }
 .content_div #sp2 {
-  font-size: 0.2rem;
+  font-size: 0.16rem;
 }
 .content_div #sp3 {
   font-size: 0.1rem;

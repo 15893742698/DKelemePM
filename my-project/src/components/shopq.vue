@@ -129,8 +129,9 @@ export default {
 }
 .box p {
   font-size: 0.1rem;
-  color: red;
+  color: white;
   height: 0.25rem;
+  font-weight:bold;
   line-height: 0.25rem;
 }
 .two {

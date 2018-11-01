@@ -36,6 +36,7 @@ import Order from '../components//order'
 import Jifenshangcheng from '../components/jifenshangcheng'
 import Searchfood from '../components/searchfood'
 import Prise from '../components/prise'
+import Indent from '../components/indent'
 Vue.use(Router)
 
 export default new Router({
@@ -80,7 +81,11 @@ export default new Router({
       name:"login",
       component: Login
     },
-   
+    //进入订单
+    {
+      path:'/indent',
+      component:Indent
+    },
     {
       //进入网站的主界面
       path: '/',
