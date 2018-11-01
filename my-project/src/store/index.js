@@ -52,6 +52,11 @@ const state = {
   },
   shopcar: [],
   sousuojilu: [],
+  allshuju: [],
+  shoping: [], //购物车
+  num: 0, //总金额
+  zonggeshu: 0, //总个数
+  peisongfei: 0 //配送费
 }
 const store = new Vuex.Store({
   state,
@@ -111,25 +116,48 @@ const store = new Vuex.Store({
     changesousuojilu(state, value) {
       state.sousuojilu.push(value)
     },
-    //更改购物车数据
-    changeshopcar(state, value) {
-      state.shopcar.push(value)
+    //更改所有商品数据
+    changeallshuju(state, value) {
+      state.allshuju = value;
     },
-    //更改产品的数量
-    changeshuliang(state, value) {
-      state.shopcar[value].quantity += 1;
+    //更改count
+    a(state, a) {
+      a.count++;
+      if (state.shoping.indexOf(a) == -1) {
+        state.shoping.push(a);
+      }
+      state.num += a.price;
+      state.zonggeshu += 1;
+      var ps = 0;
+      for (var a = 0; a < state.shoping.length; a++) {
+        if (ps < state.shoping[a].packing_fee) {
+          ps = state.shoping[a].packing_fee
+        }
+      }
+      state.peisongfei = ps;
     },
-    //删除购物车数据
-    clearshopcar(state, value) {
-      state.shopcar = value;
+    b(state, b) {
+      b.count--;
+      for (let i = 0; i < state.shoping.length; i++) {
+        if (state.shoping[i].count == 0) {
+          state.shoping.splice(i, 1)
+        }
+      }
+      var ps = 0;
+      for (var a = 0; a < state.shoping.length; a++) {
+        if (ps < state.shoping[a].packing_fee) {
+          ps = state.shoping[a].packing_fee
+        }
+      }
+      console.log(state.num, state.peisongfei)
+      state.peisongfei = ps;
+      state.num -= b.price;
+      state.zonggeshu -= 1;
     },
-    //减数量
-    jianshuliang(state, value) {
-      state.shopcar[value].quantity -= 1;
-    },
-    //删除食品数据
-    shanchushopcar(state,value){
-        state.shopcar.splice(value,1)
+    shopingclear(state) {
+      for (var a = 0; a < state.shoping.length; a++) {
+        state.shoping[a].count = 0;
+      }
     }
   }
 })
