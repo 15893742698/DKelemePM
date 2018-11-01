@@ -56,7 +56,9 @@ const state = {
   shoping: [], //购物车
   num: 0, //总金额
   zonggeshu: 0, //总个数
-  peisongfei: 0 //配送费
+  peisongfei: 0, //配送费，
+  //添加地址
+  tianjiadizhi: false
 }
 const store = new Vuex.Store({
   state,
@@ -158,6 +160,9 @@ const store = new Vuex.Store({
       for (var a = 0; a < state.shoping.length; a++) {
         state.shoping[a].count = 0;
       }
+    },
+    tianjiadizhi(state, value) {
+      state.tianjiadizhi = value;
     }
   }
 })
