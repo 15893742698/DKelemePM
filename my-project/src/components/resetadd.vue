@@ -46,6 +46,7 @@ export default {
   },
   created() {
     this.$store.commit("changetn", "编辑地址");
+    this.$store.commit("tianjiadizhi",false)
     let loadingInstance1 = Loading.service({ fullscreen: true });
     loadingInstance1.close();
     this.loading = false;

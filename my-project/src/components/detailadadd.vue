@@ -57,7 +57,6 @@ export default {
   },
   created() {
     this.$store.commit("changetn", "新增地址");
-    this.$store.commit("tianjiadizhi",false)
     let loadingInstance1 = Loading.service({ fullscreen: true });
     this.detailschoolvalue = this.$store.state.adaddmsgg.address;
     this.namevalue = this.$store.state.adobjname;
@@ -154,7 +153,11 @@ export default {
         }).then(res => {
           loadingInstance1.close();
           this.loading = false;
-          this.$router.push({ name: "resetadd" });
+          if (this.$store.state.tianjiadizhi == false) {
+            this.$router.push({ name: "resetadd" });
+          } else {
+            this.$router.push({ name: "orderform" });
+          }
           this.$store.commit("changeaddtlphone", "");
           this.$store.commit("changeaddphone", "");
           this.$store.commit("changeaddname", "");
@@ -162,10 +165,10 @@ export default {
       }
     },
     returnuup() {
-      if(this.$store.state.tianjiadizhi==false){
+      if (this.$store.state.tianjiadizhi == false) {
         this.$router.push({ name: "resetadd" });
-      }else{
-        this.$router.push({name:"orderfrom"});
+      } else {
+        this.$router.push({ name: "orderform" });
       }
     },
     godenglu() {
