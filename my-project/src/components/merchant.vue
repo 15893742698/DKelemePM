@@ -34,7 +34,7 @@
     </div><br>
             <p><span class="sp7">￥{{k.float_minimum_order_amount}}起送/</span><span class="sp7">{{k.piecewise_agent_fee.tips}}</span><span class="sp7">{{k.distance}}/{{k.order_lead_time}}</span></p>
         </div>
-        <hr>
+        
       
     </router-link>
     </ul>
@@ -178,6 +178,9 @@ a {
   height: 1rem;
   /* border: 1px solid yellow; */
   margin-left: 0.1rem;
+}
+.content_div{
+  border-top: 1px solid gray;
 }
 .content_div p {
   height: 0.2rem;
