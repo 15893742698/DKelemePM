@@ -213,10 +213,4 @@ img{
   height: .25rem;
 }
 </style>
-<style>
-.swiper-container-horizontal > .swiper-pagination-bullets{
-  width: .1rem;
-  height: .1rem;
-}
-</style>
 
