@@ -56,7 +56,7 @@ export default {
   padding: 3%;
   font-size: 0.16rem;
   color: black;
-  line-height: 30px;
+  line-height: 0.4rem;
 }
 </style>
 
