@@ -59,6 +59,7 @@ const state = {
   peisongfei: 0, //配送费，
   //添加地址
   tianjiadizhi: false,
+  vipvalue: false
 }
 const store = new Vuex.Store({
   state,
@@ -166,6 +167,10 @@ const store = new Vuex.Store({
     },
     qingkongsousuo(state, value) {
       state.sousuoshuju = value;
+    },
+    //更改vip状态
+    changevipstate(state, value) {
+      state.vipvalue = value;
     }
   }
 })

@@ -61,6 +61,7 @@ export default {
   },
   created() {
     this.$store.commit("changetn", "会员中心");
+    this.$store.commit("changevipstate",false)
     let loadingInstance1 = Loading.service({ fullscreen: true });
     if (!this.$store.state.denglu) {
       this.$router.push({ name: "unloginyouhuiyemian" });
