@@ -1,10 +1,17 @@
 <template>
     <div>
         <div class="or-one">
-            <p><span @click="tiao"> &lt; </span>订单列表 <span>登录|注册</span></p>
+            <p><span @click="tiao"> &lt; </span>订单列表 <span @click="denglu">{{dengluma}}</span></p>
         </div>
         <div class="or-two">
-            <p><img src="./img/wxb定位.png" alt="">请添加一个收货地址<span> &gt; </span></p>
+            <ul v-if="ppp" class="dizhiul">
+              <li class="dizhili" v-for="(item, index) in data" :key="index">
+                <p>{{item.address}}</p>
+                <p>{{item.address_detail}}</p>
+                <span>{{item.tag}}</span> <span>{{item.name}}</span><span>{{item.phone}}</span>
+              </li>
+            </ul>
+            <p @click="tianjiadizhiaa"><img src="./img/wxb定位.png" alt="">pp<span> &gt; </span></p>
         </div>
         <div class="or-therr">
             <div class="div1">送达时间</div>
@@ -20,29 +27,74 @@
         <div class="or-five">
             <p><img src="./img/6.png" alt="">两万五v</p>
         </div>
-        <div class="or-six">
-            <p>shuiguo <span>￥20</span><span style="float: right; margin-right: .2rem; color:  orangered">x 1</span></p>
+        <div class="or-six" v-for="(item, index) in $store.state.shoping" :key="index">
+            <p>{{item.name}} <span>￥{{$store.state.num}}</span><span style="float: right; margin-right: .2rem; color:  orangered">x 1</span></p>
             <p>餐盒 <span>￥26605</span></p>
-            <p>配送费<span>￥4</span></p>
+            <p>配送费<span>￥{{$store.state.peisongfei}}</span></p>
             <p>订单 ￥26605 <span style="color:  orangered">待支付</span></p>
-            <span style="color:  orangered">￥26629</span>
+            <span style="color:  orangered">￥{{$store.state.num+$store.state.peisongfei+26605}}</span>
         </div>
         <div class="or-bottom">
-            <span>待支付 ￥26629</span>
-            <span>确认下单</span>
+            <span>待支付 ￥{{$store.state.num+$store.state.peisongfei+26605}}</span>
+            <span @click="maiba">确认下单</span>
         </div>
     </div>
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      dengluma: "",
+      data: [],
+      ppp: false,
+      pp: ""
+    };
+  },
   methods: {
     tiao() {
       this.$router.go(-1);
+    },
+    denglu() {
+      if (!this.$store.state.denglu) {
+        this.$router.push({ name: "unlogin" });
+      } else {
+        this.$router.push({ name: "login" });
+      }
+    },
+    tianjiadizhiaa() {
+      this.$router.push({ name: "detailadadd" });
+    },
+    maiba(){
+      this.$router.push({name:"goumai"})
     }
   },
-  created(){
-      this.$store.commit("tianjiadizi",true)
+  created() {
+    if (!this.$store.state.denglu) {
+      this.dengluma = "登录|注册";
+    } else {
+      this.dengluma = "我的";
+    }
+    this.$store.commit("tianjiadizhi", true);
+    let url =
+      "https://elm.cangdu.org/v1/users/" +
+      this.$store.state.usermsg.user_id +
+      "/addresses";
+    this.$http({
+      method: "get",
+      url: url,
+      withCredentials: true
+    }).then(res => {
+      if (res.data.length == 0) {
+        this.ppp = false;
+        this.pp = "请添加一个收货地址";
+      } else {
+        this.ppp = true;
+        this.data = res.data;
+        this.pp = "继续添加收货地址";
+      }
+      // console.log(res.data)
+    });
   }
 };
 </script>
@@ -169,5 +221,18 @@ body {
   line-height: 0.6rem;
   background: rgb(52, 185, 52);
   padding: 0 0.04rem;
+}
+.dizhiul {
+  width: 100%;
+}
+.dizhili {
+  width: 94%;
+  padding: 3%;
+}
+.dizhili > p {
+  font-size: 0.2rem;
+}
+.dizhili > span {
+  font-size: 0.12rem;
 }
 </style>
