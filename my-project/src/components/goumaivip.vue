@@ -32,7 +32,7 @@
         <button @click="qurenzhifu">确认支付</button>
         <div class="xiguadiv" v-if="xiguagua">
             <img src="../imgs/感叹.png" alt="">
-            <p>请在饿了么APP中打开</p>
+            <p>{{pp}}</p>
             <button @click="godenglu">确认</button>
         </div>
     </div>    
@@ -47,7 +47,8 @@ export default {
       minutes: "",
       seconds: "",
       queding: true,
-      xiguagua: false
+      xiguagua: false,
+      pp: ""
     };
   },
   created() {
@@ -69,7 +70,11 @@ export default {
   },
   methods: {
     returnuup() {
-      this.$router.push({ name: "vip" });
+      if (this.$store.state.vipvalue == ture) {
+        this.$router.push({ name: "vip" });
+      } else {
+        this.$router.push({ name: "orderform" });
+      }
     },
     zhifubao() {
       this.queding = true;
@@ -79,9 +84,17 @@ export default {
     },
     qurenzhifu() {
       this.xiguagua = true;
+      if (this.$store.state.vipvalue) {
+        this.pp = "下单成功";
+      } else {
+        this.pp = "请在饿了么APP中的打开";
+      }
     },
     godenglu() {
       this.xiguagua = false;
+      if (this.$store.state.vipvalue) {
+        this.$router.push({ name: "order" });
+      }
     }
   },
   beforeMount() {}

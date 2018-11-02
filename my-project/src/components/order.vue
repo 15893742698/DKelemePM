@@ -4,18 +4,17 @@
           <img src="../imgs/后退.png" alt="" @click="returnuup">
           <p>{{$store.state.titlename}}</p>
         </div>
-        <div class="ord-one"> 
+        <div class="ord-one"  v-for="(item, index) in data" :key="index" v-show="jilu"> 
           <div class="ord-two">
-            <img src="./img/减.png" alt="">
             <div> 
-            <p>两万五v</p>
-            <p>shuiguo1-默认</p>
+            <p>{{item.restaurant_name}}</p>
+            <p>{{item.formatted_created_at}}</p>
             </div>
           </div> 
           <div class="ord-three">
             <p>支付成功</p>
-            <p style="color: orangered; font-size: .2rem; float:right;">20</p>
-            <p>再来一单</p>
+            <p style="color: orangered; font-size: .2rem; float:right;">{{item.total_amount}}</p>
+            <p @click="zaimai">再来一单</p>
           </div>
           </div>
         <Botfix></Botfix>
@@ -28,33 +27,43 @@ export default {
   name: "order",
   data() {
     return {
-      name: "我是"
+      name: "我是",
+      data: [],
+      jilu: false
     };
   },
   created() {
     this.$store.commit("changetn", "我的订单");
-    var botchoice = {
-      waimai: false,
-      sousuo: false,
-      dingdan: true,
-      mine: false
-    };
-    this.$store.commit("changebotchoice", botchoice);
-    let loadingInstance1 = Loading.service({ fullscreen: true });
-    let url = "https://elm.cangdu.org/bos/orders?offset=0&limit=5";
-    this.$http({
-      method: "get",
-      url: url,
-      withCredentials: true
-    }).then(res => {
-      console.log(res);
-    });
-    loadingInstance1.close();
-    this.loading = false;
+    if (!this.$store.state.denglu) {
+      this.jilu = false;
+    } else {
+      this.jilu = true;
+      var botchoice = {
+        waimai: false,
+        sousuo: false,
+        dingdan: true,
+        mine: false
+      };
+      this.$store.commit("changebotchoice", botchoice);
+      let loadingInstance1 = Loading.service({ fullscreen: true });
+      let url = "https://elm.cangdu.org/bos/orders?offset=0&limit=1";
+      this.$http({
+        method: "get",
+        url: url,
+        withCredentials: true
+      }).then(res => {
+        this.data = res.data;
+      });
+      loadingInstance1.close();
+      this.loading = false;
+    }
   },
   methods: {
     returnuup() {
       this.$router.go(-1);
+    },
+    zaimai() {
+      this.$router.push({ name: "waimai" });
     }
   },
   components: {
@@ -63,29 +72,29 @@ export default {
 };
 </script>
 <style>
-.ord-one{
+.ord-one {
   display: flex;
-  padding: .2rem .04rem;
-  justify-content:space-between; 
+  padding: 0.2rem 0.04rem;
+  justify-content: space-between;
+  border: 1px solid black;
 }
-.ord-two{
+.ord-two {
   display: flex;
   justify-content: space-between;
-  
 }
-.ord-two>img{
-  width: .4rem;
-  height: .4rem;
+.ord-two > img {
+  width: 0.4rem;
+  height: 0.4rem;
 }
-.ord-two p{
-  font-size: .15rem;
-  margin-top: .16rem;
+.ord-two p {
+  font-size: 0.15rem;
+  margin-top: 0.16rem;
 }
-.ord-three p{
-  font-size: .23rem;
+.ord-three p {
+  font-size: 0.23rem;
 }
-.ord-three p:nth-child(3){
-  clear:both;
+.ord-three p:nth-child(3) {
+  clear: both;
 }
 .orderdiv {
   width: 100%;

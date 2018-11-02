@@ -11,11 +11,11 @@
                 <p>{{item.address_detail}}</p>
               </div>
               <div>
-                <span>{{item.tag}}</span> <span>{{item.name}}</span><span>{{item.phone}}</span>
+                <span>{{item.tag}}</span><span>{{item.name}}</span><span>{{item.phone}}</span>
               </div>
             </li>
             </ul>
-            <p @click="tianjiadizhiaa"><img src="./img/wxb定位.png" alt="">pp<span> &gt; </span></p>
+            <p @click="tianjiadizhiaa"><img src="./img/wxb定位.png" alt="">{{pp}}<span> &gt; </span></p>
         </div>
         <div class="or-therr">
             <div class="div1">送达时间</div>
@@ -75,11 +75,15 @@ export default {
   },
   created() {
     if (!this.$store.state.denglu) {
+      this.$router.push({ name: "unlogin" });
+    }
+    if (!this.$store.state.denglu) {
       this.dengluma = "登录|注册";
     } else {
       this.dengluma = "我的";
     }
     this.$store.commit("tianjiadizhi", true);
+    this.$store.commit("changevipstate",true);
     let url =
       "https://elm.cangdu.org/v1/users/" +
       this.$store.state.usermsg.user_id +
@@ -93,11 +97,11 @@ export default {
         this.ppp = false;
         this.pp = "请添加一个收货地址";
       } else {
+        console.log(res.data);
         this.ppp = true;
         this.data = res.data;
         this.pp = "继续添加收货地址";
       }
-      // console.log(res.data)
     });
   }
 };
@@ -230,13 +234,15 @@ body {
   width: 100%;
 }
 .dizhili {
-  width: 94%;
-  padding: 3%;
+  width: 98%;
+  padding: 1%;
 }
-.dizhili > p {
+.dizhili > div > p {
   font-size: 0.2rem;
+  padding: 1%;
 }
-.dizhili > span {
+.dizhili > div > span {
   font-size: 0.12rem;
+  padding: 1%;
 }
 </style>
