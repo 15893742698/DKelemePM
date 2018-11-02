@@ -16,6 +16,14 @@
                 <p class="cityaddress">{{item.address}}</p>
             </li>
         </ul>
+        <p>搜索历史</p>
+        <ul class="lishijilu" v-if="show">
+          <li v-for="(item, index) in bubu" :key="index" @click="xuanzezhege(item)">
+            <p>{{item.name}}</p>
+            <p>{{item.address}}</p>
+          </li>
+          <button @click="qingkongsousuo">清空所有</button>
+        </ul>
         <div class="hele" v-show="hele">
             <img src="../imgs/感叹.png" alt="">
             <div>
@@ -35,7 +43,9 @@ export default {
       add: "",
       cityid: "",
       data: [],
-      hele: false
+      hele: false,
+      show: false,
+      bubu: []
     };
   },
   created() {
@@ -50,6 +60,12 @@ export default {
     } else {
       this.$router.push({ name: "choicecity" });
     }
+    if (this.$store.state.sousuojilu.length == 0) {
+      this.show = false;
+    } else {
+      this.show = true;
+      this.bubu = this.$store.state.sousuojilu;
+    }
   },
   methods: {
     returnuup() {
@@ -59,7 +75,6 @@ export default {
       if (!this.add) {
         this.hele = true;
       } else {
-        // console.log("aaa");
         let url =
           "https://elm.cangdu.org/v1/pois?city_id=" +
           this.cityid +
@@ -71,7 +86,6 @@ export default {
           url: url,
           withCredentials: true
         }).then(res => {
-          //   console.log(res);
           this.data = res.data;
         });
       }
@@ -81,8 +95,16 @@ export default {
     },
     baocunadd(item) {
       this.$store.commit("changecityadd", item);
+      this.$store.commit("changesousuojilu", item);
       this.add = item.name;
       this.$router.push({ name: "waimai" });
+    },
+    qingkongsousuo() {
+      this.$store.commit("qingkongsousuo", []);
+    },
+    xuanzezhege(item){
+      this.$store.commit("changecityadd",item);
+      this.$router.push({name:"waimai"});
     }
   }
 };
@@ -174,6 +196,34 @@ export default {
   color: black;
   padding-bottom: 3%;
   font-size: 0.2rem;
+}
+.dizhiul + p {
+  width: 94%;
+  padding: 3%;
+  font-size: 0.2rem;
+}
+.lishijulu{
+  width: 100%;
+}
+.lishijilu>li{
+  width: 94%;
+  padding: 3%;
+}
+.lishijilu>li>p{
+  width: 98%;
+  padding: 1%;
+  font-size: 0.16rem;
+}
+.lishijilu>button{
+  width: 94%;
+  margin: 3%;
+  height: 0.5rem;
+  line-height: 0.4rem;
+  background-color: rgb(153, 241, 153);
+  color: white;
+  font-size: 0.2rem;
+  border-radius: 10px;
+  
 }
 </style>
 

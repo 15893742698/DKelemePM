@@ -58,7 +58,7 @@ const state = {
   zonggeshu: 0, //总个数
   peisongfei: 0, //配送费，
   //添加地址
-  tianjiadizhi: false
+  tianjiadizhi: false,
 }
 const store = new Vuex.Store({
   state,
@@ -163,6 +163,9 @@ const store = new Vuex.Store({
     },
     tianjiadizhi(state, value) {
       state.tianjiadizhi = value;
+    },
+    qingkongsousuo(state, value) {
+      state.sousuoshuju = value;
     }
   }
 })
