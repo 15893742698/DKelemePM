@@ -104,7 +104,7 @@ export default {
   margin-bottom: 3%;
 }
 .hblicon > p {
-  font-size: 0.06rem;
+  font-size: 0.1rem;
   margin-top: 1%;
 }
 .hblicon > .hblibig {

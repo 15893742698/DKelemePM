@@ -20,7 +20,6 @@
                 <div class="hblileft">
                     <p>¥</p>
                     <span>{{item.amount}}</span>
-                    <p>.0</p>
                     <p class="manjian">{{item.description_map.sum_condition}}</p>
                 </div>
                 <div class="hblicon">
