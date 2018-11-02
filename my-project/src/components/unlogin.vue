@@ -29,7 +29,6 @@ export default {
 </script>
 <style scoped>
 .hello {
-  width: 95%;
   border-bottom: 15px solid #eaeaea;
 }
 </style>

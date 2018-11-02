@@ -124,8 +124,8 @@ export default {
   width: 90%;
   font-size: 0.2rem;
   color: white;
-  height: 40px;
-  line-height: 40px;
+  height: 0.3rem;
+  line-height: 0.3rem;
   margin-top: 3%;
   border-radius: 10px;
   background-color: rgb(59, 59, 219);
@@ -140,7 +140,7 @@ export default {
 }
 .dizhili > p {
   padding: 1%;
-  line-height: 30px;
+  line-height: 0.3rem;
   font-size: 0.2rem;
 }
 .dizhili > .cityaddress {
@@ -160,11 +160,11 @@ export default {
 }
 .hele > p {
   font-size: 0.2rem;
-  height: 50px;
+  height: 0.5rem;
   background-color: rgb(231, 96, 42);
   color: white;
   border-radius: 10px;
-  line-height: 50px;
+  line-height: 0.5rem;
   padding: 2%;
 }
 .hele > div {

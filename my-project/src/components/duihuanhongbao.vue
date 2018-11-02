@@ -136,8 +136,8 @@ input {
   color: white;
   background-color: rgba(233, 216, 119, 0.883);
   border-radius: 10px;
-  height: 50px;
-  line-height: 50px;
+  height: 0.5rem;
+  line-height: 0.5rem;
   font-size: 0.16rem;
 }
 .querenduihuan {
@@ -159,7 +159,7 @@ input {
 }
 .wait {
   width: 50%;
-  height: 50px;
+  height: 0.5rem;
   line-height: 50px;
   font-size: 0.3rem;
   margin: 3%;

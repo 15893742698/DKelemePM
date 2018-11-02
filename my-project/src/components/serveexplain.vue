@@ -12,11 +12,11 @@ export default {
   name: "serveexplain",
   data() {
     return {
-        data:""
+      data: ""
     };
   },
   created() {
-    this.$store.commit("changetn",this.$route.params.name);
+    this.$store.commit("changetn", this.$route.params.name);
     this.data = this.$route.params.quest;
   },
   methods: {
@@ -28,31 +28,30 @@ export default {
 </script>
 <style>
 .hello {
-  width: 95%;
+  width: 98%;
+  padding: 1%;
   background-color: #436eee;
-  height: 50px;
   border-bottom: 1px solid #436eee;
-  line-height: 50px;
-  text-align: center;
-  padding-left: 5%;
-  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .hello img {
-  float: left;
   width: 10%;
   vertical-align: top;
-  margin-top: 1%;
+  margin-top: 0%;
 }
 .hello p {
-  font-size: 0.2rem;
   color: white;
   font-weight: bold;
-  margin-right: 15%;
+  font-size: 0.2rem;
+  width: 58%;
+  text-align: start;
 }
 .hello > a {
   color: black;
 }
-.hello+p{
+.hello + p {
   width: 94%;
   padding: 3%;
   font-size: 0.16rem;

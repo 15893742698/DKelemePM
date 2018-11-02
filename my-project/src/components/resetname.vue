@@ -2,7 +2,7 @@
     <div class="resetname">
         <Headd></Headd>
         <div class="rename">
-            <input type="text" v-model="rename" placeholder="输入用户名" @input="jtinput" :class="{red:res}">
+            <input type="text" v-model="rename" placeholder="输入用户名" @input="jtinput" :class="{redd:res}">
             <p>{{resetnametips}}</p>
             <button @click="rename33" :disabled="res">确认修改</button>
         </div>
@@ -78,12 +78,13 @@ export default {
 .rename > button {
   width: 94%;
   padding: 3%;
-  height: 50px;
+  height: 0.5rem;
   color: white;
   background-color: blue;
   border-radius: 10px;
+  font-size: 0.2rem;
 }
-.red {
+.redd {
   border: 1px solid red;
 }
 </style>

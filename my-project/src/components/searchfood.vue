@@ -86,34 +86,29 @@ export default {
 .searchfooddiv {
   width: 100%;
 }
-.hello {
-  width: 95%;
-}
 .home > a {
   width: 95%;
 }
 .hello {
-  width: 95%;
+  width: 98%;
+  padding: 1%;
   background-color: #436eee;
-  height: 50px;
   border-bottom: 1px solid #436eee;
-  line-height: 50px;
-  text-align: center;
-  padding-left: 5%;
-  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .hello img {
-  float: left;
   width: 10%;
   vertical-align: top;
-  margin-top: 1%;
-  /* border: 1px solid red; */
+  margin-top: 0%;
 }
 .hello p {
-  font-size: 0.2rem;
   color: white;
   font-weight: bold;
-  margin-right: 15%;
+  font-size: 0.2rem;
+  width: 55%;
+  text-align: start;
 }
 .hello > a {
   color: black;
@@ -135,8 +130,8 @@ export default {
 .sousuofood > button {
   width: 30%;
   background-color: rgb(87, 87, 228);
-  height: 40px;
-  line-height: 40px;
+  height: 0.3rem;
+  line-height: 0.3rem;
   color: white;
   border-radius: 10px;
   font-size: 0.2rem;

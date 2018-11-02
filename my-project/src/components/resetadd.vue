@@ -44,13 +44,6 @@ export default {
       loading: true
     };
   },
-  created() {
-    this.$store.commit("changetn", "编辑地址");
-    this.$store.commit("tianjiadizhi",false)
-    let loadingInstance1 = Loading.service({ fullscreen: true });
-    loadingInstance1.close();
-    this.loading = false;
-  },
   methods: {
     bianjiadd() {
       // console.log(this.$store.state.usermsg)
@@ -79,17 +72,33 @@ export default {
       }).then(res => {
         loadingInstance1.close();
         this.loading = false;
-        // console.log(res);
-        this.adds = [];
+        let url =
+          "https://elm.cangdu.org/v1/users/" +
+          this.$store.state.usermsg.user_id +
+          "/addresses";
+        this.$http({
+          method: "get",
+          url: url,
+          withCredentials: true
+        }).then(res => {
+          if (res.data.length == 0) {
+            this.adds = [];
+            this.youdizhi = false;
+          } else {
+            this.adds = res.data;
+            this.youdizhi = true;
+          }
+        });
       });
     },
-    returnuup(){
-      this.$router.push({name:"login"})
+    returnuup() {
+      this.$router.push({ name: "login" });
     }
   },
   created() {
     this.youdizhi = false;
     this.$store.commit("changetn", "编辑地址");
+    this.$store.commit("tianjiadizhi", false);
     this.loading = true;
     let loadingInstance1 = Loading.service({ fullscreen: true });
     let url =
@@ -112,7 +121,6 @@ export default {
         this.adds = res.data;
         this.youdizhi = true;
       }
-      // console.log("sipengju",this.adds,this.idd);
     });
   }
 };
@@ -184,27 +192,25 @@ export default {
   margin-right: 3%;
 }
 .hello {
-  width: 95%;
+  width: 98%;
+  padding: 1%;
   background-color: #436eee;
-  height: 50px;
   border-bottom: 1px solid #436eee;
-  line-height: 50px;
-  text-align: center;
-  padding-left: 5%;
-  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .hello img {
-  float: left;
   width: 10%;
   vertical-align: top;
-  margin-top: 1%;
-  /* border: 1px solid red; */
+  margin-top: 0%;
 }
 .hello p {
-  font-size: 0.2rem;
   color: white;
   font-weight: bold;
-  margin-right: 15%;
+  font-size: 0.2rem;
+  width: 58%;
+  text-align: start;
 }
 .hello > a {
   color: black;

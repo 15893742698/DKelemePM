@@ -36,76 +36,76 @@ export default {
   },
   methods: {
     returnuup() {
-      this.$router.push({name:"vip"});
+      this.$router.push({ name: "vip" });
     }
   }
 };
 </script>
 <style scoped>
 .hello {
-  width: 95%;
+  width: 98%;
+  padding: 1%;
   background-color: #436eee;
-  height: 50px;
   border-bottom: 1px solid #436eee;
-  line-height: 50px;
-  text-align: center;
-  padding-left: 5%;
-  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .hello img {
-  float: left;
   width: 10%;
   vertical-align: top;
-  margin-top: 1%;
+  margin-top: 0%;
 }
 .hello p {
-  font-size: 0.2rem;
   color: white;
   font-weight: bold;
-  margin-right: 15%;
+  font-size: 0.2rem;
+  width: 58%;
+  text-align: start;
 }
 .hello > a {
   color: black;
 }
-.duihuanmaxvip>p{
+.duihuanmaxvip > p {
   font-size: 0.16rem;
   margin: 3%;
   width: 94%;
   padding-bottom: 5%;
 }
-.duihuanmaxvip>p>span{
+.duihuanmaxvip > p > span {
   font-weight: bold;
 }
-.khkminput{
+.khkminput {
   width: 96%;
   font-size: 0.16rem;
   padding: 2%;
   border-bottom: 1px solid gray;
 }
-.duihuanmaxvip>button{
+.duihuanmaxvip > button {
   width: 90%;
   margin: 5%;
-  height: 50px;
-  line-height: 50px;
+  height: 0.5rem;
+  line-height: 0.5rem;
   color: white;
   background-color: gray;
   margin-bottom: 10%;
-  border-radius: 10px; 
+  border-radius: 10px;
+  font-size: 0.2rem;
 }
-.wenxintips{
+.wenxintips {
   width: 100%;
   text-align: center;
   font-size: 0.16rem;
 }
-.wenxintips>div{
+.wenxintips > div {
   width: 70%;
   margin-left: 10%;
   text-align: start;
 }
-.wenxintips>p{
+.wenxintips > p {
   padding: 2%;
 }
-.wenxintips>div>p{
+.wenxintips > div > p {
   padding: 2%;
   line-height: 20px;
 }

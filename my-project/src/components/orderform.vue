@@ -5,11 +5,15 @@
         </div>
         <div class="or-two">
             <ul v-if="ppp" class="dizhiul">
-              <li class="dizhili" v-for="(item, index) in data" :key="index">
+              <li v-for="(item, index) in data" :key="index" class="dizhili">
+              <div>
                 <p>{{item.address}}</p>
                 <p>{{item.address_detail}}</p>
+              </div>
+              <div>
                 <span>{{item.tag}}</span> <span>{{item.name}}</span><span>{{item.phone}}</span>
-              </li>
+              </div>
+            </li>
             </ul>
             <p @click="tianjiadizhiaa"><img src="./img/wxb定位.png" alt="">pp<span> &gt; </span></p>
         </div>
@@ -48,12 +52,12 @@ export default {
       dengluma: "",
       data: [],
       ppp: false,
-      pp: ""
+      pp: "请添加一个收货地址"
     };
   },
   methods: {
     tiao() {
-      this.$router.go(-1);
+      this.$router.go(-2);
     },
     denglu() {
       if (!this.$store.state.denglu) {
@@ -65,8 +69,8 @@ export default {
     tianjiadizhiaa() {
       this.$router.push({ name: "detailadadd" });
     },
-    maiba(){
-      this.$router.push({name:"goumai"})
+    maiba() {
+      this.$router.push({ name: "goumai" });
     }
   },
   created() {

@@ -51,20 +51,30 @@ export default {
   }
 };
 </script>
-<style scoped>
+<style>
 .hello {
-  width: 95%;
-  border-bottom: 1px solid white;
-  position: absolute;
-  top: 0;
+  width: 98%;
+  padding: 1%;
+  background-color: #436eee;
+  border-bottom: 1px solid #436eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.yue {
-  padding-bottom: 1%;
-  position: relative;
-  padding-top: 50px;
+.hello img {
+  width: 10%;
+  vertical-align: top;
+  margin-top: 0%;
 }
-#max {
-  padding-top: 13%;
+.hello p {
+  color: white;
+  font-weight: bold;
+  font-size: 0.2rem;
+  width: 58%;
+  text-align: start;
+}
+.hello > a {
+  color: black;
 }
 #tijiaobtn {
   background-color: orangered;

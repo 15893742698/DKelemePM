@@ -148,11 +148,11 @@ export default {
 }
 .gantandiv > button {
   font-size: 0.2rem;
-  height: 50px;
+  height: 0.5rem;
   background-color: rgb(233, 188, 104);
   color: white;
   border-radius: 10px;
-  line-height: 50px;
+  line-height: 0.5rem;
   padding: 2%;
   width: 96%;
 }
@@ -191,6 +191,10 @@ input {
 .vercode span {
   color: blue;
 }
+.vercode>img{
+  width: 20%;
+  height: 100%;
+}
 .vercode + div {
   display: flex;
   justify-content: start;
@@ -211,7 +215,7 @@ input {
   font-size: 0.18rem;
   margin-left: 5%;
   color: white;
-  height: 50px;
+  height: 0.5rem;
   margin-top: 2%;
 }
 #resetpassword {
