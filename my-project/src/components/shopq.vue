@@ -50,7 +50,7 @@ export default {
       this.cc = n;
     },
     tiao() {
-      this.$router.go(-1);
+      this.$router.push('/waimai');
     }
   },
   created() {
