@@ -116,7 +116,7 @@ export default {
   color: white;
   font-weight: bold;
   font-size: 0.2rem;
-  width: 58%;
+  width: 60%;
   text-align: start;
 }
 .hello > a {

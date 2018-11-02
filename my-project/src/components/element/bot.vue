@@ -21,25 +21,38 @@
     </div>
 </template>
 <script>
-    export default{
-        name:'bot'
-    }
+export default {
+  name: "bot"
+};
 </script>
 <style>
+.bbot {
+  width: 100%;
+}
+.bbot > a {
+  width: 90%;
+}
 .botimgs1 {
   width: 5%;
   float: left;
   vertical-align: top;
-  margin: 5% 3%;
 }
 .botimgs2 {
   width: 5%;
 }
-.botflyaway {
+.botflyfa {
+  width: 98%;
+  padding: 1%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 5% 2%;
+}
+.botflyaway {
+  width: 96%;
+  padding: 2%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   border-bottom: 1px solid #eaeaea;
 }
 .botflyaway > p {

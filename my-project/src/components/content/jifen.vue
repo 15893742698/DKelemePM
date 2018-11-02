@@ -83,8 +83,11 @@ export default {
 .whitedivtop>div{
     text-align: end;
 }
+.whitedivtop>div>a{
+    width: 40%;
+}
 .whitedivtop>div span{
-    width: 30%;
+    width: 40%;
     font-size: 0.12rem;
     color:blue;
 }
