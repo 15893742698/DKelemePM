@@ -28,9 +28,9 @@
                         <span class="cons-sp">招牌</span>
                      </div>
                      <p>{{stores.description}}</p>
-                     <strong>{{stores.tips}}</strong>
+                     <strong class="str">{{stores.tips}}</strong>
                      <p class="cons-sp1">是的分身乏术放上的</p>
-                     <p><span class="cons-sp2">{{'￥'+stores.specfoods[0].price}}</span>&nbsp;&nbsp;起<span class="cons-sp3" >
+                     <p><span class="cons-sp2">{{'￥'+stores.specfoods[0].price}}</span><span class="rise">起</span><span class="cons-sp3" >
                         <img @click="a(stores.specfoods[0])" src="../img/加号.png" alt="">
                         <span class="comm-sp">{{stores.specfoods[0].count}}</span>
                        <img v-if="stores.specfoods[0].count != 0"  @click="b(stores.specfoods[0])" class="comm-imgs" src="../img/减.png" alt="">
@@ -45,7 +45,7 @@
                 <p>{{zonggeshu}}</p>
               </div>
                   <p class="comm-p1">￥{{num}}</p>
-                  <span class="comm-sp2">配送费￥{{peisongfei}}</span>
+                  <span class="comm-sp2">配送费 ￥{{peisongfei}}</span>
                   <span class="comm-sp3" @click="jiezhang">去结算</span>
             </div>
             <div class="comm-data" v-show="shows">
@@ -225,6 +225,13 @@ a {
   overflow: hidden;
   font-size: 0.05rem;
 }
+.str{
+  font-size: .1rem;
+}
+.rise{
+  font-size: .1rem;
+  margin-left: .05rem;
+}
 .stop_right p:first-child {
   /* padding: .05rem 0; */
   width: 0.01rem;
@@ -232,7 +239,7 @@ a {
 }
 .stop_right p:nth-child(2) {
   /* color: red; */
-  /* font-size: .15rem; */
+  font-size: .12rem;
   margin: 0.1rem 0;
 }
 .stop_right p:nth-child(3) {
@@ -249,6 +256,7 @@ a {
 .cons-sp {
   float: right;
   color: red;
+  font-size: .1rem;
   border: 1px solid red;
   border-radius: 0.2rem;
 }
@@ -259,6 +267,7 @@ a {
   right: 0.2rem;
 }
 .cons-sp1 {
+  font-size: .11rem;
   color: orangered;
   border: 1px solid orangered;
   border-radius: 0.2rem;

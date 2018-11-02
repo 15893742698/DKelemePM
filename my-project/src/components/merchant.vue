@@ -103,12 +103,12 @@ export default {
   position: fixed;
   top: 0;
   width: 100%;
-  height: 50px;
+  height: .5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   z-index: 10;
-  line-height: 50px;
+  line-height: .5rem;
 }
 .box > img {
   width: 10%;
@@ -131,7 +131,7 @@ export default {
 .box1 span,
 img {
   float: left;
-  color: black;
+  color: gray;
 }
 
 .box > span {
@@ -184,7 +184,7 @@ a {
 }
 .content_div p {
   height: 0.2rem;
-  margin: 10px 0;
+  margin: .1rem 0;
   /* background: blue; */
   overflow: hidden;
 }
@@ -195,16 +195,19 @@ a {
 }
 .content_div p > span:last-child {
   float: right;
-  margin-right: 10px;
+  margin-right: .1rem;
 }
 .content_div #sp1 {
   background: yellow;
   font-size: 0.12rem;
   margin-top: 1%;
+  font-weight:550;
   /* margin-left: 3%; */
   /* line-height: .2rem; */
 }
 .content_div #sp2 {
+  font-weight:550;
+  /* color: rgb(58, 56, 56); */
   font-size: 0.16rem;
 }
 .content_div #sp3 {
@@ -258,7 +261,7 @@ a {
   width: 0.094rem;
 }
 .el-rate__icon {
-  font-size: 10px;
+  font-size: .1rem;
   z-index: -5;
 }
 </style>
