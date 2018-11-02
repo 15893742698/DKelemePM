@@ -160,7 +160,7 @@ export default {
   margin-bottom: 3%;
 }
 .hblicon > p {
-  font-size: 0.06rem;
+  font-size: 0.1rem;
   margin-top: 1%;
 }
 .hblicon > .hblibig {
@@ -182,12 +182,13 @@ export default {
 }
 .hbtips > p {
   margin-top: 1%;
+  font-size: 0.14rem;
 }
 .hongbaoul + p {
   width: 80%;
   margin: 10%;
   text-align: center;
-  font-size: 0.1rem;
+  font-size: 0.14rem;
 }
 .hongbaoul + p > span {
   margin: 1%;
@@ -200,8 +201,8 @@ export default {
 .tuijianhb > button {
   width: 49%;
   text-align: center;
-  height: 50px;
-  line-height: 50px;
+  height: 0.5rem;
+  line-height: 0.5rem;
   font-size: 0.16rem;
   background-color: rgb(223, 221, 126);
   border: none;

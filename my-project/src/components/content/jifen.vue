@@ -100,7 +100,7 @@ export default {
 .tijiaobtn{
     width: 94%;
     margin: 3%;
-    height: 50px;
+    height: 0.5rem;
     font-size: 0.2rem;
     border-radius: 10px;
 }

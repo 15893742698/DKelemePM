@@ -185,13 +185,13 @@ export default {
 }
 .expq {
   font-size: 0.18rem;
-  line-height: 30px;
+  line-height: 0.3rem;
   padding: 2%;
 }
 .expa {
   font-size: 0.14rem;
   padding: 2%;
-  line-height: 30px;
+  line-height: 0.3rem;
 }
 </style>
 

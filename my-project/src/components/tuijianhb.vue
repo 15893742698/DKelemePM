@@ -52,7 +52,7 @@ export default {
     return {
       fun: "",
       loading: true,
-      xiguagua:false
+      xiguagua: false
     };
   },
   created() {
@@ -66,13 +66,13 @@ export default {
   },
   methods: {
     yaoqing() {
-      this.xiguagua=true
+      this.xiguagua = true;
     },
-    godenglu(){
+    godenglu() {
       this.xiguagua = false;
     },
-    returnuup(){
-      this.$router.push({name:"discount"})
+    returnuup() {
+      this.$router.push({ name: "discount" });
     }
   }
 };
@@ -83,14 +83,28 @@ export default {
   text-align: center;
 }
 .hello {
-  width: 95%;
+  width: 98%;
+  padding: 1%;
   background-color: #436eee;
-  height: 50px;
   border-bottom: 1px solid #436eee;
-  line-height: 50px;
-  text-align: center;
-  padding-left: 5%;
-  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.hello img {
+  width: 10%;
+  vertical-align: top;
+  margin-top: 0%;
+}
+.hello p {
+  color: white;
+  font-weight: bold;
+  font-size: 0.2rem;
+  width: 58%;
+  text-align: start;
+}
+.hello > a {
+  color: black;
 }
 .xiguadiv {
   width: 90%;
@@ -104,36 +118,21 @@ export default {
 .xiguadiv > img {
   width: 30%;
 }
-.xiguadiv>p{
+.xiguadiv > p {
   font-size: 0.16rem;
   padding: 3%;
 }
 .xiguadiv > button {
   font-size: 0.2rem;
-  height: 50px;
+  height: 0.5rem;
   background-color: rgb(39, 175, 39);
   color: white;
   border-radius: 10px;
-  line-height: 50px;
+  line-height: 0.5rem;
   padding: 2%;
   width: 96%;
 }
-.hello img {
-  float: left;
-  width: 10%;
-  vertical-align: top;
-  margin-top: 1%;
-  /* border: 1px solid red; */
-}
-.hello p {
-  font-size: 0.2rem;
-  color: white;
-  font-weight: bold;
-  margin-right: 15%;
-}
-.hello > a {
-  color: black;
-}
+
 .tuijianpic {
   width: 100%;
 }

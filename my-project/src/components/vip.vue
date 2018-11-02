@@ -78,7 +78,7 @@ export default {
       this.$router.push({ name: "detailexplain" });
     },
     returnuup() {
-      this.$router.push({name:"home"});
+      this.$router.push({ name: "home" });
     }
   }
 };
@@ -88,27 +88,25 @@ export default {
   width: 100%;
 }
 .hello {
-  width: 95%;
+  width: 98%;
+  padding: 1%;
   background-color: #436eee;
-  height: 50px;
   border-bottom: 1px solid #436eee;
-  line-height: 50px;
-  text-align: center;
-  padding-left: 5%;
-  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .hello img {
-  float: left;
   width: 10%;
   vertical-align: top;
-  margin-top: 1%;
-  /* border: 1px solid red; */
+  margin-top: 0%;
 }
 .hello p {
-  font-size: 0.2rem;
   color: white;
   font-weight: bold;
-  margin-right: 15%;
+  font-size: 0.2rem;
+  width: 58%;
+  text-align: start;
 }
 .hello > a {
   color: black;
@@ -174,8 +172,8 @@ export default {
   margin: 3%;
   background-color: rgb(105, 221, 105);
   font-size: 0.2rem;
-  height: 50px;
-  line-height: 50px;
+  height: 0.5rem;
+  line-height: 0.5rem;
   color: white;
 }
 .yuevip {
@@ -199,8 +197,8 @@ export default {
   text-align: center;
   padding: 2%;
   border-radius: 5px;
-  height: 20px;
-  line-height: 20px;
+  height: 0.2rem;
+  line-height: 0.2rem;
   font-size: 0.14rem;
 }
 .goumai {
@@ -208,11 +206,11 @@ export default {
   font-size: 0.16rem;
   border: 1px solid orange;
 }
-.yuevip>.kahaokami{
-    text-align: end;
+.yuevip > .kahaokami {
+  text-align: end;
 }
-.yuevip>.kaifapiao{
-    text-align: end;
+.yuevip > .kaifapiao {
+  text-align: end;
 }
 </style>
 

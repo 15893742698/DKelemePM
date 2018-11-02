@@ -38,27 +38,25 @@ export default {
   width: 100%;
 }
 .hello {
-  width: 95%;
+  width: 98%;
+  padding: 1%;
   background-color: #436eee;
-  height: 50px;
   border-bottom: 1px solid #436eee;
-  line-height: 50px;
-  text-align: center;
-  padding-left: 5%;
-  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .hello img {
-  float: left;
   width: 10%;
   vertical-align: top;
-  margin-top: 1%;
-  /* border: 1px solid red; */
+  margin-top: 0%;
 }
 .hello p {
-  font-size: 0.2rem;
   color: white;
   font-weight: bold;
-  margin-right: 15%;
+  font-size: 0.2rem;
+  width: 55%;
+  text-align: start;
 }
 .hello > a {
   color: black;
@@ -67,9 +65,6 @@ export default {
   width: 90%;
   padding: 5%;
   text-align: center;
-  /* position: fixed; */
-  /* top: 25%; */
-  /* background-color: rgb(192, 251, 192); */
 }
 .qiezidiv > img {
   width: 80%;
@@ -80,11 +75,11 @@ export default {
 }
 .qiezidiv > button {
   font-size: 0.2rem;
-  height: 50px;
+  height: 0.5rem;
   background-color: rgba(28, 182, 8, 0.548);
   color: white;
   border-radius: 10px;
-  line-height: 30px;
+  line-height: 0.3rem;
   padding: 2%;
   width: 96%;
 }

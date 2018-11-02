@@ -5,46 +5,42 @@
     </div>
 </template>
 <script>
-    export default {
-        name:'headd',
-        data(){
-          return {
-            
-          }
-        },
-        methods:{
-          returnup(){
-            this.$router.go(-1)
-          }
-        }
+export default {
+  name: "headd",
+  data() {
+    return {};
+  },
+  methods: {
+    returnup() {
+      this.$router.go(-1);
     }
+  }
+};
 </script>
 <style>
-.hello{
-  width: 95%;
-  background-color: #436EEE;
-  height: 50px;
-  border-bottom: 1px solid #436EEE;
-  line-height: 50px;
-  text-align: center;
-  padding-left: 5%; 
-  overflow: hidden;
+.hello {
+  width: 98%;
+  padding: 1%;
+  background-color: #436eee;
+  border-bottom: 1px solid #436eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .hello img {
-  float: left;
   width: 10%;
   vertical-align: top;
-  margin-top: 1%;
-  /* border: 1px solid red; */
+  margin-top: 0%;
 }
-.hello p{
-  font-size: 0.2rem;
+.hello p {
   color: white;
   font-weight: bold;
-  margin-right: 15%;
+  font-size: 0.2rem;
+  width: 58%;
+  text-align: start;
 }
-a{
-  color:black;
+.hello > a {
+  color: black;
 }
 </style>
 

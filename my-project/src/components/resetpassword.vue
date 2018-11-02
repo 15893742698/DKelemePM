@@ -14,7 +14,7 @@
                 <img :src="this.srcc" alt="" >
                 <div>
                     <span>看不清</span>
-                <p>换一张</p>
+                  <p>换一张</p>
                 </div>
             </div>
         </div>
@@ -170,28 +170,32 @@ export default {
 }
 .remmcode > div > span {
   padding: 3%;
+  font-size: 0.14rem;
 }
 .remmcode > div > div {
   width: 28%;
   display: inline-block;
   padding: 4%;
 }
+.remmcode > div > div > span{
+  font-size: 0.14rem;
+}
 .remmcode > div > div > p {
   width: 80%;
   color: blue;
   padding: 3%;
   display: inline-block;
+  font-size: 0.14rem;
   /* border: 1px solid blue; */
 }
-.remmcode > div > div > img {
+.remmcode > div > img {
   width: 40%;
   height: 100%;
-  vertical-align: bottom;
 }
 .querenxiugai {
   width: 94%;
   margin: 3%;
-  height: 50px;
+  height: 0.5rem;
   font-size: 0.16rem;
   color: white;
   background-color: rgb(8, 187, 8);
@@ -211,11 +215,11 @@ export default {
 }
 .menmian > p {
   font-size: 0.2rem;
-  height: 50px;
+  height: 0.5rem;
   background-color: rgb(231, 96, 42);
   color: white;
   border-radius: 10px;
-  line-height: 50px;
+  line-height: 0.5rem;
   padding: 2%;
 }
 .menmian > div {
