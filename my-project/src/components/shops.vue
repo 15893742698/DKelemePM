@@ -182,15 +182,20 @@ export default {
 </script>
 <style scoped>
 .scroll {
-  border-bottom: 0.1px solid rgba(111, 111, 111, 0.9);
+  border-bottom: 0.01rem solid rgba(111, 111, 111, 0.9);
   padding-bottom: 0.1rem;
 }
 .swiper-slide {
   height: 1.9rem;
 }
+.swiperdiv:first-child{
+  margin-top: .24rem;
+  padding-bottom: .15rem; 
+}
 .swiperdiv {
   display: flex;
   justify-content: space-around;
+  /* padding: .17rem 0; */
 }
 .linkdiv {
   display: flex;
@@ -203,4 +208,15 @@ export default {
 .linkli{
   width: 0.56rem;
 }
+img{
+  width: .25rem;
+  height: .25rem;
+}
 </style>
+<style>
+.swiper-container-horizontal > .swiper-pagination-bullets{
+  width: .1rem;
+  height: .1rem;
+}
+</style>
+

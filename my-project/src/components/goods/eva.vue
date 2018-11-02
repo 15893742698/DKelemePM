@@ -126,6 +126,7 @@ body{
  .two {
   width: 55%;
 }
+
 .shuzi {
   font-size: 0.4rem;
   color: orange;
@@ -135,7 +136,7 @@ body{
   font-size: 0.15rem;
 }
 .one > div > span + p {
-  font-size: 0.05rem;
+  font-size: 0.08rem;
   margin: 2%;
 }
 
@@ -194,6 +195,9 @@ body{
 .eva-ate{
     overflow: hidden;
 }
+.eva-ate span{
+    font-size: .1rem;
+}
 .eva-ate img{
     width: .7rem;
     height: .7rem;
@@ -206,9 +210,13 @@ body{
   text-overflow: ellipsis;
   white-space: nowrap;
   width: .5rem;
+  font-size: .1rem;
   /* display: -webkit-box;
   /* -webkit-line-break: auto; */
   /* -webkit-box-orient: vertical; */
+}
+.eva-time{
+    font-size: .1rem;
 }
 </style>
 <style>
@@ -216,10 +224,10 @@ body{
     width: .6rem;
 }
 .el-rate__item {
-  width: 0.094rem;
+  width: 0.1rem;
 }
 .el-rate__icon {
-  font-size: 10px;
+  font-size: .08rem;
   z-index: -5;
 }
 </style>

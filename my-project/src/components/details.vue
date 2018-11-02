@@ -96,6 +96,7 @@
     /* margin-top: .1rem; */
 }
 .deta-p>p{
+    font-size: .1rem;
     padding: .05rem;
 }
 .deta-p>p>span{

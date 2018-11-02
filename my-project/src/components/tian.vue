@@ -220,6 +220,9 @@ export default {
   height: 0.375rem;
   line-height: 0.375rem;
 }
+.title span{
+  font-size: .16rem;
+}
 .box2 {
   height: 3.78rem;
 }
@@ -254,7 +257,7 @@ export default {
   height: 0.42rem;
   /* background-color: rgba(230, 230, 230, 1); */
   color: rgb(100, 100, 100);
-  font-size: 0.015rem;
+  font-size: 0.12rem;
 }
 .xiangqing li {
   height: 0.41rem;
