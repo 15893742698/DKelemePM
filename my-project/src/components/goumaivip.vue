@@ -70,7 +70,7 @@ export default {
   },
   methods: {
     returnuup() {
-      if (this.$store.state.vipvalue == ture) {
+      if (!this.$store.state.vipvalue) {
         this.$router.push({ name: "vip" });
       } else {
         this.$router.push({ name: "orderform" });

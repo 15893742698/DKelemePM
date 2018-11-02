@@ -33,18 +33,18 @@ export default {
     };
   },
   created() {
+    this.jilu = true;
+    var botchoice = {
+      waimai: false,
+      sousuo: false,
+      dingdan: true,
+      mine: false
+    };
+    this.$store.commit("changebotchoice", botchoice);
     this.$store.commit("changetn", "我的订单");
     if (!this.$store.state.denglu) {
       this.jilu = false;
     } else {
-      this.jilu = true;
-      var botchoice = {
-        waimai: false,
-        sousuo: false,
-        dingdan: true,
-        mine: false
-      };
-      this.$store.commit("changebotchoice", botchoice);
       let loadingInstance1 = Loading.service({ fullscreen: true });
       let url = "https://elm.cangdu.org/bos/orders?offset=0&limit=1";
       this.$http({
