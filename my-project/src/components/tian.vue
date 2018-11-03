@@ -105,10 +105,11 @@ export default {
     data2: [],
     // 修改地方
     name1: [],
-    name2: []
+    name2: [],
+    
   }),
   //修改
-  props:['cont'],
+  props:['cont','aa'],
 
   components: {
     // Zujian
@@ -129,6 +130,9 @@ export default {
     },
     updaMsg(index) {
       this.name2 = this.arr[index].name;
+      var str = this.name1+"/"+this.name2;
+      console.log(str);
+      this.aa(str);
       console.log(this.name2);
       this.show = false;
     },
@@ -157,7 +161,7 @@ export default {
   // 修改地方
   watch: {
     name2() {
-      this.cont = this.name1 + "/" + this.name2;
+      // this.cont = this.name1 + "/" + this.name2;
       // console.log(a)
       // this.cli(a);
     }

@@ -1,6 +1,6 @@
 <template>
     <div>
-         <Tian :cont = "search"></Tian>
+         <Tian :cont = "search" :aa="abc"></Tian>
          <ul class="content_ul">
         <router-link tag="li" :key="index" v-for="(k,index) in datas" to="/shopq">
     <!-- <li  :key="index" v-for="(k,index) in datas" to="/1"> -->
@@ -33,7 +33,8 @@ import Tian from "../components/tian"
     export default {
         name:'classify',
         data: () => ({
-    datas: null
+    datas: null,
+    dataa:null
   }),
   //添加的地方
   // props:["cli"],
@@ -45,6 +46,8 @@ import Tian from "../components/tian"
       "https://elm.cangdu.org/shopping/restaurants?latitude=31.22967&longitude=121.4762";
     this.$http.get(api).then(response => {
       // console.log(response);
+      this.dataa = response.data;
+      // console.log(this.dataa);
       this.datas = response.data.map(dengke => {
         // console.log(dengke);
         return dengke;
@@ -52,12 +55,24 @@ import Tian from "../components/tian"
     });
   },
   methods:{
+    abc(str){
+      // console.log(str);
+      this.datas = this.dataa;
+    //  console.log(this.datas);
+      this.datas = this.datas.filter(function(res){
+        // console.log(res);
+        // console.log(str);
+        return res.category==str;
+        
+      })
+      console.log(this.datas);
+    },
     search(index){
-        console.log(index);
+        // console.log(index);
         var url = "https://elm.cangdu.org/shopping/restaurants?latitude=31.22967&longitude=121.4762&order_by="+index;
         this.$http.get(url).then((res)=>{
          this.datas = res.data;
-         console.log(this.datas);
+        //  console.log(this.datas);
         })
     }
   }
