@@ -180,7 +180,7 @@ a {
   margin-left: 0.1rem;
 }
 .content_div{
-  border-top: 1px solid gray;
+  /* border-top: 1px solid gray; */
 }
 .content_div p {
   height: 0.2rem;

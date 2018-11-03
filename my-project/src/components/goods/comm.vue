@@ -188,7 +188,7 @@ a {
 }
 .head {
   background: #ededed;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   color: #666;
 }
 .head_top {
