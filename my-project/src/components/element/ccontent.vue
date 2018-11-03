@@ -35,20 +35,33 @@ export default {
 };
 </script>
 <style>
+.ccontent {
+  width: 100%;
+}
+.ccontent > a {
+  width: 90%;
+}
 .conimgs1 {
   width: 5%;
   float: left;
   vertical-align: top;
-  margin: 5% 3%;
+}
+.flyfa {
+  width: 98%;
+  padding: 1%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .conimgs2 {
   width: 5%;
 }
 .flyaway {
+  width: 96%;
+  padding: 2%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 5% 2%;
   border-bottom: 1px solid #eaeaea;
 }
 .flyaway > p {

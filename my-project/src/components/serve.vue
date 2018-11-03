@@ -6,11 +6,11 @@
         </div>
         <div class="kefu">
             <div class="rengongkefu">
-                <img src="../imgs/人工客服.png" alt="">
+                <img src="../assets/人工客服.png" alt="">
                 <p>在线客服</p>
             </div>
             <div class="dianhuakefu">
-                <img src="../imgs/电话客服.png" alt="">
+                <img src="../assets/电话客服.png" alt="">
                 <p>在线客服</p>
             </div>
         </div>

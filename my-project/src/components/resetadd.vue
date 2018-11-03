@@ -3,8 +3,8 @@
         <div class="hello">
           <img src="../imgs/后退.png" alt="" @click="returnuup">
           <p>{{$store.state.titlename}}</p>
+          <p class="bianjiadd" @click="bianjiadd">{{bianji}}</p>
         </div>
-        <p class="bianjiadd" @click="bianjiadd">{{bianji}}</p>
         <div class="xinzengdizhi">
           <ul class="alladd" :class="{alladda:youdizhi}">
             <li v-for="(item, index) in adds" :key="index">
@@ -133,13 +133,6 @@ export default {
   width: 100%;
   position: relative;
 }
-.resetaddmax > p {
-  position: fixed;
-  right: 3%;
-  top: 2.5%;
-  font-size: 0.16rem;
-  color: white;
-}
 .xinzengdizhi {
   width: 100%;
   /* border: 1px solid red; */
@@ -199,6 +192,7 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border: 1px solid;
 }
 .hello img {
   width: 10%;
@@ -209,8 +203,8 @@ export default {
   color: white;
   font-weight: bold;
   font-size: 0.2rem;
-  width: 58%;
-  text-align: start;
+  text-align: end;
+  width: 25%;
 }
 .hello > a {
   color: black;

@@ -141,13 +141,15 @@ export default {
 .sousuodiv > input {
   width: 90%;
   font-size: 0.2rem;
+  height: 0.4rem;
+  line-height: 0.4rem;
 }
 .sousuodiv > button {
   width: 90%;
   font-size: 0.2rem;
   color: white;
-  height: 0.3rem;
-  line-height: 0.3rem;
+  height: 0.5rem;
+  line-height: 0.5rem;
   margin-top: 3%;
   border-radius: 10px;
   background-color: rgb(59, 59, 219);
