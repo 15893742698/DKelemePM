@@ -91,22 +91,23 @@
 </template>
 <script>
 import { swiper, swiperSlide } from "vue-awesome-swiper";
-import img01 from "./imgs/1.png";
-import img02 from "./imgs/2.png";
-import img03 from "./imgs/3.png";
-import img04 from "./imgs/4.png";
-import img05 from "./imgs/5.png";
-import img06 from "./imgs/6.png";
-import img07 from "./imgs/7.png";
-import img08 from "./imgs/8.png";
-import img09 from "./imgs/9.png";
-import img10 from "./imgs/10.png";
-import img11 from "./imgs/11.png";
-import img12 from "./imgs/12.png";
-import img13 from "./imgs/13.png";
-import img14 from "./imgs/14.png";
-import img15 from "./imgs/15.png";
-import img16 from "./imgs/16.png";
+// @/components/imgs/1.png
+import img01 from "@/components/imgs/1.png";
+import img02 from "@/components/imgs/2.png";
+import img03 from "@/components/imgs/3.png";
+import img04 from "@/components/imgs/4.png";
+import img05 from "@/components/imgs/5.png";
+import img06 from "@/components/imgs/6.png";
+import img07 from "@/components/imgs/7.png";
+import img08 from "@/components/imgs/8.png";
+import img09 from "@/components/imgs/9.png";
+import img10 from "@/components/imgs/10.png";
+import img11 from "@/components/imgs/11.png";
+import img12 from "@/components/imgs/12.png";
+import img13 from "@/components/imgs/13.png";
+import img14 from "@/components/imgs/14.png";
+import img15 from "@/components/imgs/15.png";
+import img16 from "@/components/imgs/16.png";
 export default {
   components: {
     swiper,

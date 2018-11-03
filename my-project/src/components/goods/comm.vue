@@ -161,7 +161,7 @@ a {
   font-size: 0.1rem;
   float: left;
   width: 25%;
-  height: 5.2rem;
+  height: 4.4rem;
   overflow: scroll;
 }
 .content_body_left::-webkit-scrollbar {
@@ -180,7 +180,7 @@ a {
 .content_body_right {
   float: left;
   width: 75%;
-  height: 5.2rem;
+  height: 4.4rem;
   overflow: scroll;
 }
 .content_body_right::-webkit-scrollbar {
@@ -188,6 +188,7 @@ a {
 }
 .head {
   background: #ededed;
+  border: 1px solid red;
   color: #666;
 }
 .head_top {
@@ -288,7 +289,7 @@ a {
   height: 0.5rem;
   background: black;
   position: fixed;
-  top: 6.2rem;
+  top: 5.7rem;
   left: 0.01rem;
   z-index: 10;
 }
@@ -298,14 +299,14 @@ a {
   background: black;
   border-radius: 50%;
   position: fixed;
-  top: 6rem;
+  top: 5.5rem;
   left: 0.15rem;
 }
 .under > div img {
   position: fixed;
   width: 0.35rem;
   height: 0.35rem;
-  top: 6.1rem;
+  top: 5.65rem;
   left: 0.2rem;
 }
 .under span {
@@ -329,7 +330,7 @@ a {
   text-align: center;
   line-height: 0.5rem;
   position: fixed;
-  top: 6.2rem;
+  top: 5.7rem;
   right: 0;
   background: rgb(0, 170, 17);
 }

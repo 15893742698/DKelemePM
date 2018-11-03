@@ -169,7 +169,11 @@ body{
     font-size: .2rem;
     line-height: .3rem;
     padding-left: .05rem;
-    padding-right: .05rem;border-radius:.05rem;
+    padding-right: .05rem;
+    border-radius:.05rem;
+}
+.eva-ul>li:nth-child(3){
+    background: rgb(224, 222, 222);
 }
 .eva-ul span{
     font-size:.15rem;
