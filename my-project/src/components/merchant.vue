@@ -258,7 +258,9 @@ a {
 </style>
 <style>
 .el-rate__item {
-  width: 0.094rem;
+  width: 0.1rem;
+  margin-top: .03rem;
+  margin-left: .04rem;
 }
 .el-rate__icon {
   font-size: .1rem;
