@@ -220,11 +220,12 @@ export default {
   width: 100%;
   overflow: hidden;
   background-color: #fff;
+  border-top: 1px solid gray;
 }
 .xiaocityli {
   width: 25%;
   border-right: 1px solid gray;
-  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
   height: 0.3rem;
   background-color: #fff;
   text-align: center;
