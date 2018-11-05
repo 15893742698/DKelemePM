@@ -141,6 +141,11 @@ export default {
         this.$store.commit("changeaddphone", "");
         this.$store.commit("changeaddtlphone", "");
         this.$store.commit("changedetailadd", "");
+        this.$store.commit("changedenglu", false);
+        this.$store.commit("numchange", 0);
+        this.$store.commit("peisongchange", 0);
+        this.$store.commit("countchange", 0);
+        this.$store.commit("shopchange", []);
         this.$router.push({ name: "home" });
       });
     },

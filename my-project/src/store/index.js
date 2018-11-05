@@ -123,6 +123,22 @@ const store = new Vuex.Store({
     changeallshuju(state, value) {
       state.allshuju = value;
     },
+    //更改num
+    numchange(state, value) {
+      state.num = value;
+    },
+    //更改配送费
+    peisongchange(state, value) {
+      state.peisongfei = value;
+    },
+    //更改总个数
+    countchange(state, value) {
+      state.zonggeshu = value;
+    },
+    //shoping数据删除
+    shopchange(state, value) {
+      state.shoping = value;
+    },
     //更改count
     a(state, a) {
       a.count++;
@@ -162,9 +178,11 @@ const store = new Vuex.Store({
         state.shoping[a].count = 0;
       }
     },
+    //添加地址
     tianjiadizhi(state, value) {
       state.tianjiadizhi = value;
     },
+    //清空搜索记录
     qingkongsousuo(state) {
       state.sousuojilu = [];
     },
