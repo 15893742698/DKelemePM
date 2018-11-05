@@ -24,6 +24,7 @@
           <component :is="cc"></component>
 
           <!-- <eva></eva> -->
+          
     </div>
   
 </template>
@@ -32,6 +33,7 @@
 <script>
 import comm from "./goods/comm";
 import eva from "./goods/eva";
+
 // import details from './details'
 export default {
   data() {

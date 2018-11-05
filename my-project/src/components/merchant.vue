@@ -180,7 +180,7 @@ a {
   margin-left: 0.1rem;
 }
 .content_div{
-  border-top: 1px solid gray;
+  /* border-top: 1px solid gray; */
 }
 .content_div p {
   height: 0.2rem;
@@ -258,7 +258,9 @@ a {
 </style>
 <style>
 .el-rate__item {
-  width: 0.094rem;
+  width: 0.1rem;
+  margin-top: .03rem;
+  margin-left: .04rem;
 }
 .el-rate__icon {
   font-size: .1rem;
