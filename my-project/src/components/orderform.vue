@@ -33,7 +33,7 @@
         </div>
         <div class="or-six" v-for="(item, index) in $store.state.shoping" :key="index">
             <p>{{item.name}} <span>￥{{$store.state.num}}</span><span style="float: right; margin-right: .2rem; color:  orangered">x 1</span></p>
-            <p>餐盒 <span>￥{{$store.state.num}}</span></p>
+            <p>餐盒 <span>￥0</span></p>
             <p>配送费<span>￥{{$store.state.peisongfei}}</span></p>
             <p>订单 ￥{{$store.state.num}} <span style="color:  orangered">待支付</span></p>
             <span style="color:  orangered">￥{{$store.state.num+$store.state.peisongfei}}</span>
@@ -72,7 +72,7 @@ export default {
     maiba() {
       //定义当前下单时间
       var mydate = new Date();
-      // console.log(mydate.toLocaleString());
+      // console.log(mydate.toLocaleString()); 将当前时间转换为2018年11月5日下午13点17分
       //shoping里面添加num和name属性
       this.$store.commit("shuxing",mydate.toLocaleString());
       //在总订单中添加当前的订单

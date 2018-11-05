@@ -100,7 +100,6 @@ export default {
       }
       this.$store.commit("changeallshuju", res.data);
     });
-    
   },
   computed: {
     data() {
@@ -115,8 +114,8 @@ export default {
     shoping() {
       return this.$store.state.shoping;
     },
-    peisongfei(){
-      return this.$store.state.peisongfei
+    peisongfei() {
+      return this.$store.state.peisongfei;
     }
   },
   methods: {
@@ -134,12 +133,15 @@ export default {
       this.$store.commit("b", b);
     },
     clearfood() {
-      this.$store.commit("shopingclear");
+      this.$store.commit("shopingclear", []);
+      this.$store.commit("numchange", 0);
+      this.$store.commit("peisongchange", 0);
+      this.$store.commit("countchange", 0);
       this.shows = false;
       this.peisong = 0;
     },
-    jiezhang(){
-      this.$router.push({name:"orderform"});
+    jiezhang() {
+      this.$router.push({ name: "orderform" });
     }
   }
 };
@@ -226,12 +228,12 @@ a {
   overflow: hidden;
   font-size: 0.05rem;
 }
-.str{
-  font-size: .1rem;
+.str {
+  font-size: 0.1rem;
 }
-.rise{
-  font-size: .1rem;
-  margin-left: .05rem;
+.rise {
+  font-size: 0.1rem;
+  margin-left: 0.05rem;
 }
 .stop_right p:first-child {
   /* padding: .05rem 0; */
@@ -240,7 +242,7 @@ a {
 }
 .stop_right p:nth-child(2) {
   /* color: red; */
-  font-size: .12rem;
+  font-size: 0.12rem;
   margin: 0.1rem 0;
 }
 .stop_right p:nth-child(3) {
@@ -257,7 +259,7 @@ a {
 .cons-sp {
   float: right;
   color: red;
-  font-size: .1rem;
+  font-size: 0.1rem;
   border: 1px solid red;
   border-radius: 0.2rem;
 }
@@ -268,7 +270,7 @@ a {
   right: 0.2rem;
 }
 .cons-sp1 {
-  font-size: .11rem;
+  font-size: 0.11rem;
   color: orangered;
   border: 1px solid orangered;
   border-radius: 0.2rem;

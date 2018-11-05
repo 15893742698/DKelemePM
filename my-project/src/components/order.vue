@@ -73,7 +73,7 @@ export default {
   display: flex;
   padding: 0.2rem 0.04rem;
   justify-content: space-between;
-  border: 1px solid black;
+  border-bottom: 1px solid black;
 }
 .ord-two {
   display: flex;
