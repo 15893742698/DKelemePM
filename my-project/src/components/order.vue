@@ -52,7 +52,11 @@ export default {
         url: url,
         withCredentials: true
       }).then(res => {
-        this.data = res.data;
+        if (this.$store.state.vipvalue == false) {
+          this.data = [];
+        } else {
+          this.data = res.data;
+        }
       });
       loadingInstance1.close();
       this.loading = false;

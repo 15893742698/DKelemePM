@@ -103,7 +103,8 @@ export default {
     },
     qingkongsousuo() {
       this.bubu = [];
-      this.$store.commit("qingkongsousuo",[]);
+      this.$store.commit("qingkongsousuo", []);
+      this.show = false;
     },
     xuanzezhege(item) {
       this.$store.commit("changecityadd", item);
