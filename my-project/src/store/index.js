@@ -59,7 +59,9 @@ const state = {
   peisongfei: 0, //配送费，
   //添加地址
   tianjiadizhi: false,
-  vipvalue: false
+  vipvalue: false,
+  shangjiamingzi: "", //商家名字,
+  zongdingdan: []
 }
 const store = new Vuex.Store({
   state,
@@ -168,7 +170,7 @@ const store = new Vuex.Store({
           ps = state.shoping[a].packing_fee
         }
       }
-      console.log(state.num, state.peisongfei)
+      // console.log(state.num, state.peisongfei)
       state.peisongfei = ps;
       state.num -= b.price;
       state.zonggeshu -= 1;
@@ -189,6 +191,25 @@ const store = new Vuex.Store({
     //更改vip状态
     changevipstate(state, value) {
       state.vipvalue = value;
+    },
+    //更改商家名字
+    gaimingzi(state, value) {
+      state.shangjiamingzi = value;
+    },
+    //总订单
+    zongdingdana(state, value) {
+      state.zongdingdan.push(value)
+    },
+    //清空总订单
+    clearzongdingdan(state,value){
+      state.zongdingdan=value;
+    },
+    //属性
+    shuxing(state,value) {
+      //在shoping中添加name和num和data属性
+      Vue.set(state.shoping, "name", state.shangjiamingzi);
+      Vue.set(state.shoping, "num", state.num);
+      Vue.set(state.shoping,"date",value);
     }
   }
 })

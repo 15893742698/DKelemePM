@@ -33,13 +33,13 @@
         </div>
         <div class="or-six" v-for="(item, index) in $store.state.shoping" :key="index">
             <p>{{item.name}} <span>￥{{$store.state.num}}</span><span style="float: right; margin-right: .2rem; color:  orangered">x 1</span></p>
-            <p>餐盒 <span>￥26605</span></p>
+            <p>餐盒 <span>￥{{$store.state.num}}</span></p>
             <p>配送费<span>￥{{$store.state.peisongfei}}</span></p>
-            <p>订单 ￥26605 <span style="color:  orangered">待支付</span></p>
-            <span style="color:  orangered">￥{{$store.state.num+$store.state.peisongfei+26605}}</span>
+            <p>订单 ￥{{$store.state.num}} <span style="color:  orangered">待支付</span></p>
+            <span style="color:  orangered">￥{{$store.state.num+$store.state.peisongfei}}</span>
         </div>
         <div class="or-bottom">
-            <span>待支付 ￥{{$store.state.num+$store.state.peisongfei+26605}}</span>
+            <span>待支付 ￥{{$store.state.num+$store.state.peisongfei}}</span>
             <span @click="maiba">确认下单</span>
         </div>
     </div>
@@ -70,7 +70,23 @@ export default {
       this.$router.push({ name: "detailadadd" });
     },
     maiba() {
+      //定义当前下单时间
+      var mydate = new Date();
+      // console.log(mydate.toLocaleString());
+      //shoping里面添加num和name属性
+      this.$store.commit("shuxing",mydate.toLocaleString());
+      //在总订单中添加当前的订单
+      this.$store.commit("zongdingdana", this.$store.state.shoping);
+      //清空当前订单   //商家名字
+      this.$store.commit("gaimingzi", "");
+      //当前订单
+      this.$store.commit("shopchange", []);
+      this.$store.commit("countchange", 0);
+      this.$store.commit("peisongchange", 0);
+      this.$store.commit("numchange", 0);
       this.$router.push({ name: "goumai" });
+
+      // console.log(this.$store.state.zongdingdan);
     }
   },
   created() {
@@ -83,7 +99,7 @@ export default {
       this.dengluma = "我的";
     }
     this.$store.commit("tianjiadizhi", true);
-    this.$store.commit("changevipstate",true);
+    this.$store.commit("changevipstate", true);
     let url =
       "https://elm.cangdu.org/v1/users/" +
       this.$store.state.usermsg.user_id +

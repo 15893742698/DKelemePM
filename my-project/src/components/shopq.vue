@@ -57,7 +57,7 @@ export default {
   },
   created() {
     var id = this.$route.params.id;
-    // console.log(id)
+    this.$store.commit("gaimingzi",this.$route.params.data.name);
     let api = "https://elm.cangdu.org/shopping/restaurant/" + id;
     this.$http.get(api).then(data => {
       this.data = data.data;

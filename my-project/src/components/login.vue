@@ -146,6 +146,8 @@ export default {
         this.$store.commit("peisongchange", 0);
         this.$store.commit("countchange", 0);
         this.$store.commit("shopchange", []);
+        this.$store.commit("clearzongdingdan", []);
+        this.$store.commit("changevipstate", false);
         this.$router.push({ name: "home" });
       });
     },

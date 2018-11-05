@@ -7,13 +7,13 @@
         <div class="ord-one"  v-for="(item, index) in data" :key="index" v-show="jilu"> 
           <div class="ord-two">
             <div> 
-            <p>{{item.restaurant_name}}</p>
-            <p>{{item.formatted_created_at}}</p>
+            <p>店铺:{{item.name}}</p>
+            <p>下单时间:{{item.date}}</p>
             </div>
           </div> 
           <div class="ord-three">
             <p>支付成功</p>
-            <p style="color: orangered; font-size: .2rem; float:right;">{{item.total_amount}}</p>
+            <p style="color: orangered; font-size: .2rem; float:right;">金额:{{item.num}}</p>
             <p @click="zaimai">再来一单</p>
           </div>
           </div>
@@ -46,18 +46,11 @@ export default {
       this.jilu = false;
     } else {
       let loadingInstance1 = Loading.service({ fullscreen: true });
-      let url = "https://elm.cangdu.org/bos/orders?offset=0&limit=1";
-      this.$http({
-        method: "get",
-        url: url,
-        withCredentials: true
-      }).then(res => {
-        if (this.$store.state.vipvalue == false) {
-          this.data = [];
-        } else {
-          this.data = res.data;
-        }
-      });
+      if (this.$store.state.vipvalue == false) {
+        this.data = [];
+      } else {
+        this.data = this.$store.state.zongdingdan;
+      }
       loadingInstance1.close();
       this.loading = false;
     }
