@@ -6,7 +6,7 @@
         </div>
         <div class="inputdiv">
             <input type="text" placeholder="请输入小区/写字楼/学校等" v-model="detailsearchadd">
-            <button @click="search">确认</button>
+            <button @click="search" class="querensousuoa">确认</button>
         </div>
         <p>为了满足商家的送餐要求,建议您从列表中选择地址</p>
         <ul class="alladdul">
@@ -93,7 +93,7 @@ export default {
   }
 };
 </script>
-<style>
+<style scoped>
 .searchaddmax {
   width: 100%;
 }
@@ -135,10 +135,10 @@ export default {
   border-radius: 10px;
   background-color: #eaeaea;
 }
-.inputdiv > button {
+.inputdiv > .querensousuoa {
   width: 20%;
   border-radius: 10px;
-  font-size: 0.2rem;
+  font-size: 0.14rem;
   background-color: blue;
   color: white;
   height: 0.4rem;
