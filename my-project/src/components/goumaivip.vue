@@ -30,11 +30,13 @@
             </li>
         </ul>
         <button @click="qurenzhifu">确认支付</button>
+        <el-collapse-transition>
         <div class="xiguadiv" v-if="xiguagua">
             <img src="../imgs/感叹.png" alt="">
             <p>{{pp}}</p>
             <button @click="godenglu">确认</button>
         </div>
+        </el-collapse-transition>
     </div>    
 </template>
 <script>

@@ -13,6 +13,7 @@
             </div>
         </div>
         <button class="huanba" @click="diaodiaodiao">兑换红包</button>
+        <el-collapse-transition>
         <div class="querenduihuan" v-show="duihuan"> 
           <img src="../imgs/感叹.png" alt="">
           <p>{{failmsg}}</p>
@@ -20,6 +21,7 @@
             <button class="wait" @click="wait">确定</button>
           </div>
         </div>
+        </el-collapse-transition>
     </div>
 </template>
 <script>

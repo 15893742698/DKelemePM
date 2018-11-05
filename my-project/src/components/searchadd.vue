@@ -15,6 +15,7 @@
                 <p class="changde">{{item.address}}</p>
             </li>
         </ul>
+        <el-collapse-transition>
         <div class="chengzi" v-show="chengzi">
             <img src="../imgs/感叹.png" alt="">
             <div>
@@ -22,6 +23,7 @@
             </div>
             <p @click="godenglu">确认</p>
         </div>
+        </el-collapse-transition>
     </div>
 </template>
 <script>

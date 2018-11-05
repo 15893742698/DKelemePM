@@ -36,11 +36,13 @@
           <img src="../imgs/红包.png" alt="">
           <p>还不赶紧去邀请好友</p>
         </div>
+        <el-collapse-transition>
         <div class="xiguadiv" v-if="xiguagua">
             <img src="../imgs/感叹.png" alt="">
             <p>请在饿了么APP中打开</p>
             <button @click="godenglu">确认</button>
         </div>
+        </el-collapse-transition>
     </div>
 </template>
 <script>

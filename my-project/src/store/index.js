@@ -165,8 +165,8 @@ const store = new Vuex.Store({
     tianjiadizhi(state, value) {
       state.tianjiadizhi = value;
     },
-    qingkongsousuo(state, value) {
-      state.sousuoshuju = value;
+    qingkongsousuo(state) {
+      state.sousuojilu = [];
     },
     //更改vip状态
     changevipstate(state, value) {

@@ -4,11 +4,13 @@
           <img src="../imgs/后退.png" alt="" @click="returnuup">
           <p>{{$store.state.titlename}}</p>
         </div>
+        <el-collapse-transition>
         <div class="qiezidiv">
             <img src="../imgs/饿了么选中.png" alt="">
             <p>下载饿了么APP</p>
             <button>下载</button>
         </div>
+        </el-collapse-transition>
     </div>
 </template>
 <script>

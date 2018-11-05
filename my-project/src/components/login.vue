@@ -58,6 +58,7 @@
         <div class="tuichudiv">
             <button @click="tuichubtn">退出登录</button>
         </div>
+        <el-collapse-transition>
         <div class="tuichutank" v-show="chuxianma"> 
           <img src="../imgs/感叹.png" alt="">
           <p>是否退出登录</p>
@@ -66,6 +67,8 @@
             <button class="henxin" @click="henxin">狠心退出</button>
           </div>
         </div>
+        </el-collapse-transition>
+        <el-collapse-transition>
         <div class="juhua" v-show="juhua">
             <img src="../imgs/感叹.png" alt="">
             <div>
@@ -73,6 +76,7 @@
             </div>
             <p @click="godenglu">确认</p>
         </div>
+        </el-collapse-transition>
     </div>
 </template>
 <script>

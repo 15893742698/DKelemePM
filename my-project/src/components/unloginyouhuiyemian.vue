@@ -4,10 +4,12 @@
           <img src="../imgs/后退.png" alt="" @click="returnuup">
           <p>{{$store.state.titlename}}</p>
         </div>
+        <el-collapse-transition>
         <div class="pingguodiv">
             <img src="../imgs/西瓜.png" alt="">
             <p @click="godenglu">请登录</p>
         </div>
+        </el-collapse-transition>
     </div>
 </template>
 <script>

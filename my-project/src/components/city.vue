@@ -24,6 +24,7 @@
           </li>
           <button @click="qingkongsousuo">清空所有</button>
         </ul>
+        <el-collapse-transition>
         <div class="hele" v-show="hele">
             <img src="../imgs/感叹.png" alt="">
             <div>
@@ -31,6 +32,7 @@
             </div>
             <p @click="godenglu">确认</p>
         </div>
+        </el-collapse-transition>
     </div>
 </template>
 <script>
@@ -100,11 +102,12 @@ export default {
       this.$router.push({ name: "waimai" });
     },
     qingkongsousuo() {
-      this.$store.commit("qingkongsousuo", []);
+      this.bubu = [];
+      this.$store.commit("qingkongsousuo",[]);
     },
-    xuanzezhege(item){
-      this.$store.commit("changecityadd",item);
-      this.$router.push({name:"waimai"});
+    xuanzezhege(item) {
+      this.$store.commit("changecityadd", item);
+      this.$router.push({ name: "waimai" });
     }
   }
 };
@@ -204,19 +207,19 @@ export default {
   padding: 3%;
   font-size: 0.2rem;
 }
-.lishijulu{
+.lishijulu {
   width: 100%;
 }
-.lishijilu>li{
+.lishijilu > li {
   width: 94%;
   padding: 3%;
 }
-.lishijilu>li>p{
+.lishijilu > li > p {
   width: 98%;
   padding: 1%;
   font-size: 0.16rem;
 }
-.lishijilu>button{
+.lishijilu > button {
   width: 94%;
   margin: 3%;
   height: 0.5rem;
@@ -225,7 +228,6 @@ export default {
   color: white;
   font-size: 0.2rem;
   border-radius: 10px;
-  
 }
 </style>
 

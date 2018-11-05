@@ -19,6 +19,7 @@
             </div>
         </div>
         <button class="querenxiugai" @click="chongzhimima">确认修改</button>
+        <el-collapse-transition>
         <div class="menmian" v-show="menmian">
             <img src="../imgs/感叹.png" alt="">
             <div>
@@ -26,6 +27,7 @@
             </div>
             <p @click="godenglu">确认</p>
         </div>
+        </el-collapse-transition>
     </div>    
 </template>
 <script>

@@ -6,11 +6,13 @@
             <p>{{resetnametips}}</p>
             <button @click="rename33" :disabled="res">确认修改</button>
         </div>
+        <el-collapse-transition>
         <div class="songzi" v-if="songzi">
             <img src="../imgs/感叹.png" alt="">
             <p>{{failmsg}}</p>
             <button @click="godenglu">确认</button>
         </div>
+        </el-collapse-transition>
     </div>
 </template>
 <script>
@@ -65,8 +67,13 @@ export default {
       }
     },
     godenglu() {
-      this.$store.state.usermsg.username = this.rename;
-      this.$router.push({ name: "home" });
+      var reg = /\w{5,24}/;
+      var res = reg.test(this.rename);
+      this.songzi = false;
+      if (res) {
+        this.$router.push({ name: "home" });
+        this.$store.state.usermsg.username = this.rename;
+      }
     }
   }
 };
