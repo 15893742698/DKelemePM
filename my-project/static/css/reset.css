@@ -92,6 +92,9 @@ input {
   line-height: 0.3rem;
 }
 
+a{
+  color: gray;
+}
 /* HTML5 display-role reset for older browsers */
 article,
 aside,

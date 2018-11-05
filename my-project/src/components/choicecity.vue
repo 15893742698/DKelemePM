@@ -187,10 +187,10 @@ export default {
 }
 .allhotcitys {
   width: 25%;
-  height: 0.3rem;
+  height: 0.45rem;
   background-color: #fff;
   text-align: center;
-  line-height: 0.3rem;
+  line-height: 0.45rem;
   font-size: 0.16rem;
   color: blue;
   border-bottom: 1px solid gray;
@@ -226,12 +226,12 @@ export default {
   width: 25%;
   border-right: 1px solid gray;
   border-bottom: 1px solid gray;
-  height: 0.3rem;
+  height: 0.45rem;
   background-color: #fff;
   text-align: center;
-  line-height: 0.3rem;
+  line-height: 0.45rem;
   font-size: 0.16rem;
-  color: blue;
+  color: gray;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
