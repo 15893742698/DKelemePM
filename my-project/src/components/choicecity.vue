@@ -197,6 +197,9 @@ export default {
   border-right: 1px solid gray;
   box-sizing: border-box;
 }
+.allhotcitys > a {
+  color: blue !important;
+}
 .allcityul {
   width: 100%;
   background-color: #fff;
@@ -206,12 +209,12 @@ export default {
   /* padding: 3%; */
   font-size: 0.16rem;
 }
-.allcityli>p{
-    margin-bottom: 4%;
-    margin: 3%;
+.allcityli > p {
+  margin-bottom: 4%;
+  margin: 3%;
 }
-.allcityli>p:nth-child(1){
-    display: inline-block;
+.allcityli > p:nth-child(1) {
+  display: inline-block;
 }
 .allcityli > span {
   font-size: 0.2rem;
